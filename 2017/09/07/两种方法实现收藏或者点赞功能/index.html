@@ -1,4 +1,139 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 两种方法实现收藏或者点赞功能 · 歪脖子鹅的博客</title><meta name="description" content="两种方法实现收藏或者点赞功能 - 歪脖子鹅"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.jpeg"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://yoursite.com/atom.xml" title="歪脖子鹅的博客"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.jpeg" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/zpf0918" target="_blank" class="nav-list-link">GITHUB</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">两种方法实现收藏或者点赞功能</h1><div class="post-info">Sep 7, 2017</div><div class="post-content"><p>收藏功能与点赞功能的实作十分类似，本文以购物车教程实作收藏功能为例。</p>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>两种方法实现收藏或者点赞功能 | 歪脖子鹅的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Jonathan, 歪脖子鹅的博客" />
+  
+  <meta name="description" content="收藏功能与点赞功能的实作十分类似，本文以购物车教程实作收藏功能为例。 方法一：step1一个用户可以收藏多个商品，一个商品可以被收藏很多次，因此这是多对多的关系。因此需要新增一个model，来当做product与suer的桥梁。$ rails g model collect user_id:integer product_id:integer,然后执行 rake db:migrate，然后为col">
+<meta property="og:type" content="article">
+<meta property="og:title" content="两种方法实现收藏或者点赞功能">
+<meta property="og:url" content="http://yoursite.com/2017/09/07/两种方法实现收藏或者点赞功能/index.html">
+<meta property="og:site_name" content="歪脖子鹅的博客">
+<meta property="og:description" content="收藏功能与点赞功能的实作十分类似，本文以购物车教程实作收藏功能为例。 方法一：step1一个用户可以收藏多个商品，一个商品可以被收藏很多次，因此这是多对多的关系。因此需要新增一个model，来当做product与suer的桥梁。$ rails g model collect user_id:integer product_id:integer,然后执行 rake db:migrate，然后为col">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fgv9zutcveg30rr0i9jwo.gif">
+<meta property="og:updated_time" content="2017-09-06T16:30:45.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="两种方法实现收藏或者点赞功能">
+<meta name="twitter:description" content="收藏功能与点赞功能的实作十分类似，本文以购物车教程实作收藏功能为例。 方法一：step1一个用户可以收藏多个商品，一个商品可以被收藏很多次，因此这是多对多的关系。因此需要新增一个model，来当做product与suer的桥梁。$ rails g model collect user_id:integer product_id:integer,然后执行 rake db:migrate，然后为col">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fgv9zutcveg30rr0i9jwo.gif">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">歪脖子鹅的博客</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        歪脖子鹅的博客
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个专注后端开发者的博客
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="歪脖子鹅" target="_blank" ">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/zpf0918">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-两种方法实现收藏或者点赞功能" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      两种方法实现收藏或者点赞功能
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2017-09-07
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <p>收藏功能与点赞功能的实作十分类似，本文以购物车教程实作收藏功能为例。</p>
 <h3 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h3><h5 id="step1"><a href="#step1" class="headerlink" title="step1"></a>step1</h5><p>一个用户可以收藏多个商品，一个商品可以被收藏很多次，因此这是多对多的关系。因此需要新增一个model，来当做product与suer的桥梁。<code>$ rails g model collect user_id:integer product_id:integer</code>,然后执行 <code>rake db:migrate</code>，然后为collect、user与product这三个model加上关联。</p>
 <figure class="highlight ruby"><figcaption><span>app/models/collect.rb</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">   + belongs_to <span class="symbol">:user</span></div><div class="line">   + belongs_to <span class="symbol">:product</span></div><div class="line"><span class="string">``</span><span class="string">`   </span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">`</span><span class="string">``</span> ruby app/models/product.rb</div><div class="line">   + has_many <span class="symbol">:collects</span></div><div class="line">   + has_many <span class="symbol">:collected_users</span>, <span class="symbol">through:</span> <span class="symbol">:collects</span>, <span class="symbol">source:</span> <span class="symbol">:user</span></div></pre></td></tr></table></figure>
 <figure class="highlight ruby"><figcaption><span>app/models/user.rb</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">   + has_many <span class="symbol">:collects</span></div><div class="line">   + has_many <span class="symbol">:collected_products</span>, <span class="symbol">through:</span> <span class="symbol">:collects</span>, <span class="symbol">source:</span> <span class="symbol">:product</span></div><div class="line"></div><div class="line">   <span class="comment">#加上是否收藏商品的判定</span></div><div class="line">   + <span class="function"><span class="keyword">def</span> <span class="title">is_collect_of?</span><span class="params">(product)</span></span></div><div class="line">   +  collected_products.<span class="keyword">include</span>?(product)</div><div class="line">   + <span class="keyword">end</span></div><div class="line"><span class="string">``</span><span class="string">`    </span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">#### step2</span></div><div class="line"><span class="string">首先修改路由信息：</span></div><div class="line"><span class="string">`</span><span class="string">``</span> ruby config/routes.rb</div><div class="line">  + resources <span class="symbol">:product</span> <span class="keyword">do</span></div><div class="line">   +  member <span class="keyword">do</span></div><div class="line">   +    post <span class="symbol">:collect</span></div><div class="line">   +    post <span class="symbol">:uncollect</span></div><div class="line">   + <span class="keyword">end</span></div><div class="line"> +  <span class="keyword">end</span></div></pre></td></tr></table></figure>
@@ -15,4 +150,192 @@
 <h3 id="Step3"><a href="#Step3" class="headerlink" title="Step3"></a>Step3</h3><p>最后一歩，就是要在 <code>app/views/products/show.html.erb</code>中加上收藏的按钮</p>
 <figure class="highlight ruby"><figcaption><span>app/views/products/show.html.erb</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">……略</div><div class="line"> + &lt;% <span class="keyword">if</span> current_user %&gt;</div><div class="line"> +   &lt;% <span class="keyword">if</span> @product.find_collect(current_user)%&gt;</div><div class="line"> +     &lt;% =link_to(<span class="string">"取消收藏"</span>, uncollect_product_path(@product), <span class="symbol">:method</span> =&gt; <span class="symbol">:post</span>, <span class="class"><span class="keyword">class</span>: "<span class="title">btn</span> <span class="title">btn</span>-<span class="title">danger</span> <span class="title">btn</span>-<span class="title">lg</span>")%&gt;</span></div><div class="line"> +   &lt;% <span class="keyword">else</span> %&gt;</div><div class="line"> +     &lt;%= link_to(<span class="string">"收藏"</span>, collect_product_path(@product), <span class="symbol">:method</span> =&gt; <span class="symbol">:post</span>, <span class="class"><span class="keyword">class</span>: "<span class="title">btn</span> <span class="title">btn</span>-<span class="title">primary</span> <span class="title">btn</span>-<span class="title">lg</span>")%&gt;</span></div><div class="line"> +   &lt;% <span class="keyword">end</span> %&gt;</div><div class="line"> + &lt;% <span class="keyword">end</span> %&gt;</div><div class="line">……略</div></pre></td></tr></table></figure>
 <h3 id="成果展示"><a href="#成果展示" class="headerlink" title="成果展示"></a>成果展示</h3><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fgv9zutcveg30rr0i9jwo.gif" alt=""></p>
-</div></article></div></main><footer><div class="paginator"><a href="/2017/09/07/利用ransack做搜索功能/" class="next">NEXT</a></div><div class="copyright"><p>© 2017 <a href="http://yoursite.com">歪脖子鹅</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script></body></html>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2017年09月07日 00:30</p>
+        <p>原始链接： <a class="post-url" href="/2017/09/07/两种方法实现收藏或者点赞功能/" title="两种方法实现收藏或者点赞功能">http://yoursite.com/2017/09/07/两种方法实现收藏或者点赞功能/</a></p>
+        <footer>
+            <a href="http://yoursite.com">
+                <img src="/images/logo.png" alt="歪脖子鹅">
+                歪脖子鹅
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+    </div>
+    <footer class="article-footer">
+        <ul class="article-footer-menu">
+            
+            
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方法一："><span class="post-toc-text">方法一：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#step1"><span class="post-toc-text">step1</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#step3"><span class="post-toc-text">step3</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方法二"><span class="post-toc-text">方法二</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#step1-1"><span class="post-toc-text">step1</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#step2"><span class="post-toc-text">step2</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Step3"><span class="post-toc-text">Step3</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#成果展示"><span class="post-toc-text">成果展示</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+  
+    <a href="/2017/09/07/利用ransack做搜索功能/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">利用ransack做搜索功能</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+        <section id="comments">
+            <div id="disqus_thread">
+                <script type="text/javascript">
+                    var disqus_shortname = 'true';
+                    (function() {
+                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                    })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            </div>
+        </section>
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2017 歪脖子鹅<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "http://yoursite.com",
+      animate: true,
+      isHome: false
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            
+        </div>
+        <div id="sidebar-menu-box-tags">
+            
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div id="mobile-header-menu-container">
+        <span class="title">Menu</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+  </div>
+</body>
+</html>
