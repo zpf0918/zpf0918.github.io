@@ -61,28 +61,6 @@
   </entry>
   
   <entry>
-    <title>my_first_post</title>
-    <link href="http://yoursite.com/2017/09/06/my-first-post/"/>
-    <id>http://yoursite.com/2017/09/06/my-first-post/</id>
-    <published>2017-09-06T09:42:31.000Z</published>
-    <updated>2017-09-06T09:42:46.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>歪脖子鹅</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;歪脖子鹅&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>Hello World</title>
     <link href="http://yoursite.com/2017/09/06/hello-world/"/>
     <id>http://yoursite.com/2017/09/06/hello-world/</id>
