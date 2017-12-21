@@ -1,0 +1,37 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 部分gem总结 · 歪脖子鹅的博客</title><meta name="description" content="部分gem总结 - 歪脖子鹅"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.jpeg"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://yoursite.com/atom.xml" title="歪脖子鹅的博客"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.jpeg" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/zpf0918" target="_blank" class="nav-list-link">GITHUB</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">部分gem总结</h1><div class="post-info">Sep 7, 2017</div><div class="post-content"><h3 id="1-gem-‘devise’-————————————-登录系统"><a href="#1-gem-‘devise’-————————————-登录系统" class="headerlink" title="1.gem ‘devise’             ————————————  登录系统"></a>1.gem ‘devise’             ————————————  登录系统</h3><blockquote>
+<p><strong>安装须知：</strong> 依次执行<code>bundle install</code> <code>rails g devise:install</code> <code>rails g devise user</code> <code>rake db:migrate</code>，最后重新<code>rails s</code>。</p>
+</blockquote>
+<h3 id="2-gem-‘bootstrap’-————————————-前端开发套件"><a href="#2-gem-‘bootstrap’-————————————-前端开发套件" class="headerlink" title="2.gem ‘bootstrap’          ————————————  前端开发套件"></a>2.gem ‘bootstrap’          ————————————  前端开发套件</h3><blockquote>
+<p><strong>安装须知：</strong><br>(1) 依次执行<code>bundle install</code> <code>mv app/assets/stylesheets/application.css app/assets/stylesheets/application.scss</code>;<br>(2)</p>
+</blockquote>
+<figure class="highlight ruby"><figcaption><span>app/assets/stylesheets/application.scss</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">+@import <span class="string">"bootstrap-sprockets"</span>;</div><div class="line">+@import <span class="string">"bootstrap"</span>;</div></pre></td></tr></table></figure>
+<p>最后重新<code>rails s</code></p>
+<h3 id="3-gem-‘simple-form’-————————————-简化表单"><a href="#3-gem-‘simple-form’-————————————-简化表单" class="headerlink" title="3.gem ‘simple_form’        ————————————  简化表单"></a>3.gem ‘simple_form’        ————————————  简化表单</h3><blockquote>
+<p><strong>安装须知：</strong> 依次执行<code>bundle install</code> <code>rails g simple_form:install --bootstrap</code>,最后重新<code>rails s</code></p>
+</blockquote>
+<h3 id="4-gem-‘font-awesome-rails’-————————————-图标套件"><a href="#4-gem-‘font-awesome-rails’-————————————-图标套件" class="headerlink" title="4.gem ‘font-awesome-rails’ ————————————  图标套件"></a>4.gem ‘font-awesome-rails’ ————————————  图标套件</h3><blockquote>
+<p><strong>安装须知</strong></p>
+</blockquote>
+<p>（1）<code>bundle install</code> ,重新<code>rails s</code><br>（2）</p>
+<figure class="highlight ruby"><figcaption><span>app/assets/stylesheets/application.scss</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@import <span class="string">"font-awesome"</span>;</div></pre></td></tr></table></figure>
+<h3 id="5-gem-‘better-errors’-————————————-更好的显示错误讯息"><a href="#5-gem-‘better-errors’-————————————-更好的显示错误讯息" class="headerlink" title="5.gem ‘better_errors’      ————————————  更好的显示错误讯息"></a>5.gem ‘better_errors’      ————————————  更好的显示错误讯息</h3><blockquote>
+<p><strong>安装须知</strong> <code>bundle install</code> 重启<code>rails s</code></p>
+</blockquote>
+<h3 id="6-gem-‘annotate’-————————————-在主要用于model中显示栏位"><a href="#6-gem-‘annotate’-————————————-在主要用于model中显示栏位" class="headerlink" title="6.gem ‘annotate’           ————————————  在主要用于model中显示栏位"></a>6.gem ‘annotate’           ————————————  在主要用于model中显示栏位</h3><blockquote>
+<p><strong>安装须知</strong> <code>bundle install</code> 重启<code>rails s</code><br>执行<code>annotate --exclude tests,fixtures,factories,serializers</code>,<br>ps：每次新增栏位后，都要执行这个命令，才会在具体model里显示出所有建立的栏位提示。</p>
+</blockquote>
+<h3 id="7-gem-‘awesome-rails-console’-—————————-让“金手指”变好看的套件"><a href="#7-gem-‘awesome-rails-console’-—————————-让“金手指”变好看的套件" class="headerlink" title="7.gem ‘awesome_rails_console’      —————————-  让“金手指”变好看的套件"></a>7.gem ‘awesome_rails_console’      —————————-  让“金手指”变好看的套件</h3><blockquote>
+<p><strong>安装须知</strong> <code>bundle install</code> 重启<code>rails s</code></p>
+</blockquote>
+<h3 id="8-gem-‘carrier-wave’-gem-‘mini-magick’-————————————-用于上传图片（可能还有其他的功能）"><a href="#8-gem-‘carrier-wave’-gem-‘mini-magick’-————————————-用于上传图片（可能还有其他的功能）" class="headerlink" title="8.gem ‘carrier_wave’  gem ‘mini_magick’      ————————————  用于上传图片（可能还有其他的功能）"></a>8.gem ‘carrier_wave’  gem ‘mini_magick’      ————————————  用于上传图片（可能还有其他的功能）</h3><blockquote>
+<p><strong>安装须知</strong> 依次执行：<code>bundle install</code> <code>rails g uploader image</code> 重启<code>rails s</code></p>
+</blockquote>
+</div></article></div></main><footer><div class="paginator"><a href="/2017/09/07/两种方法实现收藏或者点赞功能/" class="next">下一篇</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'true';
+var disqus_identifier = '2017/09/07/部分gem总结/';
+var disqus_title = '部分gem总结';
+var disqus_url = 'http://yoursite.com/2017/09/07/部分gem总结/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//true.disqus.com/count.js" async></script><div class="copyright"><p>© 2017 <a href="http://yoursite.com">歪脖子鹅</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script></body></html>
