@@ -1,1 +1,1155 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 歪脖子鹅的博客</title><meta name="description" content="记录歪脖子鹅的成长历程"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.jpeg"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://yoursite.com/atom.xml" title="歪脖子鹅的博客"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.jpeg" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link active">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/zpf0918" target="_blank" class="nav-list-link">GITHUB</a></li></ul></header><main class="container"><ul class="home post-list"><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2017/12/21/注册与登录/" class="post-title-link">注册与登录</a></h2><div class="post-info">Dec 21, 2017</div><div class="post-content"></div><a href="/2017/12/21/注册与登录/" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2017/09/07/部分gem总结/" class="post-title-link">部分gem总结</a></h2><div class="post-info">Sep 7, 2017</div><div class="post-content"></div><a href="/2017/09/07/部分gem总结/" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2017/09/07/两种方法实现收藏或者点赞功能/" class="post-title-link">两种方法实现收藏或者点赞功能</a></h2><div class="post-info">Sep 7, 2017</div><div class="post-content"></div><a href="/2017/09/07/两种方法实现收藏或者点赞功能/" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2017/09/07/利用ransack做搜索功能/" class="post-title-link">利用ransack做搜索功能</a></h2><div class="post-info">Sep 7, 2017</div><div class="post-content"></div><a href="/2017/09/07/利用ransack做搜索功能/" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2017/09/06/hello-world/" class="post-title-link">Hello World</a></h2><div class="post-info">Sep 6, 2017</div><div class="post-content"></div><a href="/2017/09/06/hello-world/" class="read-more">...more</a></article></li></ul></main><footer><div class="paginator"></div><div class="copyright"><p>© 2017 <a href="http://yoursite.com">歪脖子鹅</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script></body></html>
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="歪脖子鹅的博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="记录歪脖子鹅的成长历程">
+<meta property="og:type" content="website">
+<meta property="og:title" content="歪脖子鹅的博客">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="歪脖子鹅的博客">
+<meta property="og:description" content="记录歪脖子鹅的成长历程">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="歪脖子鹅的博客">
+<meta name="twitter:description" content="记录歪脖子鹅的成长历程">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/"/>
+
+
+
+
+
+  <title>歪脖子鹅的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">歪脖子鹅的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/21/注册与登录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="歪脖子鹅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="歪脖子鹅的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/21/注册与登录/" itemprop="url">注册与登录</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-21T21:15:56+08:00">
+                2017-12-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>rails 中的gem devise提供了注册与登录的功能，用起来比较方便。但是为了自身编程能力，决定学习如何自写出注册与登录功能。</p>
+<h3 id="注册功能"><a href="#注册功能" class="headerlink" title="注册功能"></a>注册功能</h3><p>用户注册即创建一个用户，这时会用到我们所熟知的CRUD。理解起来很容易，但是做起来并没有那么简单。</p>
+<p>首先需要生成user的model，并对其字段进行约束，通常情况下，会是name与email，例如name与email都不为空、长度、格式，为邮箱加索引等，把这些设置好之后，需要设置路由，控制器，还有视图。</p>
+<h5 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h5><p>约束字段。例如name与email的长度、格式、不为空，密码长度等，且为邮箱加索引。</p>
+<h5 id="routes-rb"><a href="#routes-rb" class="headerlink" title="routes.rb"></a>routes.rb</h5><p>设置注册路由，一般会是<code>get &#39;/signup&#39;, to: &#39;users#new&#39;</code> <code>post &#39;/signup&#39;, to: &#39;users#create&#39;</code></p>
+<h5 id="Views"><a href="#Views" class="headerlink" title="Views"></a>Views</h5><p>设置注册表单。其中会用到<code>form_for</code>或者 <code>simple_form_for</code></p>
+<h5 id="Controllers"><a href="#Controllers" class="headerlink" title="Controllers"></a>Controllers</h5><p>编写<code>users#new</code>与 <code>users#create</code></p>
+<h5 id="验证用户"><a href="#验证用户" class="headerlink" title="验证用户"></a>验证用户</h5><p>验证用户会用密码，因为我们会为user增加一个字段名称<code>password_digest</code>，在user的model中，添加<code>has_secure_password</code>这个方法（因为has_secure_password这个方法调用唯一要求就是对应的model中有<code>password_digest</code> 字段），它有三个作用: (1) 在数据库层中的password_digest中存储安全的密码哈希值（2）获得一对虚拟属性，<code>password</code> <code>password_confirmation</code>,而且创建对象时会执行存在性验证和匹配验证（3）获得<code>authenticate</code>方法，如果密码正确，返回用户对象，如果密码错误，返回false。 要想生成不可逆的密码哈希值，我们需要用到<code>gem &#39;bcrypt&#39;</code>,它的作用就是生成哈希密码值。这样即使‘脱库’，用户的真实密码也不会丢失。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/07/部分gem总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="歪脖子鹅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="歪脖子鹅的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/07/部分gem总结/" itemprop="url">部分gem总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-07T01:54:55+08:00">
+                2017-09-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-gem-‘devise’-————————————-登录系统"><a href="#1-gem-‘devise’-————————————-登录系统" class="headerlink" title="1.gem ‘devise’             ————————————  登录系统"></a>1.gem ‘devise’             ————————————  登录系统</h3><blockquote>
+<p><strong>安装须知：</strong> 依次执行<code>bundle install</code> <code>rails g devise:install</code> <code>rails g devise user</code> <code>rake db:migrate</code>，最后重新<code>rails s</code>。</p>
+</blockquote>
+<h3 id="2-gem-‘bootstrap’-————————————-前端开发套件"><a href="#2-gem-‘bootstrap’-————————————-前端开发套件" class="headerlink" title="2.gem ‘bootstrap’          ————————————  前端开发套件"></a>2.gem ‘bootstrap’          ————————————  前端开发套件</h3><blockquote>
+<p><strong>安装须知：</strong><br>(1) 依次执行<code>bundle install</code> <code>mv app/assets/stylesheets/application.css app/assets/stylesheets/application.scss</code>;<br>(2)</p>
+</blockquote>
+<figure class="highlight ruby"><figcaption><span>app/assets/stylesheets/application.scss</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">+@import <span class="string">"bootstrap-sprockets"</span>;</div><div class="line">+@import <span class="string">"bootstrap"</span>;</div></pre></td></tr></table></figure>
+<p>最后重新<code>rails s</code></p>
+<h3 id="3-gem-‘simple-form’-————————————-简化表单"><a href="#3-gem-‘simple-form’-————————————-简化表单" class="headerlink" title="3.gem ‘simple_form’        ————————————  简化表单"></a>3.gem ‘simple_form’        ————————————  简化表单</h3><blockquote>
+<p><strong>安装须知：</strong> 依次执行<code>bundle install</code> <code>rails g simple_form:install --bootstrap</code>,最后重新<code>rails s</code></p>
+</blockquote>
+<h3 id="4-gem-‘font-awesome-rails’-————————————-图标套件"><a href="#4-gem-‘font-awesome-rails’-————————————-图标套件" class="headerlink" title="4.gem ‘font-awesome-rails’ ————————————  图标套件"></a>4.gem ‘font-awesome-rails’ ————————————  图标套件</h3><blockquote>
+<p><strong>安装须知</strong></p>
+</blockquote>
+<p>（1）<code>bundle install</code> ,重新<code>rails s</code><br>（2）</p>
+<figure class="highlight ruby"><figcaption><span>app/assets/stylesheets/application.scss</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@import <span class="string">"font-awesome"</span>;</div></pre></td></tr></table></figure>
+<h3 id="5-gem-‘better-errors’-————————————-更好的显示错误讯息"><a href="#5-gem-‘better-errors’-————————————-更好的显示错误讯息" class="headerlink" title="5.gem ‘better_errors’      ————————————  更好的显示错误讯息"></a>5.gem ‘better_errors’      ————————————  更好的显示错误讯息</h3><blockquote>
+<p><strong>安装须知</strong> <code>bundle install</code> 重启<code>rails s</code></p>
+</blockquote>
+<h3 id="6-gem-‘annotate’-————————————-在主要用于model中显示栏位"><a href="#6-gem-‘annotate’-————————————-在主要用于model中显示栏位" class="headerlink" title="6.gem ‘annotate’           ————————————  在主要用于model中显示栏位"></a>6.gem ‘annotate’           ————————————  在主要用于model中显示栏位</h3><blockquote>
+<p><strong>安装须知</strong> <code>bundle install</code> 重启<code>rails s</code><br>执行<code>annotate --exclude tests,fixtures,factories,serializers</code>,<br>ps：每次新增栏位后，都要执行这个命令，才会在具体model里显示出所有建立的栏位提示。</p>
+</blockquote>
+<h3 id="7-gem-‘awesome-rails-console’-—————————-让“金手指”变好看的套件"><a href="#7-gem-‘awesome-rails-console’-—————————-让“金手指”变好看的套件" class="headerlink" title="7.gem ‘awesome_rails_console’      —————————-  让“金手指”变好看的套件"></a>7.gem ‘awesome_rails_console’      —————————-  让“金手指”变好看的套件</h3><blockquote>
+<p><strong>安装须知</strong> <code>bundle install</code> 重启<code>rails s</code></p>
+</blockquote>
+<h3 id="8-gem-‘carrier-wave’-gem-‘mini-magick’-————————————-用于上传图片（可能还有其他的功能）"><a href="#8-gem-‘carrier-wave’-gem-‘mini-magick’-————————————-用于上传图片（可能还有其他的功能）" class="headerlink" title="8.gem ‘carrier_wave’  gem ‘mini_magick’      ————————————  用于上传图片（可能还有其他的功能）"></a>8.gem ‘carrier_wave’  gem ‘mini_magick’      ————————————  用于上传图片（可能还有其他的功能）</h3><blockquote>
+<p><strong>安装须知</strong> 依次执行：<code>bundle install</code> <code>rails g uploader image</code> 重启<code>rails s</code></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/07/两种方法实现收藏或者点赞功能/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="歪脖子鹅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="歪脖子鹅的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/07/两种方法实现收藏或者点赞功能/" itemprop="url">两种方法实现收藏或者点赞功能</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-07T00:30:24+08:00">
+                2017-09-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>收藏功能与点赞功能的实作十分类似，本文以购物车教程实作收藏功能为例。</p>
+<h3 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h3><h5 id="step1"><a href="#step1" class="headerlink" title="step1"></a>step1</h5><p>一个用户可以收藏多个商品，一个商品可以被收藏很多次，因此这是多对多的关系。因此需要新增一个model，来当做product与suer的桥梁。<code>$ rails g model collect user_id:integer product_id:integer</code>,然后执行 <code>rake db:migrate</code>，然后为collect、user与product这三个model加上关联。</p>
+<figure class="highlight ruby"><figcaption><span>app/models/collect.rb</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">   + belongs_to <span class="symbol">:user</span></div><div class="line">   + belongs_to <span class="symbol">:product</span></div><div class="line"><span class="string">``</span><span class="string">`   </span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">`</span><span class="string">``</span> ruby app/models/product.rb</div><div class="line">   + has_many <span class="symbol">:collects</span></div><div class="line">   + has_many <span class="symbol">:collected_users</span>, <span class="symbol">through:</span> <span class="symbol">:collects</span>, <span class="symbol">source:</span> <span class="symbol">:user</span></div></pre></td></tr></table></figure>
+<figure class="highlight ruby"><figcaption><span>app/models/user.rb</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">   + has_many <span class="symbol">:collects</span></div><div class="line">   + has_many <span class="symbol">:collected_products</span>, <span class="symbol">through:</span> <span class="symbol">:collects</span>, <span class="symbol">source:</span> <span class="symbol">:product</span></div><div class="line"></div><div class="line">   <span class="comment">#加上是否收藏商品的判定</span></div><div class="line">   + <span class="function"><span class="keyword">def</span> <span class="title">is_collect_of?</span><span class="params">(product)</span></span></div><div class="line">   +  collected_products.<span class="keyword">include</span>?(product)</div><div class="line">   + <span class="keyword">end</span></div><div class="line"><span class="string">``</span><span class="string">`    </span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">#### step2</span></div><div class="line"><span class="string">首先修改路由信息：</span></div><div class="line"><span class="string">`</span><span class="string">``</span> ruby config/routes.rb</div><div class="line">  + resources <span class="symbol">:product</span> <span class="keyword">do</span></div><div class="line">   +  member <span class="keyword">do</span></div><div class="line">   +    post <span class="symbol">:collect</span></div><div class="line">   +    post <span class="symbol">:uncollect</span></div><div class="line">   + <span class="keyword">end</span></div><div class="line"> +  <span class="keyword">end</span></div></pre></td></tr></table></figure>
+<p>在controller里加上对应的method，</p>
+<figure class="highlight ruby"><figcaption><span>app/controllers/product_controllers.rb</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">+ <span class="function"><span class="keyword">def</span>	<span class="title">collect</span></span></div><div class="line"> + @product = Product.find(params[<span class="symbol">:id</span>])</div><div class="line"> + current_user.collected_products &lt;&lt; @product</div><div class="line"> + flash[<span class="symbol">:notice</span>] = <span class="string">"成功收藏商品"</span></div><div class="line"> + redirect_to <span class="symbol">:back</span></div><div class="line">+ <span class="keyword">end</span></div><div class="line"></div><div class="line">+ <span class="function"><span class="keyword">def</span> <span class="title">uncollect</span></span></div><div class="line"> + @product = Product.find(params[<span class="symbol">:id</span>])</div><div class="line"> + currrent_user.collected_products.delete(@product)</div><div class="line"> + flash[<span class="symbol">:warning</span>] = <span class="string">"您已取消收藏该商品"</span></div><div class="line"> + redirect_to <span class="symbol">:back</span></div><div class="line">+ <span class="keyword">end</span></div></pre></td></tr></table></figure>
+<h4 id="step3"><a href="#step3" class="headerlink" title="step3"></a>step3</h4><p>在views中的相应位置加入收藏的显示</p>
+<figure class="highlight ruby"><figcaption><span>app/views/products/show.html.erb</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">+ &lt;% <span class="keyword">if</span> current_user &amp;&amp; current_user.is_collect_of?(@product) %&gt;</div><div class="line">+  &lt;%= link_to(“取消收藏”, uncollect_product_path(@product), <span class="symbol">:method</span> =&gt; <span class="symbol">:post</span>, <span class="class"><span class="keyword">class</span>: "<span class="title">btn</span> <span class="title">btn</span>-<span class="title">danger</span> <span class="title">btn</span>-<span class="title">lg</span>" )%&gt;</span></div><div class="line">+ &lt;% <span class="keyword">else</span> %&gt;</div><div class="line">+  &lt;%= link_to(<span class="string">"收藏“, collect_product_path(@product), :method =&gt; :post, class: "</span>btn btn-danger btn-lg<span class="string">" )%&gt;</span></div><div class="line"><span class="string">+ &lt;% end %&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><h4 id="step1-1"><a href="#step1-1" class="headerlink" title="step1"></a>step1</h4><p>同样，终端执行 <code>rails g model colloect</code>, 编辑 <code>db/migrate/XXXXXXXX_create_collects.rb</code><br><figure class="highlight ruby"><figcaption><span>db/migrate/XXXXXXXX_create_collects.rb    </span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">  <span class="class"><span class="keyword">class</span> <span class="title">CreateCollects</span> &lt; ActiveRecord::Migration[5.0]</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">change</span></span></div><div class="line">      create_table <span class="symbol">:collects</span> <span class="keyword">do</span> <span class="params">|t|</span></div><div class="line">+       t.integer <span class="symbol">:user_id</span>, <span class="symbol">:index</span> =&gt; <span class="literal">true</span></div><div class="line">+       t.integer <span class="symbol">:product_id</span>, <span class="symbol">:index</span> =&gt; <span class="literal">true</span></div><div class="line">        t.timestamps</div><div class="line">      <span class="keyword">end</span></div><div class="line">    <span class="keyword">end</span></div><div class="line">  <span class="keyword">end</span></div></pre></td></tr></table></figure></p>
+<p>之后执行 <code>rake db:migrate</code></p>
+<p>编辑<code>app/models/collect.rb</code>,加上关联<br><figure class="highlight ruby"><figcaption><span>app/models/collect.rb</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">+ belongs_to <span class="symbol">:user</span></div><div class="line">+ belongs_to <span class="symbol">:product</span></div></pre></td></tr></table></figure></p>
+<p>编辑 <code>app/models/product.rb</code>,加上关联<br><figure class="highlight ruby"><figcaption><span>app/models/product.rb</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">  + has_many <span class="symbol">:collects</span>, <span class="symbol">:dependent</span> =&gt; <span class="symbol">:destroy</span></div><div class="line">  + had_many <span class="symbol">:collected_users</span>, <span class="symbol">through:</span> <span class="symbol">:collects</span>, <span class="symbol">source:</span> <span class="symbol">:user</span></div><div class="line"></div><div class="line">  + <span class="function"><span class="keyword">def</span> <span class="title">find_collect</span><span class="params">(user)</span></span></div><div class="line">   +  <span class="keyword">self</span>.collects.where( <span class="symbol">:user_id</span> =&gt; user.id).first</div><div class="line">  + <span class="keyword">end</span></div><div class="line"><span class="string">``</span><span class="string">`  </span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">编辑 `</span>app/model/user.rb<span class="string">`,加上关联</span></div><div class="line"><span class="string">`</span><span class="string">``</span> ruby app/models/user.rb</div><div class="line">  +  has_many <span class="symbol">:collects</span>, <span class="symbol">:dependent</span> =&gt; <span class="symbol">:destroy</span></div><div class="line">  +  has_many <span class="symbol">:collected_products</span>, <span class="symbol">through:</span> <span class="symbol">:collects</span>,  <span class="symbol">source:</span> <span class="symbol">:product</span></div></pre></td></tr></table></figure></p>
+<h4 id="step2"><a href="#step2" class="headerlink" title="step2"></a>step2</h4><p>编辑路由信息<br><figure class="highlight ruby"><figcaption><span>config/routes.rb</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">+ resource <span class="symbol">:products</span> <span class="keyword">do</span></div><div class="line">+   member <span class="keyword">do</span></div><div class="line">+     post <span class="symbol">:collect</span></div><div class="line">+     post <span class="symbol">:uncollect</span></div><div class="line">+   <span class="keyword">end</span></div><div class="line">+ <span class="keyword">end</span></div></pre></td></tr></table></figure></p>
+<p>在controller中添加：<br><figure class="highlight ruby"><figcaption><span>app/controllers/product_controller.rb</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">+ <span class="function"><span class="keyword">def</span> <span class="title">collect</span></span></div><div class="line">  + @product = Product.find(params[<span class="symbol">:id</span>])    </div><div class="line">  + <span class="keyword">unless</span> @product.find_collect(cuurent_user)</div><div class="line">  +   Collect.create( <span class="symbol">:user</span> =&gt; current_user, <span class="symbol">:product</span> =&gt; @product)</div><div class="line">  + flash[<span class="symbol">:notice</span>] = <span class="string">"您已成功收藏该商品"</span></div><div class="line">  + <span class="keyword">end</span></div><div class="line">  + redirect_to <span class="symbol">:back</span></div><div class="line">+ <span class="keyword">end</span></div><div class="line"></div><div class="line">+ <span class="function"><span class="keyword">def</span> <span class="title">uncollect</span></span></div><div class="line">   + @product = Product.find(params[<span class="symbol">:id</span>])</div><div class="line">   + collect = @product.find_collect(current_user)</div><div class="line">   + collect.destroy</div><div class="line">   + flash[<span class="symbol">:warning</span>] = <span class="string">"您已取消收藏该商品"</span></div><div class="line">   + redirect_to <span class="symbol">:back</span></div><div class="line">+ <span class="keyword">end</span></div></pre></td></tr></table></figure></p>
+<h3 id="Step3"><a href="#Step3" class="headerlink" title="Step3"></a>Step3</h3><p>最后一歩，就是要在 <code>app/views/products/show.html.erb</code>中加上收藏的按钮</p>
+<figure class="highlight ruby"><figcaption><span>app/views/products/show.html.erb</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">……略</div><div class="line"> + &lt;% <span class="keyword">if</span> current_user %&gt;</div><div class="line"> +   &lt;% <span class="keyword">if</span> @product.find_collect(current_user)%&gt;</div><div class="line"> +     &lt;% =link_to(<span class="string">"取消收藏"</span>, uncollect_product_path(@product), <span class="symbol">:method</span> =&gt; <span class="symbol">:post</span>, <span class="class"><span class="keyword">class</span>: "<span class="title">btn</span> <span class="title">btn</span>-<span class="title">danger</span> <span class="title">btn</span>-<span class="title">lg</span>")%&gt;</span></div><div class="line"> +   &lt;% <span class="keyword">else</span> %&gt;</div><div class="line"> +     &lt;%= link_to(<span class="string">"收藏"</span>, collect_product_path(@product), <span class="symbol">:method</span> =&gt; <span class="symbol">:post</span>, <span class="class"><span class="keyword">class</span>: "<span class="title">btn</span> <span class="title">btn</span>-<span class="title">primary</span> <span class="title">btn</span>-<span class="title">lg</span>")%&gt;</span></div><div class="line"> +   &lt;% <span class="keyword">end</span> %&gt;</div><div class="line"> + &lt;% <span class="keyword">end</span> %&gt;</div><div class="line">……略</div></pre></td></tr></table></figure>
+<h3 id="成果展示"><a href="#成果展示" class="headerlink" title="成果展示"></a>成果展示</h3><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fgv9zutcveg30rr0i9jwo.gif" alt=""></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/07/利用ransack做搜索功能/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="歪脖子鹅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="歪脖子鹅的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/07/利用ransack做搜索功能/" itemprop="url">利用ransack做搜索功能</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-07T00:27:42+08:00">
+                2017-09-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>本篇教程基于自己的一个小项目，用户可以搜索网站上其他用户发表过的文章。</p>
+<h3 id="第一歩："><a href="#第一歩：" class="headerlink" title="第一歩："></a>第一歩：</h3><p><strong>安装gem ransack</strong></p>
+<blockquote>
+<p>ransack会用数据库的LIKE语法来做搜寻，虽然比较方便，但它会依次检查资料是否符合，而不会使用数据库的索引。如果数据比较庞大的话，利用ransack将不会是一个好的选择。这时候我们就可以安装专门的全文搜索引擎，例如<a href="https://www.elastic.co/cn/" target="_blank" rel="external">Elasticsearch</a></p>
+</blockquote>
+<figure class="highlight ruby"><figcaption><span>Gemfile</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">+  gem <span class="string">'ransack'</span></div></pre></td></tr></table></figure>
+<p><code>$ bundle</code>，重启 rails s</p>
+<h3 id="第二歩"><a href="#第二歩" class="headerlink" title="第二歩"></a>第二歩</h3><p><strong>controller与config的设定</strong><br>1、设置路由<br><figure class="highlight ruby"><figcaption><span>config/routes.rb</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">Rails.application.routes.draw <span class="keyword">do</span></div><div class="line">  devise_for <span class="symbol">:users</span></div><div class="line">  resources <span class="symbol">:posts</span> <span class="keyword">do</span></div><div class="line"> +   collection <span class="keyword">do</span>    <span class="comment">#我们会搜索出所有符合关键字的文章，结果为复数，因此用collection，而不是member</span></div><div class="line"> +     get <span class="symbol">:search</span></div><div class="line"> +   <span class="keyword">end</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span>  </div><div class="line"><span class="string">``</span><span class="string">`  </span></div><div class="line"><span class="string">2、 设置controller</span></div><div class="line"><span class="string">主要设置通过哪些关键词进行搜索。</span></div><div class="line"><span class="string">`</span><span class="string">``</span>ruby app/controllers/posts_controller.rb</div><div class="line">  <span class="class"><span class="keyword">class</span> <span class="title">PostsController</span> &lt; ApplicationController</span></div><div class="line">    before_action <span class="symbol">:validate_search_key</span>, <span class="symbol">only:</span> [<span class="symbol">:search</span>]</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">search</span></span></div><div class="line">      <span class="keyword">if</span> @query_string.present?</div><div class="line">        @posts = search_params    <span class="comment">#搜索post的关键词</span></div><div class="line">      <span class="keyword">end</span></div><div class="line">    <span class="keyword">end</span></div><div class="line"></div><div class="line">    protected  <span class="comment"># 放在最后</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">validate_search_key</span></span></div><div class="line">       <span class="comment"># gsub 是Ruby中正则表达式的方法，它会切换所有匹配到的部分</span></div><div class="line">       @query_string = params[<span class="symbol">:q</span>].gsub(<span class="regexp">/\\|\'|\/|\?/</span>, <span class="string">""</span>)<span class="keyword">if</span> params[<span class="symbol">:q</span>].present?  </div><div class="line">    <span class="keyword">end</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">search_params</span>      </span></div><div class="line">      Post.ransack(&#123;<span class="symbol">:title_or_content_cont</span> =&gt; @query_string&#125;).result(<span class="symbol">distinct:</span> <span class="literal">true</span>)</div><div class="line">      <span class="comment">#title与content是post的两个栏位，而我们的关键词出自这里</span></div><div class="line">      <span class="keyword">end</span></div><div class="line">  <span class="keyword">end</span></div></pre></td></tr></table></figure></p>
+<h3 id="第三歩"><a href="#第三歩" class="headerlink" title="第三歩"></a>第三歩</h3><p><strong>views的设定</strong><br>1、导航栏的显示<br><figure class="highlight ruby"><figcaption><span>app/views/common/_navbar.html.erb</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"> &lt;div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"&gt;</div><div class="line"> +  &lt;ul class="nav navbar-nav"&gt;</div><div class="line"> +    &lt;li&gt;</div><div class="line"> +        &lt;div class="form-group form-inline search-bar"&gt;</div><div class="line"> +          &lt;%= render <span class="symbol">:partial</span> =&gt; <span class="string">"posts/search_bar"</span>%&gt;</div><div class="line"> +       &lt;<span class="regexp">/div&gt;</span></div><div class="line"><span class="regexp"> +      &lt;/li</span>&gt;</div><div class="line"> +  &lt;<span class="regexp">/ul&gt;</span></div><div class="line"><span class="regexp"> …… 略</span></div><div class="line"><span class="regexp">&lt;/div</span>&gt;</div></pre></td></tr></table></figure></p>
+<p>执行<code>$ touch app/views/posts/_search_bar.html.erb</code>,并编辑<br><figure class="highlight ruby"><figcaption><span>app/views/posts/_search_bar.html.erb</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"> &lt;div class="row"&gt;</div><div class="line">  &lt;div class="col-sm-9 col-lg-8 col-lg-offset-2"&gt;</div><div class="line">    &lt;%= form_tag search_posts_path, <span class="symbol">:class</span> =&gt; <span class="string">"posts-search-form"</span>, <span class="symbol">:method</span> =&gt; <span class="symbol">:get</span> <span class="keyword">do</span> %&gt;</div><div class="line">      &lt;div class="input-group"&gt;</div><div class="line">        &lt;input type="text" class="form-control search-bar-input" name="q" value="&lt;%= params[:q] %&gt;" placeholder="关键词"&gt;</div><div class="line">        &lt;span class="input-group-btn"&gt;</div><div class="line">          &lt;button type="submit" class="btn btn-default search-bar-submit"&gt;</div><div class="line">            &lt;span class="glyphicon glyphicon-search"&gt;&lt;/span&gt;</div><div class="line">          &lt;<span class="regexp">/button&gt;</span></div><div class="line"><span class="regexp">        &lt;/span</span>&gt;</div><div class="line">      &lt;<span class="regexp">/div&gt;</span></div><div class="line"><span class="regexp">    &lt;% end %&gt;</span></div><div class="line"><span class="regexp">  &lt;/div</span>&gt;</div><div class="line">&lt;<span class="regexp">/div&gt;</span></div></pre></td></tr></table></figure></p>
+<p><strong>2.搜索反馈页面</strong><br>新增 <code>app/views/posts/search.html.erb</code><br><figure class="highlight ruby"><figcaption><span>app/views/posts/search.html.erb</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">&lt;div class="minHeight1000 bg-gray"&gt;</div><div class="line">  &lt;div class="search-page w1200 pt30 bc"&gt;</div><div class="line">      &lt;% <span class="keyword">if</span> @posts.present? %&gt;</div><div class="line">        &lt;h5 class="collection search-count"&gt;已为您找到&lt;%= @posts.count %&gt;篇相关文章&lt;/h5&gt;</div><div class="line">      &lt;% <span class="keyword">else</span> %&gt;</div><div class="line">        &lt;p class="tc mt100"&gt;未搜索到任何文章，要不换个关键词试试？&lt;/p&gt;</div><div class="line">      &lt;% <span class="keyword">end</span> %&gt;</div><div class="line">  &lt;<span class="regexp">/div&gt;</span></div><div class="line"><span class="regexp"></span></div><div class="line"><span class="regexp">  &lt;div class="container"&gt;</span></div><div class="line"><span class="regexp">  &lt;% @posts.each do |post| %&gt;</span></div><div class="line"><span class="regexp"></span></div><div class="line"><span class="regexp">    &lt;div class="panel panel-default"&gt;</span></div><div class="line"><span class="regexp">      &lt;div class="panel-body"&gt;</span></div><div class="line"><span class="regexp">        &lt;%= post.title %&gt;</span></div><div class="line"><span class="regexp">        &lt;br/</span>&gt;</div><div class="line">        &lt;br/&gt;</div><div class="line">        &lt;span id="psot-thumbsup-&lt;%= post.id%&gt;" class=" label label-success"&gt;&lt;%= post.likes.count%&gt;👍&lt;/span&gt;</div><div class="line">        &lt;div class="text-right"&gt;</div><div class="line"></div><div class="line">          &lt;% <span class="keyword">if</span> !current_user.is_collect_of?(post) %&gt;</div><div class="line">            &lt;%= link_to(<span class="string">"收藏"</span>, collect_post_path(post), <span class="symbol">method:</span> <span class="symbol">:post</span>, <span class="class"><span class="keyword">class</span>: "<span class="title">btn</span> <span class="title">btn</span>-<span class="title">sm</span>") %&gt;</span></div><div class="line">          &lt;% <span class="keyword">else</span> %&gt;</div><div class="line">            &lt;%= link_to(<span class="string">"取消收藏"</span>, uncollect_post_path(post), <span class="symbol">method:</span> <span class="symbol">:post</span>, <span class="class"><span class="keyword">class</span>: "<span class="title">btn</span> <span class="title">btn</span>-<span class="title">sm</span>") %&gt;</span></div><div class="line">          &lt;% <span class="keyword">end</span> %&gt;</div><div class="line">        &lt;<span class="regexp">/div&gt;</span></div><div class="line"><span class="regexp">      &lt;/div</span>&gt;</div><div class="line"></div><div class="line">    &lt;<span class="regexp">/div&gt;</span></div><div class="line"><span class="regexp"></span></div><div class="line"><span class="regexp">  &lt;% end %&gt;</span></div><div class="line"><span class="regexp">  &lt;/div</span>&gt;</div><div class="line">&lt;<span class="regexp">/div&gt;</span></div></pre></td></tr></table></figure></p>
+<p>效果图<br>   <img src="https://ws3.sinaimg.cn/large/006tNc79gy1fhcsoezlm4j31bw0g9gmw.jpg" alt=""></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/06/hello-world/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="歪脖子鹅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="歪脖子鹅的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/06/hello-world/" itemprop="url">Hello World</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-06T17:33:31+08:00">
+                2017-09-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <p class="site-author-name" itemprop="name">歪脖子鹅</p>
+            <p class="site-description motion-element" itemprop="description">记录歪脖子鹅的成长历程</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives">
+            
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">歪脖子鹅</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
