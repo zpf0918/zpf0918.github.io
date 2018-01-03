@@ -391,7 +391,7 @@
 <h4 id="3-可重复读（REPEATABLE-READ）"><a href="#3-可重复读（REPEATABLE-READ）" class="headerlink" title="3- 可重复读（REPEATABLE READ）"></a>3- 可重复读（REPEATABLE READ）</h4><p>MySQL默认事务隔离级别，当设置为可重复读隔离级别时，除了独占锁会一直保持到事务结束，共享锁也一样到事务结束。可重复读隔离级别下，脏读、丢失的更新和不可重复读问题都能够避免，但是也因为共享锁一直持有，会导致其他事务不能对相关数据进行修改，降低了并发度和性能。可重复读隔离级别无法解决幻影读问题。</p>
 <h4 id="4-串行化（SERIALIZABLE）"><a href="#4-串行化（SERIALIZABLE）" class="headerlink" title="4- 串行化（SERIALIZABLE）"></a>4- 串行化（SERIALIZABLE）</h4><p>串行化隔离级别隔离层次最高，它能够避免丢失的更新、脏读、不可重复读和幻影读问题。设置为串行化隔离级别后，共享锁也将一直持有到事务结束。比可重复读更严格的是它的锁定是范围的，还包括潜在的数据修改。它保证了范围内两次查询结果不会出现增加记录或减少记录而出现幻象。</p>
 <p>串行化隔离级别对锁控制的方式为：如果在查询指定条件的列上有索引，则在该列符合条件的范围记录上加上KEY粒度的锁，如果在查询条件的列上没有索引，则直接在表上加上共享锁。</p>
-<h4 id="五、隔离级别、锁和并发问题的关系"><a href="#五、隔离级别、锁和并发问题的关系" class="headerlink" title="五、隔离级别、锁和并发问题的关系"></a>五、隔离级别、锁和并发问题的关系</h4><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fn3fy4h8fmj314g0ewdnm.jpg" alt=""></p>
+<h3 id="五、隔离级别、锁和并发问题的关系"><a href="#五、隔离级别、锁和并发问题的关系" class="headerlink" title="五、隔离级别、锁和并发问题的关系"></a>五、隔离级别、锁和并发问题的关系</h3><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fn3fy4h8fmj314g0ewdnm.jpg" alt=""></p>
 
           
         
