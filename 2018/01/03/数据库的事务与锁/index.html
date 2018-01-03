@@ -81,20 +81,20 @@
 
 
 
-<meta name="description" content="*  豆知识补充： Mysql是关系型数据库管理系统，RDBMS（Relational Database Management System）RDBMS术语（部分）：  冗余：存储两倍数据，冗余降低了性能，但是提高了数据的安全性 主键：主键唯一，用来查询数据；主键是唯一性的索引 外键：外键用来关联两个数据表 索引：使用索引可以快速访问数据表中的特定信息。索引是对数据表中一列或者多列的值进行排序的一">
+<meta name="description" content="豆知识补充： Mysql是关系型数据库管理系统，RDBMS（Relational Database Management System）RDBMS术语（部分）：  冗余：存储两倍数据，冗余降低了性能，但是提高了数据的安全性 主键：主键唯一，用来查询数据；主键是唯一性的索引 外键：外键用来关联两个数据表 索引：使用索引可以快速访问数据表中的特定信息。索引是对数据表中一列或者多列的值进行排序的一种结">
 <meta name="keywords" content="数据库,数据库事务,数据库的锁">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据库的事务与锁">
 <meta property="og:url" content="http://yoursite.com/2018/01/03/数据库的事务与锁/index.html">
 <meta property="og:site_name" content="jonathan-fei.pro">
-<meta property="og:description" content="*  豆知识补充： Mysql是关系型数据库管理系统，RDBMS（Relational Database Management System）RDBMS术语（部分）：  冗余：存储两倍数据，冗余降低了性能，但是提高了数据的安全性 主键：主键唯一，用来查询数据；主键是唯一性的索引 外键：外键用来关联两个数据表 索引：使用索引可以快速访问数据表中的特定信息。索引是对数据表中一列或者多列的值进行排序的一">
+<meta property="og:description" content="豆知识补充： Mysql是关系型数据库管理系统，RDBMS（Relational Database Management System）RDBMS术语（部分）：  冗余：存储两倍数据，冗余降低了性能，但是提高了数据的安全性 主键：主键唯一，用来查询数据；主键是唯一性的索引 外键：外键用来关联两个数据表 索引：使用索引可以快速访问数据表中的特定信息。索引是对数据表中一列或者多列的值进行排序的一种结">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fn3fvadb3uj30io0f60tm.jpg">
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fn3fy4h8fmj314g0ewdnm.jpg">
-<meta property="og:updated_time" content="2018-01-03T07:18:52.333Z">
+<meta property="og:updated_time" content="2018-01-03T07:21:10.424Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库的事务与锁">
-<meta name="twitter:description" content="*  豆知识补充： Mysql是关系型数据库管理系统，RDBMS（Relational Database Management System）RDBMS术语（部分）：  冗余：存储两倍数据，冗余降低了性能，但是提高了数据的安全性 主键：主键唯一，用来查询数据；主键是唯一性的索引 外键：外键用来关联两个数据表 索引：使用索引可以快速访问数据表中的特定信息。索引是对数据表中一列或者多列的值进行排序的一">
+<meta name="twitter:description" content="豆知识补充： Mysql是关系型数据库管理系统，RDBMS（Relational Database Management System）RDBMS术语（部分）：  冗余：存储两倍数据，冗余降低了性能，但是提高了数据的安全性 主键：主键唯一，用来查询数据；主键是唯一性的索引 外键：外键用来关联两个数据表 索引：使用索引可以快速访问数据表中的特定信息。索引是对数据表中一列或者多列的值进行排序的一种结">
 <meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fn3fvadb3uj30io0f60tm.jpg">
 
 
@@ -347,8 +347,7 @@
       
 
       
-        <p>*</p>
-<blockquote>
+        <blockquote>
 <p>豆知识补充： Mysql是关系型数据库管理系统，RDBMS（Relational Database Management System）<br>RDBMS术语（部分）：</p>
 <ul>
 <li>冗余：存储两倍数据，冗余降低了性能，但是提高了数据的安全性</li>
@@ -357,7 +356,6 @@
 <li>索引：使用索引可以快速访问数据表中的特定信息。索引是对数据表中一列或者多列的值进行排序的一种结构，也就说一个表里可以有多个索引。类似于书籍的目录。</li>
 </ul>
 </blockquote>
-<p>*</p>
 <p>学习数据库的事务与锁之前需要先了解下什么是并发：</p>
 <ul>
 <li>多个用户对同一数据进行交互叫做并发。如果不加以控制，并发可能引起很多问题。数据库提供了可以合理解决并发问题的方案。</li>
@@ -387,9 +385,9 @@
 </ul>
 <p>由低层次的锁升级到高层次的锁成为锁升级。</p>
 <h4 id="2-锁的类型"><a href="#2-锁的类型" class="headerlink" title="2- 锁的类型"></a>2- 锁的类型</h4><p>数据库引擎基于事务类型选择不同的锁，这些锁决定了并发事件访问资源的方式。此处只列出三种类型的锁。</p>
-<p>#####（1）共享锁（S锁）<br>共享锁用于只需要读取不需要进行修改或更新数据的操作，如SELECT语句就是一种最基本常见的申请共享锁的语句。共享锁避免了不可重复读与幻影读问题。</p>
-<p>#####（2）独占锁（X锁）<br>独占锁也成为排他锁。与其他所有的锁都冲突。当需要进行数据更改操作如INSERT、UPDATE、DELETE时，锁管理器就会分配X锁。一般情况下，数据修改时包含两个动作：读取需要的数据和修改数据，因此在数据修改时会申请共享锁和独占锁。在同一张表中修改数据，此时共享锁更应该成为更新锁，但是如果更新操作连接了其他表，那么其他表中就会存在共享锁，并在需要的数据上申请独占锁。</p>
-<p>#####（3）更新锁（U锁）<br>更新锁和共享锁兼容，和独占锁冲突。更新锁和更新锁也冲突。修改数据时会先申请更新锁后申请独占锁， 更新锁是一种过渡锁。在进行数据搜索时持有了更新锁，由于更新锁和共享锁兼容，因此此时其他事务是允许读取数据的，当确定修改数据后，更新锁等待其他事务的共享锁释放后就会转换为独占锁（那么等待时间如何计算？），并将其他事务的相关资源的锁申请全部队列化堵在数据修改的进程外，直到独占锁释放，其他事务才能进行相关资源的申请。</p>
+<p>（1）共享锁（S锁）<br>共享锁用于只需要读取不需要进行修改或更新数据的操作，如SELECT语句就是一种最基本常见的申请共享锁的语句。共享锁避免了不可重复读与幻影读问题。</p>
+<p>（2）独占锁（X锁）<br>独占锁也成为排他锁。与其他所有的锁都冲突。当需要进行数据更改操作如INSERT、UPDATE、DELETE时，锁管理器就会分配X锁。一般情况下，数据修改时包含两个动作：读取需要的数据和修改数据，因此在数据修改时会申请共享锁和独占锁。在同一张表中修改数据，此时共享锁更应该成为更新锁，但是如果更新操作连接了其他表，那么其他表中就会存在共享锁，并在需要的数据上申请独占锁。</p>
+<p>（3）更新锁（U锁）<br>更新锁和共享锁兼容，和独占锁冲突。更新锁和更新锁也冲突。修改数据时会先申请更新锁后申请独占锁， 更新锁是一种过渡锁。在进行数据搜索时持有了更新锁，由于更新锁和共享锁兼容，因此此时其他事务是允许读取数据的，当确定修改数据后，更新锁等待其他事务的共享锁释放后就会转换为独占锁（那么等待时间如何计算？），并将其他事务的相关资源的锁申请全部队列化堵在数据修改的进程外，直到独占锁释放，其他事务才能进行相关资源的申请。</p>
 <ul>
 <li>死锁：两个事务都在等待一个资源，但同时又相互阻止对方获取资源，这时就会发生死锁现象。例如，事务A和事务B都获取了某一行数据的共享锁（也就是可以查看该数据），当事务A想修改该数据时要将共享锁转化为独占锁，这就需要等待事务B释放共享锁，但是事务B也想修改数据，将共享锁转换为独占锁，它将等待事务A释放共享锁，这样两个事务之间形成了僵局。</li>
 </ul>
