@@ -360,7 +360,7 @@
 <ul>
 <li>多个用户对同一数据进行交互叫做并发。如果不加以控制，并发可能引起很多问题。数据库提供了可以合理解决并发问题的方案。</li>
 </ul>
-<h3 id="一-事务"><a href="#一-事务" class="headerlink" title="一  事务"></a>一  事务</h3><ul>
+<h3 id="一、事务"><a href="#一、事务" class="headerlink" title="一、事务"></a>一、事务</h3><ul>
 <li>事务的概念：类比于银行转账，A转给B100元，那么A的账户减少500，B的账户增加500元，这个两个操作必须全部执行，要么就全部不执行。数据库的的事务总是将指定的一条语句或多条语句看成一个全部执行或者全部不执行的最小组合全部组合。</li>
 <li>事务类型：如SELECT INSERT UPDATE DELETE</li>
 </ul>
@@ -401,9 +401,6 @@
 <h4 id="4-串行化（SERIALIZABLE）"><a href="#4-串行化（SERIALIZABLE）" class="headerlink" title="4- 串行化（SERIALIZABLE）"></a>4- 串行化（SERIALIZABLE）</h4><p>串行化隔离级别隔离层次最高，它能够避免丢失的更新、脏读、不可重复读和幻影读问题。设置为串行化隔离级别后，共享锁也将一直持有到事务结束。比可重复读更严格的是它的锁定是范围的，还包括潜在的数据修改。它保证了范围内两次查询结果不会出现增加记录或减少记录而出现幻象。</p>
 <p>串行化隔离级别对锁控制的方式为：如果在查询指定条件的列上有索引，则在该列符合条件的范围记录上加上KEY粒度的锁，如果在查询条件的列上没有索引，则直接在表上加上共享锁。</p>
 <h4 id="五、隔离级别、锁和并发问题的关系"><a href="#五、隔离级别、锁和并发问题的关系" class="headerlink" title="五、隔离级别、锁和并发问题的关系"></a>五、隔离级别、锁和并发问题的关系</h4><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fn3fy4h8fmj314g0ewdnm.jpg" alt=""></p>
-<blockquote>
-<p>Written with <a href="https://stackedit.io/" target="_blank" rel="external">StackEdit</a>.</p>
-</blockquote>
 
           
         
