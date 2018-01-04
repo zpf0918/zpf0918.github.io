@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="jonathan-fei.pro">
 <meta property="og:description" content="SQL，Structure Query Language，结构化查询语言，是关系型数据库的应用语言。  一、分类 DDL（Data Defintion Language ）语句：数据定义语言，定义了不同的数据段、数据库、表、列、索引等数据库对象，常用的语句的关键字包括 create、drop、alter等。 DML（Data Manipulation Language）语句：数据操纵语句，用于增">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-01-04T07:31:08.260Z">
+<meta property="og:updated_time" content="2018-01-04T07:33:34.469Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL基础">
 <meta name="twitter:description" content="SQL，Structure Query Language，结构化查询语言，是关系型数据库的应用语言。  一、分类 DDL（Data Defintion Language ）语句：数据定义语言，定义了不同的数据段、数据库、表、列、索引等数据库对象，常用的语句的关键字包括 create、drop、alter等。 DML（Data Manipulation Language）语句：数据操纵语句，用于增">
@@ -385,19 +385,20 @@
 <li>修改字段的顺序 -<br>例如，<code>alter table emp add age int(2) after name; alter table emp change age age1 int(4) first;</code></li>
 <li>修改表名 -<br>ALTER TABLE table_name RENAME [TO] new_tablename,例如， <code>alter table emp rename emp1;</code></li>
 </ul>
-<h3 id="三、DML-语句"><a href="#三、DML-语句" class="headerlink" title="三、DML 语句"></a>三、DML 语句</h3><p>DML语句是指对数据库中表记录的操作，主要包括表记录的插入（insert）、更新（update）、删除（delete）和查询（select），是开发人员日常使用最频繁的操作。<br>1- 插入记录<br>插入单条记录：<br>INSERT INTO  table_name(field1, field2, … fieldn) VALUES(value1, value2, …valuen);例如，insert into emp(ename, hire,sal,deptno) values(‘zzx1’, ‘2000-1-1’, ‘2000’,1); 也可以不用指定字段名称，但是需要values后面的循序与字段的顺序一致。</p>
+<h3 id="三、DML-语句"><a href="#三、DML-语句" class="headerlink" title="三、DML 语句"></a>三、DML 语句</h3><p>DML语句是指对数据库中表记录的操作，主要包括表记录的插入（insert）、更新（update）、删除（delete）和查询（select），是开发人员日常使用最频繁的操作。</p>
+<h4 id="1-插入记录"><a href="#1-插入记录" class="headerlink" title="1- 插入记录"></a>1- 插入记录</h4><p>插入单条记录：<br>INSERT INTO  table_name(field1, field2, … fieldn) VALUES(value1, value2, …valuen);例如，insert into emp(ename, hire,sal,deptno) values(‘zzx1’, ‘2000-1-1’, ‘2000’,1); 也可以不用指定字段名称，但是需要values后面的循序与字段的顺序一致。</p>
 <p>插入多条记录：<br>INSERT INTO tablename (field1, field2, … fieldn)<br>VALUES<br>(record1_value1, record2_value2, … record1_valuen),<br>(record2_value1, record2_value2, … record2_valuen),<br>…<br>(recordn_value1, recordn_value2, … recordn_valuen);<br>例如<code>insert into dept VALUES(5, “35”),(3,”232”);</code></p>
-<p>2- 更新记录<br>更新记录：<br>UPDATE tablename SET filed1= value1,field2= value2, … filedn=valuen [WHERE CONDITION],例如，`update emp set sal=4000 where ename=‘lisa’;``</p>
+<h4 id="2-更新记录"><a href="#2-更新记录" class="headerlink" title="2- 更新记录"></a>2- 更新记录</h4><p>更新记录：<br>UPDATE tablename SET filed1= value1,field2= value2, … filedn=valuen [WHERE CONDITION],例如，`update emp set sal=4000 where ename=‘lisa’;``</p>
 <p>更新多个表中的记录：<br>UPDATE t1,t2,…tn set t1.field=value1,tn.field=valuen [WHERE CONDITION],实际操作暂且不会</p>
-<p>3- 删除记录<br>DELETE FROM tablename [WHERE CONDITION]<br>例如，<code>delete from emp where ename=‘lisa’;</code></p>
+<h4 id="3-删除记录"><a href="#3-删除记录" class="headerlink" title="3- 删除记录"></a>3- 删除记录</h4><p>DELETE FROM tablename [WHERE CONDITION]<br>例如，<code>delete from emp where ename=‘lisa’;</code></p>
 <p>删除多个表中的记录：<br>DELETE t1,t2,..tn FROM t1,t2,…tn [WHERE CONDITION],实际操作暂且不会<br>PS: 不论是单表还是多表，不加where条件都会把表的所有记录删除；</p>
-<p>4- 查询记录<br>SELECT <em> FROM tablename [WHERE CONDITION]<br>例如,select </em> from emp;,为查询emp这个表中的所有字段。如果想要部分字段的话，需要分别写出各个字段的名字，例如 select ename from emp;</p>
-<p>（1）查询重复记录<br>用到“distinct”,例如 <code>select distinct slaer from emp;</code></p>
-<p>（2）条件查询<br>关键词：where，例如 <code>select * from emp where name=Lisa;</code><br>其中“=”也可以是&gt; &lt; &gt;= &lt;= != 多条件还可以使用or和and等逻辑运算符进行多条件联合查询。</p>
-<p>（3）排列顺序和限制<br>语法如下：<code>SELECT * FROM tablename [WHERE CONDTION] [ORDER BY field1 [DESC/ASC],field2 [DESC/ASC],… fieldn [DESC/ASC]]</code>。 不写关键字默认我ASC(升序排序)。ORDER BY 后面可以跟不同的字段，每个字段可以有不同的排序。</p>
+<h4 id="4-查询记录"><a href="#4-查询记录" class="headerlink" title="4- 查询记录"></a>4- 查询记录</h4><p>SELECT <em> FROM tablename [WHERE CONDITION]<br>例如,select </em> from emp;,为查询emp这个表中的所有字段。如果想要部分字段的话，需要分别写出各个字段的名字，例如 select ename from emp;</p>
+<p>#####（1）查询重复记录<br>用到“distinct”,例如 <code>select distinct slaer from emp;</code></p>
+<p>#####（2）条件查询<br>关键词：where，例如 <code>select * from emp where name=Lisa;</code><br>其中“=”也可以是&gt; &lt; &gt;= &lt;= != 多条件还可以使用or和and等逻辑运算符进行多条件联合查询。</p>
+<p>#####（3）排列顺序和限制<br>语法如下：<code>SELECT * FROM tablename [WHERE CONDTION] [ORDER BY field1 [DESC/ASC],field2 [DESC/ASC],… fieldn [DESC/ASC]]</code>。 不写关键字默认我ASC(升序排序)。ORDER BY 后面可以跟不同的字段，每个字段可以有不同的排序。</p>
 <p>对于排序后的记录，如果只希望显示一部分，这时就需要用到LIMIT关键字。语法如下：SELECT … [LIMIT offset_start,row_count]。 例如<code>select * from emp order by sal limit 3; select * from emp order by sal limit 1,3;</code></p>
 <p>limit 经常和 order by 一起配合使用来进行记录的分页显示。</p>
-<p>（4）聚合<br> 用于汇总操作，例如统计。语法如下：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">SELECT [field1,field2,…fieldn] fun_name</div><div class="line">FROM tablename</div><div class="line">[WHERE where_condition]</div><div class="line">[GROUP BY field1,field2,…fieldn</div><div class="line"> [WITH ROLLUP]]</div><div class="line">[HAVING where_condtion]</div></pre></td></tr></table></figure></p>
+<p>#####（4）聚合<br> 用于汇总操作，例如统计。语法如下：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">SELECT [field1,field2,…fieldn] fun_name</div><div class="line">FROM tablename</div><div class="line">[WHERE where_condition]</div><div class="line">[GROUP BY field1,field2,…fieldn</div><div class="line"> [WITH ROLLUP]]</div><div class="line">[HAVING where_condtion]</div></pre></td></tr></table></figure></p>
 <p>其中：</p>
 <ul>
 <li>fun_name 表示要做的聚合操作，也就是聚合函数，常用的有sum count max min</li>
@@ -406,8 +407,9 @@
 <li>HAVING 表示对分类后的结果再进行条件的过滤。PS：having和where都是过滤，where是在聚合前过滤，having是对聚合后的结果过滤。</li>
 </ul>
 <p>统计总人数： <code>select count(1) from emp;</code><br>统计各个部门的人数： <code>select deptno,count(1) from emp group by deptno;</code><br>既统计部门人数又统计总人数：<code>select deptno.count(1) from emp group by deptno with rollup;</code><br>统计部门人数大于1的部门： <code>select deptno.count(1) from emp group by deptno having count(1)&gt;1;</code><br>统计公司所有员工的公司薪水总额、最高和最低薪水：<code>select sum(sal),max(sal),min(sal) from emp;</code></p>
-<p>（5）表连接<br>表连接分为内连接和外链接，内连接仅仅选出两张表中互相匹配的记录，而外连接会选出其他不匹配的记录，最常用的是内连接。<br>例如，查询所有雇员的名字和所在的部门名称，因为雇员名称和部门分别放在表emp、dept中，因此需要使用表连接来查询。<code>select ename,deptno from emp,dept where emp.deptno=dept.deptno;</code></p>
-<p>外链接分为左链接和右链接。此处知识点未掌握。<br>（6）子查询<br>某些情况下，当进行查询的时候，需要的条件是另外一个select语句的结果，这时就会用到子查询。关键字：in、not in、=、exists、not exists等,例如， <code>select * from emp where deptno in(select deptno from dept)</code>。<br>PS：表连接在很多情况下用于优化子连接。</p>
+<p>#####（5）表连接<br>表连接分为内连接和外链接，内连接仅仅选出两张表中互相匹配的记录，而外连接会选出其他不匹配的记录，最常用的是内连接。<br>例如，查询所有雇员的名字和所在的部门名称，因为雇员名称和部门分别放在表emp、dept中，因此需要使用表连接来查询。<code>select ename,deptno from emp,dept where emp.deptno=dept.deptno;</code></p>
+<p>外链接分为左链接和右链接。此处知识点未掌握。</p>
+<p>#####（6）子查询<br>某些情况下，当进行查询的时候，需要的条件是另外一个select语句的结果，这时就会用到子查询。关键字：in、not in、=、exists、not exists等,例如， <code>select * from emp where deptno in(select deptno from dept)</code>。<br>PS：表连接在很多情况下用于优化子连接。</p>
 <h3 id="四、DCL语句"><a href="#四、DCL语句" class="headerlink" title="四、DCL语句"></a>四、DCL语句</h3><p>DCL语句主要是DBA用来管理系统中的对象权限时使用，开发人员很少使用，例如<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql &gt;  grant all PRIVILEGES on db_name.* to <span class="string">'username'</span>@<span class="string">'xxx.xxx.xx.x'</span> identified by <span class="string">'password'</span> WITH GRANT OPTION;</div></pre></td></tr></table></figure></p>
 <p>grant 为放出权限，select为收回权限。</p>
 
@@ -591,7 +593,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、分类"><span class="nav-number">1.</span> <span class="nav-text">一、分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、DDL语句"><span class="nav-number">2.</span> <span class="nav-text">二、DDL语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、DML-语句"><span class="nav-number">3.</span> <span class="nav-text">三、DML 语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、DCL语句"><span class="nav-number">4.</span> <span class="nav-text">四、DCL语句</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、分类"><span class="nav-number">1.</span> <span class="nav-text">一、分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、DDL语句"><span class="nav-number">2.</span> <span class="nav-text">二、DDL语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、DML-语句"><span class="nav-number">3.</span> <span class="nav-text">三、DML 语句</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-插入记录"><span class="nav-number">3.1.</span> <span class="nav-text">1- 插入记录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-更新记录"><span class="nav-number">3.2.</span> <span class="nav-text">2- 更新记录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-删除记录"><span class="nav-number">3.3.</span> <span class="nav-text">3- 删除记录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-查询记录"><span class="nav-number">3.4.</span> <span class="nav-text">4- 查询记录</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、DCL语句"><span class="nav-number">4.</span> <span class="nav-text">四、DCL语句</span></a></li></ol></div>
             
 
           </div>
