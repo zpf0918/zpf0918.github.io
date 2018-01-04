@@ -370,10 +370,21 @@
 <li>修改表-</li>
 </ol>
 <ul>
-<li>修改表类型（字段的类型） -<br><code>ALTER TABLE tablename MODIFY[COLUMN] column_definition [FIRST|AFTER col_name]</code>, 例如，在mysql环境下执行，<code>alter table emp modify ename varchar(20)</code>。</li>
-<li>增加表字段 -<br><code>ALTER TABLE table_name ADD[COLUMN] column_definition [FIRST|AFTER col_name]</code>, 例如， <code>alter table emp add column age int(3);</code></li>
+<li>修改表类型（字段的类型）<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ALTER TABLE tablename MODIFY[COLUMN] column_definition [FIRST|AFTER col_name]</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>例如，在mysql环境下执行，<code>alter table emp modify ename varchar(20)</code>。</p>
+<ul>
+<li><p>增加表字段</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ALTER TABLE table_name ADD[COLUMN] column_definition [FIRST|AFTER col_name]</div></pre></td></tr></table></figure>
+<p>例如， <code>alter table emp add column age int(3);</code></p>
+</li>
 <li>删除表字段 -<br>ALTER TABLE table_name DROP [COLUMN] col_name;例如， alter table emp drop column age；</li>
-<li>字段改名 -<br><code>ALTER TABLE table_name CHANGE[COLUMN] old_col_name column_definition[FIRST|AFTER column_name]</code><br>例如，<code>alter table emp change age age1 int(4);</code><br>PS: chang与modify都可以修改列，但是change即可以修改列的名称，也可以修改列的类型，而modify只能修改列的类型。</li>
+<li>字段改名 -<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ALTER TABLE table_name CHANGE[COLUMN] old_col_name column_definition[FIRST|AFTER column_name]</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>例如，<code>alter table emp change age age1 int(4);</code><br>PS: chang与modify都可以修改列，但是change即可以修改列的名称，也可以修改列的类型，而modify只能修改列的类型。</p>
+<ul>
 <li>修改字段的顺序 -<br>例如，<code>alter table emp add age int(2) after name; alter table emp change age age1 int(4) first;</code></li>
 <li>修改表名 -<br>ALTER TABLE table_name RENAME [TO] new_tablename,例如， <code>alter table emp rename emp1;</code></li>
 </ul>
