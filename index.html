@@ -370,12 +370,10 @@
 <li>修改表-</li>
 </ol>
 <ul>
-<li>修改表类型（字段的类型） -<br>ALTER TABLE tablename MODIFY[COLUMN] column_definition [FIRST|AFTER col_name], 例如，在mysql环境下执行，alter table emp modify ename varchar(20)。</li>
-<li>增加表字段 -<br>ALTER TABLE table_name ADD[COLUMN] column_definition [FIRST|AFTER col_name], 例如， <code>alter table emp add column age int(3);</code></li>
+<li>修改表类型（字段的类型） -<br><code>ALTER TABLE tablename MODIFY[COLUMN] column_definition [FIRST|AFTER col_name]</code>, 例如，在mysql环境下执行，<code>alter table emp modify ename varchar(20)</code>。</li>
+<li>增加表字段 -<br><code>ALTER TABLE table_name ADD[COLUMN] column_definition [FIRST|AFTER col_name]</code>, 例如， <code>alter table emp add column age int(3);</code></li>
 <li>删除表字段 -<br>ALTER TABLE table_name DROP [COLUMN] col_name;例如， alter table emp drop column age；</li>
-<li>字段改名 -<br>ALTER TABLE table_name CHANGE[COLUMN] old_col_name column_definition[FIRST|AFTER column_name]<br>例如，<code>alter table emp change age age1 int(4);</code><br>PS: chang与modify都可以修改列，但是change即可以修改列的名称，也可以修改列的类型，而modify只能修改列的类型。</li>
-</ul>
-<ul>
+<li>字段改名 -<br><code>ALTER TABLE table_name CHANGE[COLUMN] old_col_name column_definition[FIRST|AFTER column_name]</code><br>例如，<code>alter table emp change age age1 int(4);</code><br>PS: chang与modify都可以修改列，但是change即可以修改列的名称，也可以修改列的类型，而modify只能修改列的类型。</li>
 <li>修改字段的顺序 -<br>例如，<code>alter table emp add age int(2) after name; alter table emp change age age1 int(4) first;</code></li>
 <li>修改表名 -<br>ALTER TABLE table_name RENAME [TO] new_tablename,例如， <code>alter table emp rename emp1;</code></li>
 </ul>
@@ -385,11 +383,10 @@
 <p>更新多个表中的记录：<br>UPDATE t1,t2,…tn set t1.field=value1,tn.field=valuen [WHERE CONDITION],实际操作暂且不会</p>
 <p>3- 删除记录<br>DELETE FROM tablename [WHERE CONDITION]<br>例如，<code>delete from emp where ename=‘lisa’;</code></p>
 <p>删除多个表中的记录：<br>DELETE t1,t2,..tn FROM t1,t2,…tn [WHERE CONDITION],实际操作暂且不会<br>PS: 不论是单表还是多表，不加where条件都会把表的所有记录删除；</p>
-<p>4- 查询记录<br>SELECT <em> FROM tablename [WHERE CONDITION]<br>例如,`select </em> from emp;<code>为查询emp这个表中的所有字段。如果想要部分字段的话，需要分别写出各个字段的名字，</code>例如 select ename from emp;<code>（1）查询重复记录
-用到“distinct”,例如</code>select distinct slaer from emp;<code>（2）条件查询
-关键词：where，例如</code>select <em> from emp where name=Lisa; <code>其中“=”也可以是&gt; &lt; &gt;= &lt;= != 多条件还可以使用or和and等逻辑运算符进行多条件联合查询。
-（3）排列顺序和限制
-语法如下：</code>SELECT </em> FROM tablename [WHERE CONDTION] [ORDER BY field1 [DESC/ASC],field2 [DESC/ASC],… fieldn [DESC/ASC]]`。 不写关键字默认我ASC(升序排序)。ORDER BY 后面可以跟不同的字段，每个字段可以有不同的排序。</p>
+<p>4- 查询记录<br>SELECT <em> FROM tablename [WHERE CONDITION]<br>例如,select </em> from emp;,为查询emp这个表中的所有字段。如果想要部分字段的话，需要分别写出各个字段的名字，例如 select ename from emp;</p>
+<p>（1）查询重复记录<br>用到“distinct”,例如 <code>select distinct slaer from emp;</code></p>
+<p>（2）条件查询<br>关键词：where，例如 <code>select * from emp where name=Lisa;</code><br>其中“=”也可以是&gt; &lt; &gt;= &lt;= != 多条件还可以使用or和and等逻辑运算符进行多条件联合查询。</p>
+<p>（3）排列顺序和限制<br>语法如下：<code>SELECT * FROM tablename [WHERE CONDTION] [ORDER BY field1 [DESC/ASC],field2 [DESC/ASC],… fieldn [DESC/ASC]]</code>。 不写关键字默认我ASC(升序排序)。ORDER BY 后面可以跟不同的字段，每个字段可以有不同的排序。</p>
 <p>对于排序后的记录，如果只希望显示一部分，这时就需要用到LIMIT关键字。语法如下：SELECT … [LIMIT offset_start,row_count]。 例如<code>select * from emp order by sal limit 3; select * from emp order by sal limit 1,3;</code></p>
 <p>limit 经常和 order by 一起配合使用来进行记录的分页显示。</p>
 <p>（4）聚合<br> 用于汇总操作，例如统计。语法如下：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">SELECT [field1,field2,…fieldn] fun_name</div><div class="line">FROM tablename</div><div class="line">[WHERE where_condition]</div><div class="line">[GROUP BY field1,field2,…fieldn</div><div class="line"> [WITH ROLLUP]]</div><div class="line">[HAVING where_condtion]</div></pre></td></tr></table></figure></p>
