@@ -254,6 +254,193 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/04/SQL基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jonathan-fei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jonathan-fei.pro">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/04/SQL基础/" itemprop="url">SQL基础</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-04T15:09:29+08:00">
+                2018-01-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>SQL，Structure Query Language，结构化查询语言，是关系型数据库的应用语言。</li>
+</ul>
+<h3 id="一、概览"><a href="#一、概览" class="headerlink" title="一、概览"></a>一、概览</h3><h4 id="1-分类"><a href="#1-分类" class="headerlink" title="1- 分类"></a>1- 分类</h4><ul>
+<li>DDL（Data Defintion Language ）语句：数据定义语言，定义了不同的数据段、数据库、表、列、索引等数据库对象，常用的语句的关键字包括 create、drop、alter等。</li>
+<li>DML（Data Manipulation Language）语句：数据操纵语句，用于增删改查数据库记录，并检查数据的完整性。关键词： insert、delete、update、select。</li>
+<li><p>DCL（Data Control Language）语句：数据控制语句，用于控制不同数据段直接的许可和访问级别的许可。这些语句定义了数据库、表、字段、用户的访问权限和安全级别。关键词：grant、revoke。</p>
+<h4 id="2-DDL"><a href="#2-DDL" class="headerlink" title="2- DDL"></a>2- DDL</h4><p>DDL语句一般情况下是由数据库管理员（DBA）使用，与DML的最大区别是DML只对表内数据进行操作，而不设计表的定义、结构和修改。以下命令均为在指定数据库内操作，因此不用指明是在哪里数据库里新增等，若没有指定，则需要加上数据库的名称。<br>（1）创建数据库 - CREATE DATABASE dbname; （CREATE DATABASE 也可小写 ）<br>（2）删除数据库 - DROP DATABASE dbname；<br>（3）创建表 -</p>
+<pre><code><figure class="highlight plain"><figcaption><span>TABLE tablename（ column_name_1 column_type_1_constraints,</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">                                                           column_name_2 column_type_2_constraints,</div><div class="line">                                                            …</div><div class="line">column_name_n column_type_n_constraints）</div></pre></td></tr></table></figure>
+</code></pre><ul>
+<li>查看表结构  ——  DESC tablename</li>
+<li>更全面地查看表定义 —— show create table tablename \G;  这条命令可以看到创建表的SQL语句,其中“\G<br>”的意思是使得记录能够按照字段竖向排列，也就是改变我们看到的格式。<br>（4）删除表 - DROP TABLE tablename<br>（5）修改表-</li>
+</ul>
+</li>
+<li>修改表类型（字段的类型） -<br>ALTER TABLE tablename MODIFY[COLUMN] column_definition [FIRST|AFTER col_name], 例如，在mysql环境下执行，alter table emp modify ename varchar(20)。</li>
+<li>增加表字段 -<br>ALTER TABLE table_name ADD[COLUMN] column_definition [FIRST|AFTER col_name], 例如， <code>alter table emp add column age int(3);</code></li>
+<li>删除表字段 -<br>ALTER TABLE table_name DROP [COLUMN] col_name;例如， alter table emp drop column age；</li>
+<li>字段改名 -<br>ALTER TABLE table_name CHANGE[COLUMN] old_col_name column_definition[FIRST|AFTER column_name]<br>例如，<code>alter table emp change age age1 int(4);</code><br>PS: chang与modify都可以修改列，但是change即可以修改列的名称，也可以修改列的类型，而modify只能修改列的类型。</li>
+<li>修改字段的顺序 -<br>例如，<code>alter table emp add age int(2) after name; alter table emp change age age1 int(4) first;</code></li>
+<li>修改表名 -<br>ALTER TABLE table_name RENAME [TO] new_tablename,例如， <code>alter table emp rename emp1;</code></li>
+</ul>
+<p>二、DML 语句<br>DML语句是指对数据库中表记录的操作，主要包括表记录的插入（insert）、更新（update）、删除（delete）和查询（select），是开发人员日常使用最频繁的操作。<br>1- 插入记录<br>插入单条记录：<br>INSERT INTO  table_name(field1, field2, … fieldn) VALUES(value1, value2, …valuen);例如，insert into emp(ename, hire,sal,deptno) values(‘zzx1’, ‘2000-1-1’, ‘2000’,1); 也可以不用指定字段名称，但是需要values后面的循序与字段的顺序一致。</p>
+<p>插入多条记录：<br>INSERT INTO tablename (field1, field2, … fieldn)<br>VALUES<br>(record1_value1, record2_value2, … record1_valuen),<br>(record2_value1, record2_value2, … record2_valuen),<br>…<br>(recordn_value1, recordn_value2, … recordn_valuen);<br>例如<code>insert into dept VALUES(5, “35”),(3,”232”);</code></p>
+<p>2- 更新记录<br>更新记录：<br>UPDATE tablename SET filed1= value1,field2= value2, … filedn=valuen [WHERE CONDITION],例如，update emp set sal=4000 where ename=‘lisa’;</p>
+<p>更新多个表中的记录：<br>UPDATE t1,t2,…tn set t1.field=value1,tn.field=valuen [WHERE CONDITION],实际操作暂且不会</p>
+<p>3- 删除记录<br>DELETE FROM tablename [WHERE CONDITION]<br>例如，<code>delete from emp where ename=‘lisa’;</code></p>
+<p>删除多个表中的记录：<br>DELETE t1,t2,..tn FROM t1,t2,…tn [WHERE CONDITION],实际操作暂且不会<br>PS: 不论是单表还是多表，不加where条件都会把表的所有记录删除；</p>
+<p>4- 查询记录<br>SELECT <em> FROM tablename [WHERE CONDITION]<br>例如,select </em> from emp; 为查询emp这个表中的所有字段。如果想要部分字段的话，需要分别写出各个字段的名字，例如 select ename from emp;<br>（1）查询重复记录<br>用到“distinct”,例如 <code>select distinct slaer from emp;</code><br>（2）条件查询<br>关键词：where，例如 <code>select * from emp where name=Lisa;</code><br>其中“=”也可以是&gt; &lt; &gt;= &lt;= != 多条件还可以使用or和and等逻辑运算符进行多条件联合查询。<br>（3）排列顺序和限制<br>语法如下：<code>SELECT * FROM tablename [WHERE CONDTION] [ORDER BY field1 [DESC/ASC],field2 [DESC/ASC],… fieldn [DESC/ASC]]</code>。 不写关键字默认我ASC(升序排序)。ORDER BY 后面可以跟不同的字段，每个字段可以有不同的排序。</p>
+<p>对于排序后的记录，如果只希望显示一部分，这时就需要用到LIMIT关键字。语法如下：SELECT … [LIMIT offset_start,row_count]。 例如<code>select * from emp order by sal limit 3; select * from emp order by sal limit 1,3;</code></p>
+<p>limit 经常和 order by 一起配合使用来进行记录的分页显示。</p>
+<p>（4）聚合<br> 用于汇总操作，例如统计。语法如下：<br><code>SELECT [field1,field2,…fieldn] fun_name
+FROM tablename
+[WHERE where_condition]
+[GROUP BY field1,field2,…fieldn
+ [WITH ROLLUP]]
+[HAVING where_condtion]</code><br>其中：</p>
+<ul>
+<li>fun_name 表示要做的聚合操作，也就是聚合函数，常用的有sum count max min</li>
+<li>GROUP BY 表示要进行分类聚合的字段，比如按照部分分类统计员工数量，部门就应该写在group by 后面</li>
+<li>WITH ROLLUP是可选语法，表明是否对分类聚合后的结果进行再汇总</li>
+<li>HAVING 表示对分类后的结果再进行条件的过滤。PS：having和where都是过滤，where是在聚合前过滤，having是对聚合后的结果过滤。</li>
+</ul>
+<p>统计总人数： select count(1) from emp;<br>统计各个部门的人数： <code>select deptno,count(1) from emp group by deptno;</code><br>既统计部门人数又统计总人数：<code>select deptno.count(1) from emp group by deptno with rollup;</code><br>统计部门人数大于1的部门： <code>select deptno.count(1) from emp group by deptno having count(1)&gt;1;</code><br>统计公司所有员工的公司薪水总额、最高和最低薪水：<code>select sum(sal),max(sal),min(sal) from emp;</code></p>
+<p>（5）表连接<br>表连接分为内连接和外链接，内连接仅仅选出两张表中互相匹配的记录，而外连接会选出其他不匹配的记录，最常用的是内连接。<br>例如，查询所有雇员的名字和所在的部门名称，因为雇员名称和部门分别放在表emp、dept中，因此需要使用表连接来查询。<code>select ename,deptno from emp,dept where emp.deptno=dept.deptno;</code></p>
+<p>外链接分为左链接和右链接。此处知识点未掌握。<br>（6）子查询<br>某些情况下，当进行查询的时候，需要的条件是另外一个select语句的结果，这时就会用到子查询。关键字：in、not in、=、exists、not exists等,例如， <code>select * from emp where deptno in(select deptno from dept)</code>。<br>PS：表连接在很多情况下用于优化子连接。</p>
+<p>三、 DCL语句<br>DCL语句主要是DBA用来管理系统中的对象权限时使用，开发人员很少使用，例如<br><code>mysql &gt;  grant all PRIVILEGES on db_name.* to &#39;username&#39;@&#39;xxx.xxx.xx.x&#39; identified by &#39;password&#39; WITH GRANT OPTION;</code><br>grant 为放出权限，select为收回权限。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/03/数据库的事务与锁/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1389,7 +1576,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1411,7 +1598,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
