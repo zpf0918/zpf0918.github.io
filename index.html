@@ -392,9 +392,9 @@
 <h4 id="1-插入记录"><a href="#1-插入记录" class="headerlink" title="1- 插入记录"></a>1- 插入记录</h4><p>插入单条记录：<br>INSERT INTO  table_name(field1, field2, … fieldn) VALUES(value1, value2, …valuen);例如，insert into emp(ename, hire,sal,deptno) values(‘zzx1’, ‘2000-1-1’, ‘2000’,1); 也可以不用指定字段名称，但是需要values后面的循序与字段的顺序一致。</p>
 <p>插入多条记录：<br>INSERT INTO tablename (field1, field2, … fieldn)<br>VALUES<br>(record1_value1, record2_value2, … record1_valuen),<br>(record2_value1, record2_value2, … record2_valuen),<br>…<br>(recordn_value1, recordn_value2, … recordn_valuen);<br>例如<code>insert into dept VALUES(5, “35”),(3,”232”);</code></p>
 <h4 id="2-更新记录"><a href="#2-更新记录" class="headerlink" title="2- 更新记录"></a>2- 更新记录</h4><p>更新记录：<br>UPDATE tablename SET filed1= value1,field2= value2, … filedn=valuen [WHERE CONDITION],例如，`update emp set sal=4000 where ename=‘lisa’;``</p>
-<p>更新多个表中的记录：<br>UPDATE t1,t2,…tn set t1.field=value1,tn.field=valuen [WHERE CONDITION],实际操作暂且不会</p>
+<p>更新多个表中的记录：<br>UPDATE t1,t2,…tn set t1.field=value1,tn.field=valuen [WHERE CONDITION]</p>
 <h4 id="3-删除记录"><a href="#3-删除记录" class="headerlink" title="3- 删除记录"></a>3- 删除记录</h4><p>DELETE FROM tablename [WHERE CONDITION]<br>例如，<code>delete from emp where ename=‘lisa’;</code></p>
-<p>删除多个表中的记录：<br>DELETE t1,t2,..tn FROM t1,t2,…tn [WHERE CONDITION],实际操作暂且不会<br>PS: 不论是单表还是多表，不加where条件都会把表的所有记录删除；</p>
+<p>删除多个表中的记录：<br>DELETE t1,t2,..tn FROM t1,t2,…tn [WHERE CONDITION]<br>PS: 不论是单表还是多表，不加where条件都会把表的所有记录删除；</p>
 <h4 id="4-查询记录"><a href="#4-查询记录" class="headerlink" title="4- 查询记录"></a>4- 查询记录</h4><p>SELECT <em> FROM tablename [WHERE CONDITION]<br>例如,select </em> from emp;,为查询emp这个表中的所有字段。如果想要部分字段的话，需要分别写出各个字段的名字，例如 select ename from emp;</p>
 <p>（1）查询重复记录<br>用到“distinct”,例如 <code>select distinct slaer from emp;</code></p>
 <p>（2）条件查询<br>关键词：where，例如 <code>select * from emp where name=Lisa;</code><br>其中“=”也可以是&gt; &lt; &gt;= &lt;= != 多条件还可以使用or和and等逻辑运算符进行多条件联合查询。</p>
@@ -411,7 +411,7 @@
 </ul>
 <p>统计总人数： <code>select count(1) from emp;</code><br>统计各个部门的人数： <code>select deptno,count(1) from emp group by deptno;</code><br>既统计部门人数又统计总人数：<code>select deptno.count(1) from emp group by deptno with rollup;</code><br>统计部门人数大于1的部门： <code>select deptno.count(1) from emp group by deptno having count(1)&gt;1;</code><br>统计公司所有员工的公司薪水总额、最高和最低薪水：<code>select sum(sal),max(sal),min(sal) from emp;</code></p>
 <p>（5）表连接<br>表连接分为内连接和外链接，内连接仅仅选出两张表中互相匹配的记录，而外连接会选出其他不匹配的记录，最常用的是内连接。<br>例如，查询所有雇员的名字和所在的部门名称，因为雇员名称和部门分别放在表emp、dept中，因此需要使用表连接来查询。<code>select ename,deptno from emp,dept where emp.deptno=dept.deptno;</code></p>
-<p>外链接分为左链接和右链接。此处知识点未掌握。<br>（6）子查询<br>某些情况下，当进行查询的时候，需要的条件是另外一个select语句的结果，这时就会用到子查询。关键字：in、not in、=、exists、not exists等,例如， <code>select * from emp where deptno in(select deptno from dept)</code>。<br>PS：表连接在很多情况下用于优化子连接。</p>
+<p>（6）子查询<br>某些情况下，当进行查询的时候，需要的条件是另外一个select语句的结果，这时就会用到子查询。关键字：in、not in、=、exists、not exists等,例如， <code>select * from emp where deptno in(select deptno from dept)</code>。<br>PS：表连接在很多情况下用于优化子连接。</p>
 <h3 id="四、DCL语句"><a href="#四、DCL语句" class="headerlink" title="四、DCL语句"></a>四、DCL语句</h3><p>DCL语句主要是DBA用来管理系统中的对象权限时使用，开发人员很少使用，例如<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql &gt;  grant all PRIVILEGES on db_name.* to <span class="string">'username'</span>@<span class="string">'xxx.xxx.xx.x'</span> identified by <span class="string">'password'</span> WITH GRANT OPTION;</div></pre></td></tr></table></figure></p>
 <p>grant 为放出权限，select为收回权限。</p>
 
@@ -1642,9 +1642,21 @@
                 </span>
               
                 <span class="links-of-author-item">
+                  <a href="mailto:zhanggongzifei@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
                   <a href="https://twitter.com/jonathanfei0918" target="_blank" title="Twitter">
                     
                       <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://weibo.com/u/6023480325/home?wvr=5&uut=fin&from=reg" target="_blank" title="Weibo">
+                    
+                      <i class="fa fa-fw fa-globe"></i>Weibo</a>
                 </span>
               
             
