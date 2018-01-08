@@ -91,7 +91,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fn9g5xrxobj31a802gaah.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fn9g0fgepjj31aq05cdgx.jpg">
-<meta property="og:updated_time" content="2018-01-08T12:40:43.387Z">
+<meta property="og:updated_time" content="2018-01-08T12:59:45.305Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Rails生成乱数ID的实现方法">
 <meta name="twitter:description" content="在ROR网站开发中，当我们查询某笔资料时，一般情况下，网址是这样的，如下图： 这样做的缺陷很明显，就是用户可以通过网址猜到我们数据库中user的数据量。为了解决这个问题，我们可以通过把ID改成乱数ID的形式解决，就像下面这样： 实现过程如下： step1：model层的实现1-   为 user添加friendly_id 字段1$ rails g migration add_friendly_id">
@@ -360,6 +360,7 @@
 <p>我们对其中的 <code>find_user</code>这个方法 做如下修改</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">def</div><div class="line"> @user = User.find_by_friendly_id!(params[:id])</div><div class="line">end</div></pre></td></tr></table></figure>
 <p>到这里就可以实现乱数ID的显示了。</p>
+<h4 id="豆知识补充"><a href="#豆知识补充" class="headerlink" title="豆知识补充"></a>豆知识补充</h4><h5 id="1-“-”-符号"><a href="#1-“-”-符号" class="headerlink" title="1-  “||= ” 符号"></a>1-  “||= ” 符号</h5><p><code>a ||= b</code> 相当于 <code>a = a || b</code> ，它的意思为当a的值为<strong>nil</strong>时，将b的值付给a。例如 上面提到过的<code>self.friendly_id ||= SecureRandom.uuid</code>， 当<code>self.friendly_id</code>的值为空时，将<code>SecureRandom.uuid</code>赋值给它。</p>
 
       
     </div>
@@ -561,7 +562,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#step1：model层的实现"><span class="nav-number">1.</span> <span class="nav-text">step1：model层的实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-2-controller层"><span class="nav-number">2.</span> <span class="nav-text">Step 2 controller层</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#step1：model层的实现"><span class="nav-number">1.</span> <span class="nav-text">step1：model层的实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-2-controller层"><span class="nav-number">2.</span> <span class="nav-text">Step 2 controller层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#豆知识补充"><span class="nav-number">3.</span> <span class="nav-text">豆知识补充</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-“-”-符号"><span class="nav-number">3.1.</span> <span class="nav-text">1-  “||= ” 符号</span></a></li></ol></li></ol></div>
             
 
           </div>

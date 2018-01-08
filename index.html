@@ -360,6 +360,7 @@
 <p>我们对其中的 <code>find_user</code>这个方法 做如下修改</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">def</div><div class="line"> @user = User.find_by_friendly_id!(params[:id])</div><div class="line">end</div></pre></td></tr></table></figure>
 <p>到这里就可以实现乱数ID的显示了。</p>
+<h4 id="豆知识补充"><a href="#豆知识补充" class="headerlink" title="豆知识补充"></a>豆知识补充</h4><h5 id="1-“-”-符号"><a href="#1-“-”-符号" class="headerlink" title="1-  “||= ” 符号"></a>1-  “||= ” 符号</h5><p><code>a ||= b</code> 相当于 <code>a = a || b</code> ，它的意思为当a的值为<strong>nil</strong>时，将b的值付给a。例如 上面提到过的<code>self.friendly_id ||= SecureRandom.uuid</code>， 当<code>self.friendly_id</code>的值为空时，将<code>SecureRandom.uuid</code>赋值给它。</p>
 
           
         
