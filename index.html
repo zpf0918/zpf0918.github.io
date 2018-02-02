@@ -254,6 +254,155 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/02/Ruby-基础-学习笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jonathan-fei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jonathan-fei.pro">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/02/Ruby-基础-学习笔记/" itemprop="url">Ruby 基础--学习笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-02T17:22:17+08:00">
+                2018-02-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Ruby/" itemprop="url" rel="index">
+                    <span itemprop="name">Ruby</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="1。each、map与collect"><a href="#1。each、map与collect" class="headerlink" title="1。each、map与collect"></a>1。each、map与collect</h4><p>(1)each方法是典型的迭代器，它的作用是可以遍历<strong>数组</strong>中的所有元素，并对其进行处理，但不改变原数组的值，返回结果也是原数组的值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">sum = 0</div><div class="line">a = [1,2,3,4,5]</div><div class="line">a.each do |item|</div><div class="line">  sum+=item</div><div class="line">end</div><div class="line">print sum #=&gt; 15</div></pre></td></tr></table></figure></p>
+<p>(2) 使用map与collect方法会形成一个新数组，原数组的值不变。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">a = [1,2,3,4,5]</div><div class="line">a.each&#123; |item| item*2&#125; #=&gt; [1,2,3,4,5]</div><div class="line">a #=&gt; [1,2,3,4,5]</div><div class="line"></div><div class="line">a.map&#123; |item| item*2&#125; #=&gt;[2,4,6,8,10]</div><div class="line">a #=&gt; [1,2,3,4,5]</div><div class="line"></div><div class="line">a.collect&#123; |item| item*2&#125; #=&gt; [2,4,6,8,10]</div><div class="line">a #=&gt; [1,2,3,4,5]</div></pre></td></tr></table></figure></p>
+<p>(3)使用map!与collect!会形成一个新的数组，并改变原数组的值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">a = [1,2,3,4,5]</div><div class="line">a.map!&#123; |item| item*2&#125; #=&gt; [2,4,6,8,10]</div><div class="line">a #=&gt; [2,4,6,8,10]</div><div class="line"></div><div class="line">a.collect!&#123; |item| item*2&#125; #=&gt; [2,4,6,8,10]</div><div class="line">a #=&gt; [2,4,6,8,10]</div></pre></td></tr></table></figure></p>
+<h4 id="2。作用域"><a href="#2。作用域" class="headerlink" title="2。作用域"></a>2。作用域</h4><p>#####（1）作用域门<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">v1 = 1</div><div class="line">class Myclass</div><div class="line">  v2 = 2</div><div class="line">  local_variables #=&gt;  [:v2]</div><div class="line">  def my_method</div><div class="line">    v3 = 3</div><div class="line">    local_variables</div><div class="line">  end</div><div class="line">  local_variables #=&gt; [:v2]</div><div class="line">end</div><div class="line"></div><div class="line">obj = Myclass.new</div><div class="line">obj.my_method #=&gt; [:v3]</div></pre></td></tr></table></figure></p>
+<p>当进行类定义（关键字：class）、模块定义(module)、方法定义（def）会产生作用域。</p>
+<p>#####（2）穿越作用域<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var = &quot;scope&quot;</div><div class="line">class Myclass</div><div class="line">  puts &quot;#&#123;var&#125;&quot;</div><div class="line"></div><div class="line">  def my_method  </div><div class="line">  end</div><div class="line">end</div><div class="line"></div><div class="line">#=&gt; NameError: undefined local variable or method `var&apos; for Myclass:Class</div><div class="line"></div><div class="line">得： 局部变量无法穿过Myclass的作用域</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var = &quot;scope&quot;</div><div class="line">Myclass = Class.new do</div><div class="line">  puts &quot;#&#123;var&#125; in the #&#123;self.class&#125;&quot;</div><div class="line">  def my_method</div><div class="line">   puts &quot;#&#123;var&#125;&quot;</div><div class="line">  end</div><div class="line">end</div><div class="line">#=&gt; scope in the Class</div><div class="line">#=&gt; undefined local variable or method `my_var&apos; for Myclass:Class (NameError)</div><div class="line"></div><div class="line">得：</div><div class="line">(1)通过方法调用可以让局部变量穿过Myclass的作用域;</div><div class="line">(2)局部变量var无法穿过my_method的作用域。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var = &quot;scope&quot;</div><div class="line">Myclass = Class.new do</div><div class="line"> puts &quot;#&#123;var&#125; in the #&#123;self.class&#125;&quot;</div><div class="line"> define_method :my_method do</div><div class="line">   puts &quot;#&#123;var&#125; in the #&#123;self.class&#125;&quot;</div><div class="line"> end</div><div class="line">end</div><div class="line"></div><div class="line">obj = Myclass.new</div><div class="line">obj.my_method</div><div class="line"></div><div class="line">#=&gt; scope in the Class</div><div class="line">#=&gt; scope in the Myclass</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/02/Ruby-中的-self/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1722,7 +1871,7 @@
             <h3 id="1-gem-‘devise’-————————————-登录系统"><a href="#1-gem-‘devise’-————————————-登录系统" class="headerlink" title="1.gem ‘devise’             ————————————  登录系统"></a>1.gem ‘devise’             ————————————  登录系统</h3><blockquote>
 <p><strong>安装须知：</strong> 依次执行<code>bundle install</code> <code>rails g devise:install</code> <code>rails g devise user</code> <code>rake db:migrate</code>，最后重新<code>rails s</code>。</p>
 </blockquote>
-<h3 id="2-gem-‘bootstrap’-————————————-前端开发套件"><a href="#2-gem-‘bootstrap’-————————————-前端开发套件" class="headerlink" title="2.gem ‘bootstrap’          ————————————  前端开发套件"></a>2.gem ‘bootstrap’          ————————————  前端开发套件</h3><blockquote>
+<h3 id="2-gem-‘bootstrap-sass’-————————————-前端开发套件"><a href="#2-gem-‘bootstrap-sass’-————————————-前端开发套件" class="headerlink" title="2.gem ‘bootstrap-sass’          ————————————  前端开发套件"></a>2.gem ‘bootstrap-sass’          ————————————  前端开发套件</h3><blockquote>
 <p><strong>安装须知：</strong><br>(1) 依次执行<code>bundle install</code> <code>mv app/assets/stylesheets/application.css app/assets/stylesheets/application.scss</code>;<br>(2)</p>
 </blockquote>
 <figure class="highlight ruby"><figcaption><span>app/assets/stylesheets/application.scss</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">+@import <span class="string">"bootstrap-sprockets"</span>;</div><div class="line">+@import <span class="string">"bootstrap"</span>;</div></pre></td></tr></table></figure>
@@ -1747,164 +1896,6 @@
 <h3 id="8-gem-‘carrier-wave’-gem-‘mini-magick’-————————————-用于上传图片（可能还有其他的功能）"><a href="#8-gem-‘carrier-wave’-gem-‘mini-magick’-————————————-用于上传图片（可能还有其他的功能）" class="headerlink" title="8.gem ‘carrier_wave’  gem ‘mini_magick’      ————————————  用于上传图片（可能还有其他的功能）"></a>8.gem ‘carrier_wave’  gem ‘mini_magick’      ————————————  用于上传图片（可能还有其他的功能）</h3><blockquote>
 <p><strong>安装须知</strong> 依次执行：<code>bundle install</code> <code>rails g uploader image</code> 重启<code>rails s</code></p>
 </blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/07/两种方法实现收藏或者点赞功能/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="jonathan-fei">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jonathan-fei.pro">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/07/两种方法实现收藏或者点赞功能/" itemprop="url">两种方法实现收藏或者点赞功能</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-07T00:30:24+08:00">
-                2017-09-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Ruby/" itemprop="url" rel="index">
-                    <span itemprop="name">Ruby</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>收藏功能与点赞功能的实作十分类似，本文以购物车教程实作收藏功能为例。</p>
-<h3 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h3><h5 id="step1"><a href="#step1" class="headerlink" title="step1"></a>step1</h5><p>一个用户可以收藏多个商品，一个商品可以被收藏很多次，因此这是多对多的关系。因此需要新增一个model，来当做product与suer的桥梁。<code>$ rails g model collect user_id:integer product_id:integer</code>,然后执行 <code>rake db:migrate</code>，然后为collect、user与product这三个model加上关联。</p>
-<figure class="highlight ruby"><figcaption><span>app/models/collect.rb</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">   + belongs_to <span class="symbol">:user</span></div><div class="line">   + belongs_to <span class="symbol">:product</span></div><div class="line"><span class="string">``</span><span class="string">`   </span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">`</span><span class="string">``</span> ruby app/models/product.rb</div><div class="line"></div><div class="line">   + has_many <span class="symbol">:collects</span></div><div class="line">   + has_many <span class="symbol">:collected_users</span>, <span class="symbol">through:</span> <span class="symbol">:collects</span>, <span class="symbol">source:</span> <span class="symbol">:user</span></div></pre></td></tr></table></figure>
-<figure class="highlight ruby"><figcaption><span>app/models/user.rb</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">   + has_many <span class="symbol">:collects</span></div><div class="line">   + has_many <span class="symbol">:collected_products</span>, <span class="symbol">through:</span> <span class="symbol">:collects</span>, <span class="symbol">source:</span> <span class="symbol">:product</span></div><div class="line"></div><div class="line">   <span class="comment">#加上是否收藏商品的判定</span></div><div class="line">   + <span class="function"><span class="keyword">def</span> <span class="title">is_collect_of?</span><span class="params">(product)</span></span></div><div class="line">   +  collected_products.<span class="keyword">include</span>?(product)</div><div class="line">   + <span class="keyword">end</span></div><div class="line"><span class="string">``</span><span class="string">`    </span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">#### step2</span></div><div class="line"><span class="string">首先修改路由信息：</span></div><div class="line"><span class="string">`</span><span class="string">``</span> ruby config/routes.rb</div><div class="line"></div><div class="line">  + resources <span class="symbol">:product</span> <span class="keyword">do</span></div><div class="line">   +  member <span class="keyword">do</span></div><div class="line">   +    post <span class="symbol">:collect</span></div><div class="line">   +    post <span class="symbol">:uncollect</span></div><div class="line">   + <span class="keyword">end</span></div><div class="line"> +  <span class="keyword">end</span></div></pre></td></tr></table></figure>
-<p>在controller里加上对应的method，</p>
-<figure class="highlight ruby"><figcaption><span>app/controllers/product_controllers.rb</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">+ <span class="function"><span class="keyword">def</span>	<span class="title">collect</span></span></div><div class="line"> + @product = Product.find(params[<span class="symbol">:id</span>])</div><div class="line"> + current_user.collected_products &lt;&lt; @product</div><div class="line"> + flash[<span class="symbol">:notice</span>] = <span class="string">"成功收藏商品"</span></div><div class="line"> + redirect_to <span class="symbol">:back</span></div><div class="line">+ <span class="keyword">end</span></div><div class="line"></div><div class="line">+ <span class="function"><span class="keyword">def</span> <span class="title">uncollect</span></span></div><div class="line"> + @product = Product.find(params[<span class="symbol">:id</span>])</div><div class="line"> + currrent_user.collected_products.delete(@product)</div><div class="line"> + flash[<span class="symbol">:warning</span>] = <span class="string">"您已取消收藏该商品"</span></div><div class="line"> + redirect_to <span class="symbol">:back</span></div><div class="line">+ <span class="keyword">end</span></div></pre></td></tr></table></figure>
-<h4 id="step3"><a href="#step3" class="headerlink" title="step3"></a>step3</h4><p>在views中的相应位置加入收藏的显示</p>
-<figure class="highlight ruby"><figcaption><span>app/views/products/show.html.erb</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">+ &lt;% <span class="keyword">if</span> current_user &amp;&amp; current_user.is_collect_of?(@product) %&gt;</div><div class="line">+  &lt;%= link_to(“取消收藏”, uncollect_product_path(@product), <span class="symbol">:method</span> =&gt; <span class="symbol">:post</span>, <span class="class"><span class="keyword">class</span>: "<span class="title">btn</span> <span class="title">btn</span>-<span class="title">danger</span> <span class="title">btn</span>-<span class="title">lg</span>" )%&gt;</span></div><div class="line">+ &lt;% <span class="keyword">else</span> %&gt;</div><div class="line">+  &lt;%= link_to(<span class="string">"收藏“, collect_product_path(@product), :method =&gt; :post, class: "</span>btn btn-danger btn-lg<span class="string">" )%&gt;</span></div><div class="line"><span class="string">+ &lt;% end %&gt;</span></div></pre></td></tr></table></figure>
-<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><h4 id="step1-1"><a href="#step1-1" class="headerlink" title="step1"></a>step1</h4><p>同样，终端执行 <code>rails g model colloect</code>, 编辑 <code>db/migrate/XXXXXXXX_create_collects.rb</code><br><figure class="highlight ruby"><figcaption><span>db/migrate/XXXXXXXX_create_collects.rb    </span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">  <span class="class"><span class="keyword">class</span> <span class="title">CreateCollects</span> &lt; ActiveRecord::Migration[5.0]</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">change</span></span></div><div class="line">      create_table <span class="symbol">:collects</span> <span class="keyword">do</span> <span class="params">|t|</span></div><div class="line">+       t.integer <span class="symbol">:user_id</span>, <span class="symbol">:index</span> =&gt; <span class="literal">true</span></div><div class="line">+       t.integer <span class="symbol">:product_id</span>, <span class="symbol">:index</span> =&gt; <span class="literal">true</span></div><div class="line">        t.timestamps</div><div class="line">      <span class="keyword">end</span></div><div class="line">    <span class="keyword">end</span></div><div class="line">  <span class="keyword">end</span></div></pre></td></tr></table></figure></p>
-<p>之后执行 <code>rake db:migrate</code></p>
-<p>编辑<code>app/models/collect.rb</code>,加上关联<br><figure class="highlight ruby"><figcaption><span>app/models/collect.rb</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">+ belongs_to <span class="symbol">:user</span></div><div class="line">+ belongs_to <span class="symbol">:product</span></div></pre></td></tr></table></figure></p>
-<p>编辑 <code>app/models/product.rb</code>,加上关联<br><figure class="highlight ruby"><figcaption><span>app/models/product.rb</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">  + has_many <span class="symbol">:collects</span>, <span class="symbol">:dependent</span> =&gt; <span class="symbol">:destroy</span></div><div class="line">  + had_many <span class="symbol">:collected_users</span>, <span class="symbol">through:</span> <span class="symbol">:collects</span>, <span class="symbol">source:</span> <span class="symbol">:user</span></div><div class="line"></div><div class="line">  + <span class="function"><span class="keyword">def</span> <span class="title">find_collect</span><span class="params">(user)</span></span></div><div class="line">   +  <span class="keyword">self</span>.collects.where( <span class="symbol">:user_id</span> =&gt; user.id).first</div><div class="line">  + <span class="keyword">end</span></div><div class="line"><span class="string">``</span><span class="string">`  </span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">编辑 `</span>app/model/user.rb<span class="string">`,加上关联</span></div><div class="line"><span class="string">`</span><span class="string">``</span> ruby app/models/user.rb</div><div class="line">  +  has_many <span class="symbol">:collects</span>, <span class="symbol">:dependent</span> =&gt; <span class="symbol">:destroy</span></div><div class="line">  +  has_many <span class="symbol">:collected_products</span>, <span class="symbol">through:</span> <span class="symbol">:collects</span>,  <span class="symbol">source:</span> <span class="symbol">:product</span></div></pre></td></tr></table></figure></p>
-<h4 id="step2"><a href="#step2" class="headerlink" title="step2"></a>step2</h4><p>编辑路由信息<br><figure class="highlight ruby"><figcaption><span>config/routes.rb</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">+ resource <span class="symbol">:products</span> <span class="keyword">do</span></div><div class="line">+   member <span class="keyword">do</span></div><div class="line">+     post <span class="symbol">:collect</span></div><div class="line">+     post <span class="symbol">:uncollect</span></div><div class="line">+   <span class="keyword">end</span></div><div class="line">+ <span class="keyword">end</span></div></pre></td></tr></table></figure></p>
-<p>在controller中添加：<br><figure class="highlight ruby"><figcaption><span>app/controllers/product_controller.rb</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">+ <span class="function"><span class="keyword">def</span> <span class="title">collect</span></span></div><div class="line">  + @product = Product.find(params[<span class="symbol">:id</span>])    </div><div class="line">  + <span class="keyword">unless</span> @product.find_collect(cuurent_user)</div><div class="line">  +   Collect.create( <span class="symbol">:user</span> =&gt; current_user, <span class="symbol">:product</span> =&gt; @product)</div><div class="line">  + flash[<span class="symbol">:notice</span>] = <span class="string">"您已成功收藏该商品"</span></div><div class="line">  + <span class="keyword">end</span></div><div class="line">  + redirect_to <span class="symbol">:back</span></div><div class="line">+ <span class="keyword">end</span></div><div class="line"></div><div class="line">+ <span class="function"><span class="keyword">def</span> <span class="title">uncollect</span></span></div><div class="line">   + @product = Product.find(params[<span class="symbol">:id</span>])</div><div class="line">   + collect = @product.find_collect(current_user)</div><div class="line">   + collect.destroy</div><div class="line">   + flash[<span class="symbol">:warning</span>] = <span class="string">"您已取消收藏该商品"</span></div><div class="line">   + redirect_to <span class="symbol">:back</span></div><div class="line">+ <span class="keyword">end</span></div></pre></td></tr></table></figure></p>
-<h3 id="Step3"><a href="#Step3" class="headerlink" title="Step3"></a>Step3</h3><p>最后一歩，就是要在 <code>app/views/products/show.html.erb</code>中加上收藏的按钮</p>
-<figure class="highlight ruby"><figcaption><span>app/views/products/show.html.erb</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">……略</div><div class="line"> + &lt;% <span class="keyword">if</span> current_user %&gt;</div><div class="line"> +   &lt;% <span class="keyword">if</span> @product.find_collect(current_user)%&gt;</div><div class="line"> +     &lt;% =link_to(<span class="string">"取消收藏"</span>, uncollect_product_path(@product), <span class="symbol">:method</span> =&gt; <span class="symbol">:post</span>, <span class="class"><span class="keyword">class</span>: "<span class="title">btn</span> <span class="title">btn</span>-<span class="title">danger</span> <span class="title">btn</span>-<span class="title">lg</span>")%&gt;</span></div><div class="line"> +   &lt;% <span class="keyword">else</span> %&gt;</div><div class="line"> +     &lt;%= link_to(<span class="string">"收藏"</span>, collect_product_path(@product), <span class="symbol">:method</span> =&gt; <span class="symbol">:post</span>, <span class="class"><span class="keyword">class</span>: "<span class="title">btn</span> <span class="title">btn</span>-<span class="title">primary</span> <span class="title">btn</span>-<span class="title">lg</span>")%&gt;</span></div><div class="line"> +   &lt;% <span class="keyword">end</span> %&gt;</div><div class="line"> + &lt;% <span class="keyword">end</span> %&gt;</div><div class="line">……略</div></pre></td></tr></table></figure>
-<h3 id="成果展示"><a href="#成果展示" class="headerlink" title="成果展示"></a>成果展示</h3><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fgv9zutcveg30rr0i9jwo.gif" alt=""></p>
 
           
         
@@ -1994,7 +1985,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Ruby,用户系统," />
+  <meta name="keywords" content="Ruby," />
 
 
 
@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="rails 中的gem devise提供了注册与登录的功能，用起来比较方便。但是为了自身编程能力，决定学习如何自写出注册与登录功能。 注册功能用户注册即创建一个用户，这时会用到我们所熟知的CRUD。理解起来很容易，但是做起来并没有那么简单。 首先需要生成user的model，并对其字段进行约束，通常情况下，会是name与email，例如name与email都不为空、长度、格式，为邮箱加索引等，把这">
-<meta name="keywords" content="Ruby,用户系统">
+<meta name="description" content="1。each、map与collect(1)each方法是典型的迭代器，它的作用是可以遍历数组中的所有元素，并对其进行处理，但不改变原数组的值，返回结果也是原数组的值。123456sum = 0a = [1,2,3,4,5]a.each do |item|  sum+=itemendprint sum #=&amp;gt; 15 (2) 使用map与collect方法会形成一个新数组，原数组的值不变。123">
+<meta name="keywords" content="Ruby">
 <meta property="og:type" content="article">
-<meta property="og:title" content="注册与登录">
-<meta property="og:url" content="http://yoursite.com/2017/12/21/注册与登录/index.html">
+<meta property="og:title" content="Ruby 基础--学习笔记">
+<meta property="og:url" content="http://yoursite.com/2018/02/02/Ruby-基础-学习笔记/index.html">
 <meta property="og:site_name" content="jonathan-fei.pro">
-<meta property="og:description" content="rails 中的gem devise提供了注册与登录的功能，用起来比较方便。但是为了自身编程能力，决定学习如何自写出注册与登录功能。 注册功能用户注册即创建一个用户，这时会用到我们所熟知的CRUD。理解起来很容易，但是做起来并没有那么简单。 首先需要生成user的model，并对其字段进行约束，通常情况下，会是name与email，例如name与email都不为空、长度、格式，为邮箱加索引等，把这">
+<meta property="og:description" content="1。each、map与collect(1)each方法是典型的迭代器，它的作用是可以遍历数组中的所有元素，并对其进行处理，但不改变原数组的值，返回结果也是原数组的值。123456sum = 0a = [1,2,3,4,5]a.each do |item|  sum+=itemendprint sum #=&amp;gt; 15 (2) 使用map与collect方法会形成一个新数组，原数组的值不变。123">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-12-30T12:24:12.991Z">
+<meta property="og:updated_time" content="2018-02-02T09:22:55.840Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="注册与登录">
-<meta name="twitter:description" content="rails 中的gem devise提供了注册与登录的功能，用起来比较方便。但是为了自身编程能力，决定学习如何自写出注册与登录功能。 注册功能用户注册即创建一个用户，这时会用到我们所熟知的CRUD。理解起来很容易，但是做起来并没有那么简单。 首先需要生成user的model，并对其字段进行约束，通常情况下，会是name与email，例如name与email都不为空、长度、格式，为邮箱加索引等，把这">
+<meta name="twitter:title" content="Ruby 基础--学习笔记">
+<meta name="twitter:description" content="1。each、map与collect(1)each方法是典型的迭代器，它的作用是可以遍历数组中的所有元素，并对其进行处理，但不改变原数组的值，返回结果也是原数组的值。123456sum = 0a = [1,2,3,4,5]a.each do |item|  sum+=itemendprint sum #=&amp;gt; 15 (2) 使用map与collect方法会形成一个新数组，原数组的值不变。123">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/12/21/注册与登录/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/02/02/Ruby-基础-学习笔记/"/>
 
 
 
 
 
-  <title>注册与登录 | jonathan-fei.pro</title>
+  <title>Ruby 基础--学习笔记 | jonathan-fei.pro</title>
   
 
 
@@ -255,7 +255,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/21/注册与登录/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/02/Ruby-基础-学习笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="jonathan-fei">
@@ -272,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">注册与登录</h1>
+          <h1 class="post-title" itemprop="name headline">Ruby 基础--学习笔记</h1>
         
 
         <div class="post-meta">
@@ -284,8 +284,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-21T21:15:56+08:00">
-                2017-12-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-02T17:22:17+08:00">
+                2018-02-02
               </time>
             
 
@@ -344,14 +344,14 @@
       
 
       
-        <p>rails 中的gem devise提供了注册与登录的功能，用起来比较方便。但是为了自身编程能力，决定学习如何自写出注册与登录功能。</p>
-<h3 id="注册功能"><a href="#注册功能" class="headerlink" title="注册功能"></a>注册功能</h3><p>用户注册即创建一个用户，这时会用到我们所熟知的CRUD。理解起来很容易，但是做起来并没有那么简单。</p>
-<p>首先需要生成user的model，并对其字段进行约束，通常情况下，会是name与email，例如name与email都不为空、长度、格式，为邮箱加索引等，把这些设置好之后，需要设置路由，控制器，还有视图。</p>
-<h5 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h5><p>约束字段。例如name与email的长度、格式、不为空，密码长度等，且为邮箱加索引。</p>
-<h5 id="routes-rb"><a href="#routes-rb" class="headerlink" title="routes.rb"></a>routes.rb</h5><p>设置注册路由，一般会是<code>get &#39;/signup&#39;, to: &#39;users#new&#39;</code> <code>post &#39;/signup&#39;, to: &#39;users#create&#39;</code></p>
-<h5 id="Views"><a href="#Views" class="headerlink" title="Views"></a>Views</h5><p>设置注册表单。其中会用到<code>form_for</code>或者 <code>simple_form_for</code></p>
-<h5 id="Controllers"><a href="#Controllers" class="headerlink" title="Controllers"></a>Controllers</h5><p>编写<code>users#new</code>与 <code>users#create</code></p>
-<h5 id="验证用户"><a href="#验证用户" class="headerlink" title="验证用户"></a>验证用户</h5><p>验证用户会用密码，因为我们会为user增加一个字段名称<code>password_digest</code>，在user的model中，添加<code>has_secure_password</code>这个方法（因为has_secure_password这个方法调用唯一要求就是对应的model中有<code>password_digest</code> 字段），它有三个作用: (1) 在数据库层中的password_digest中存储安全的密码哈希值（2）获得一对虚拟属性，<code>password</code> <code>password_confirmation</code>,而且创建对象时会执行存在性验证和匹配验证（3）获得<code>authenticate</code>方法，如果密码正确，返回用户对象，如果密码错误，返回false。 要想生成不可逆的密码哈希值，我们需要用到<code>gem &#39;bcrypt&#39;</code>,它的作用就是生成哈希密码值。这样即使‘脱库’，用户的真实密码也不会丢失。</p>
+        <h4 id="1。each、map与collect"><a href="#1。each、map与collect" class="headerlink" title="1。each、map与collect"></a>1。each、map与collect</h4><p>(1)each方法是典型的迭代器，它的作用是可以遍历<strong>数组</strong>中的所有元素，并对其进行处理，但不改变原数组的值，返回结果也是原数组的值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">sum = 0</div><div class="line">a = [1,2,3,4,5]</div><div class="line">a.each do |item|</div><div class="line">  sum+=item</div><div class="line">end</div><div class="line">print sum #=&gt; 15</div></pre></td></tr></table></figure></p>
+<p>(2) 使用map与collect方法会形成一个新数组，原数组的值不变。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">a = [1,2,3,4,5]</div><div class="line">a.each&#123; |item| item*2&#125; #=&gt; [1,2,3,4,5]</div><div class="line">a #=&gt; [1,2,3,4,5]</div><div class="line"></div><div class="line">a.map&#123; |item| item*2&#125; #=&gt;[2,4,6,8,10]</div><div class="line">a #=&gt; [1,2,3,4,5]</div><div class="line"></div><div class="line">a.collect&#123; |item| item*2&#125; #=&gt; [2,4,6,8,10]</div><div class="line">a #=&gt; [1,2,3,4,5]</div></pre></td></tr></table></figure></p>
+<p>(3)使用map!与collect!会形成一个新的数组，并改变原数组的值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">a = [1,2,3,4,5]</div><div class="line">a.map!&#123; |item| item*2&#125; #=&gt; [2,4,6,8,10]</div><div class="line">a #=&gt; [2,4,6,8,10]</div><div class="line"></div><div class="line">a.collect!&#123; |item| item*2&#125; #=&gt; [2,4,6,8,10]</div><div class="line">a #=&gt; [2,4,6,8,10]</div></pre></td></tr></table></figure></p>
+<h4 id="2。作用域"><a href="#2。作用域" class="headerlink" title="2。作用域"></a>2。作用域</h4><p>#####（1）作用域门<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">v1 = 1</div><div class="line">class Myclass</div><div class="line">  v2 = 2</div><div class="line">  local_variables #=&gt;  [:v2]</div><div class="line">  def my_method</div><div class="line">    v3 = 3</div><div class="line">    local_variables</div><div class="line">  end</div><div class="line">  local_variables #=&gt; [:v2]</div><div class="line">end</div><div class="line"></div><div class="line">obj = Myclass.new</div><div class="line">obj.my_method #=&gt; [:v3]</div></pre></td></tr></table></figure></p>
+<p>当进行类定义（关键字：class）、模块定义(module)、方法定义（def）会产生作用域。</p>
+<p>#####（2）穿越作用域<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var = &quot;scope&quot;</div><div class="line">class Myclass</div><div class="line">  puts &quot;#&#123;var&#125;&quot;</div><div class="line"></div><div class="line">  def my_method  </div><div class="line">  end</div><div class="line">end</div><div class="line"></div><div class="line">#=&gt; NameError: undefined local variable or method `var&apos; for Myclass:Class</div><div class="line"></div><div class="line">得： 局部变量无法穿过Myclass的作用域</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var = &quot;scope&quot;</div><div class="line">Myclass = Class.new do</div><div class="line">  puts &quot;#&#123;var&#125; in the #&#123;self.class&#125;&quot;</div><div class="line">  def my_method</div><div class="line">   puts &quot;#&#123;var&#125;&quot;</div><div class="line">  end</div><div class="line">end</div><div class="line">#=&gt; scope in the Class</div><div class="line">#=&gt; undefined local variable or method `my_var&apos; for Myclass:Class (NameError)</div><div class="line"></div><div class="line">得：</div><div class="line">(1)通过方法调用可以让局部变量穿过Myclass的作用域;</div><div class="line">(2)局部变量var无法穿过my_method的作用域。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var = &quot;scope&quot;</div><div class="line">Myclass = Class.new do</div><div class="line"> puts &quot;#&#123;var&#125; in the #&#123;self.class&#125;&quot;</div><div class="line"> define_method :my_method do</div><div class="line">   puts &quot;#&#123;var&#125; in the #&#123;self.class&#125;&quot;</div><div class="line"> end</div><div class="line">end</div><div class="line"></div><div class="line">obj = Myclass.new</div><div class="line">obj.my_method</div><div class="line"></div><div class="line">#=&gt; scope in the Class</div><div class="line">#=&gt; scope in the Myclass</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -371,8 +371,6 @@
           
             <a href="/tags/Ruby/" rel="tag"># Ruby</a>
           
-            <a href="/tags/用户系统/" rel="tag"># 用户系统</a>
-          
         </div>
       
 
@@ -384,8 +382,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/07/部分gem总结/" rel="next" title="部分gem总结">
-                <i class="fa fa-chevron-left"></i> 部分gem总结
+              <a href="/2018/02/02/Ruby-中的-self/" rel="next" title="Ruby 中的 self">
+                <i class="fa fa-chevron-left"></i> Ruby 中的 self
               </a>
             
           </div>
@@ -393,10 +391,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/01/02/网络基础-HTTP/" rel="prev" title="网络基础-HTTP">
-                网络基础-HTTP <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -557,7 +551,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#注册功能"><span class="nav-number">1.</span> <span class="nav-text">注册功能</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Model"><span class="nav-number">1.0.1.</span> <span class="nav-text">Model</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#routes-rb"><span class="nav-number">1.0.2.</span> <span class="nav-text">routes.rb</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Views"><span class="nav-number">1.0.3.</span> <span class="nav-text">Views</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Controllers"><span class="nav-number">1.0.4.</span> <span class="nav-text">Controllers</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#验证用户"><span class="nav-number">1.0.5.</span> <span class="nav-text">验证用户</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1。each、map与collect"><span class="nav-number">1.</span> <span class="nav-text">1。each、map与collect</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2。作用域"><span class="nav-number">2.</span> <span class="nav-text">2。作用域</span></a></li></ol></div>
             
 
           </div>
