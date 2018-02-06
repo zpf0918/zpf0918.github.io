@@ -254,6 +254,175 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/07/部分gem总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jonathan-fei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jonathan-fei.pro">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/07/部分gem总结/" itemprop="url">部分gem总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-07T01:54:55+08:00">
+                2017-09-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Ruby/" itemprop="url" rel="index">
+                    <span itemprop="name">Ruby</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-gem-‘devise’-————————————-登录系统"><a href="#1-gem-‘devise’-————————————-登录系统" class="headerlink" title="1.gem ‘devise’             ————————————  登录系统"></a>1.gem ‘devise’             ————————————  登录系统</h3><blockquote>
+<p><strong>安装须知：</strong> 依次执行<code>bundle install</code> <code>rails g devise:install</code> <code>rails g devise user</code> <code>rake db:migrate</code>，最后重新<code>rails s</code>。</p>
+</blockquote>
+<h3 id="2-gem-‘bootstrap-sass’-————————————-前端开发套件"><a href="#2-gem-‘bootstrap-sass’-————————————-前端开发套件" class="headerlink" title="2.gem ‘bootstrap-sass’          ————————————  前端开发套件"></a>2.gem ‘bootstrap-sass’          ————————————  前端开发套件</h3><blockquote>
+<p><strong>安装须知：</strong><br>(1) 依次执行<code>bundle install</code> <code>mv app/assets/stylesheets/application.css app/assets/stylesheets/application.scss</code>;<br>(2)</p>
+</blockquote>
+<figure class="highlight ruby"><figcaption><span>app/assets/stylesheets/application.scss</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">+@import <span class="string">"bootstrap-sprockets"</span>;</div><div class="line">+@import <span class="string">"bootstrap"</span>;</div></pre></td></tr></table></figure>
+<p>最后重新<code>rails s</code></p>
+<h3 id="3-gem-‘simple-form’-————————————-简化表单"><a href="#3-gem-‘simple-form’-————————————-简化表单" class="headerlink" title="3.gem ‘simple_form’        ————————————  简化表单"></a>3.gem ‘simple_form’        ————————————  简化表单</h3><blockquote>
+<p><strong>安装须知：</strong> 依次执行<code>bundle install</code> <code>rails g simple_form:install --bootstrap</code>,最后重新<code>rails s</code></p>
+</blockquote>
+<h3 id="4-gem-‘font-awesome-rails’-————————————-图标套件"><a href="#4-gem-‘font-awesome-rails’-————————————-图标套件" class="headerlink" title="4.gem ‘font-awesome-rails’ ————————————  图标套件"></a>4.gem ‘font-awesome-rails’ ————————————  图标套件</h3><blockquote>
+<p><strong>安装须知</strong></p>
+</blockquote>
+<p>（1）<code>bundle install</code> ,重新<code>rails s</code><br>（2）</p>
+<figure class="highlight ruby"><figcaption><span>app/assets/stylesheets/application.scss</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@import <span class="string">"font-awesome"</span>;</div></pre></td></tr></table></figure>
+<h3 id="5-gem-‘better-errors’-————————————-更好的显示错误讯息"><a href="#5-gem-‘better-errors’-————————————-更好的显示错误讯息" class="headerlink" title="5.gem ‘better_errors’      ————————————  更好的显示错误讯息"></a>5.gem ‘better_errors’      ————————————  更好的显示错误讯息</h3><blockquote>
+<p><strong>安装须知</strong> <code>bundle install</code> 重启<code>rails s</code></p>
+</blockquote>
+<h3 id="6-gem-‘annotate’-————————————-在主要用于model中显示栏位"><a href="#6-gem-‘annotate’-————————————-在主要用于model中显示栏位" class="headerlink" title="6.gem ‘annotate’           ————————————  在主要用于model中显示栏位"></a>6.gem ‘annotate’           ————————————  在主要用于model中显示栏位</h3><blockquote>
+<p><strong>安装须知</strong> <code>bundle install</code> 重启<code>rails s</code><br>执行<code>annotate --exclude tests,fixtures,factories,serializers</code>,<br>ps：每次新增栏位后，都要执行这个命令，才会在具体model里显示出所有建立的栏位提示。</p>
+</blockquote>
+<h3 id="7-gem-‘awesome-rails-console’-—————————-让“金手指”变好看的套件"><a href="#7-gem-‘awesome-rails-console’-—————————-让“金手指”变好看的套件" class="headerlink" title="7.gem ‘awesome_rails_console’      —————————-  让“金手指”变好看的套件"></a>7.gem ‘awesome_rails_console’      —————————-  让“金手指”变好看的套件</h3><blockquote>
+<p><strong>安装须知</strong> <code>bundle install</code> 重启<code>rails s</code></p>
+</blockquote>
+<h3 id="8-gem-‘carrier-wave’-gem-‘mini-magick’-————————————-用于上传图片（可能还有其他的功能）"><a href="#8-gem-‘carrier-wave’-gem-‘mini-magick’-————————————-用于上传图片（可能还有其他的功能）" class="headerlink" title="8.gem ‘carrier_wave’  gem ‘mini_magick’      ————————————  用于上传图片（可能还有其他的功能）"></a>8.gem ‘carrier_wave’  gem ‘mini_magick’      ————————————  用于上传图片（可能还有其他的功能）</h3><blockquote>
+<p><strong>安装须知</strong> 依次执行：<code>bundle install</code> <code>rails g uploader image</code> 重启<code>rails s</code></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/07/两种方法实现收藏或者点赞功能/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -736,7 +905,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -758,7 +927,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="歪脖子鹅, NexT" />
+  <meta name="keywords" content="Rails,find find_by,where,select," />
 
 
 
@@ -81,17 +81,18 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="Rails中的Acvtice Record使得我们不用写SQL语句就可以查询数据库中的数据。当使用Rails中的方法查询数据时，过程大体是这样的：  将查询选项转为sql语句 触发sql语句在数据库中查询 将查询结果实例化（变成对应的模型对象）  1– 查询单个对象（1）find方法find方法用于查询指定主键的对象；Author.find(1) （2） find_by方法find_by 方法会查">
+<meta name="keywords" content="Rails,find find_by,where,select">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2017/09/06/hello-world/index.html">
+<meta property="og:title" content="Rails 中的数据查询方法">
+<meta property="og:url" content="http://yoursite.com/2018/02/06/Rails-中的数据查询方法/index.html">
 <meta property="og:site_name" content="jonathan-fei.pro">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="Rails中的Acvtice Record使得我们不用写SQL语句就可以查询数据库中的数据。当使用Rails中的方法查询数据时，过程大体是这样的：  将查询选项转为sql语句 触发sql语句在数据库中查询 将查询结果实例化（变成对应的模型对象）  1– 查询单个对象（1）find方法find方法用于查询指定主键的对象；Author.find(1) （2） find_by方法find_by 方法会查">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-09-06T09:33:31.000Z">
+<meta property="og:updated_time" content="2018-02-06T09:32:16.871Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="Rails 中的数据查询方法">
+<meta name="twitter:description" content="Rails中的Acvtice Record使得我们不用写SQL语句就可以查询数据库中的数据。当使用Rails中的方法查询数据时，过程大体是这样的：  将查询选项转为sql语句 触发sql语句在数据库中查询 将查询结果实例化（变成对应的模型对象）  1– 查询单个对象（1）find方法find方法用于查询指定主键的对象；Author.find(1) （2） find_by方法find_by 方法会查">
 
 
 
@@ -121,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/09/06/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/02/06/Rails-中的数据查询方法/"/>
 
 
 
 
 
-  <title>Hello World | jonathan-fei.pro</title>
+  <title>Rails 中的数据查询方法 | jonathan-fei.pro</title>
   
 
 
@@ -254,7 +255,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/06/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/06/Rails-中的数据查询方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="jonathan-fei">
@@ -271,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">Rails 中的数据查询方法</h1>
         
 
         <div class="post-meta">
@@ -283,8 +284,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-06T17:33:31+08:00">
-                2017-09-06
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-06T17:30:51+08:00">
+                2018-02-06
               </time>
             
 
@@ -293,6 +294,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Rails/" itemprop="url" rel="index">
+                    <span itemprop="name">Rails</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -321,15 +344,24 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <p>Rails中的Acvtice Record使得我们不用写SQL语句就可以查询数据库中的数据。<br>当使用Rails中的方法查询数据时，过程大体是这样的：</p>
+<ul>
+<li>将查询选项转为sql语句</li>
+<li>触发sql语句在数据库中查询</li>
+<li>将查询结果实例化（变成对应的模型对象）</li>
+</ul>
+<h4 id="1–-查询单个对象"><a href="#1–-查询单个对象" class="headerlink" title="1– 查询单个对象"></a>1– 查询单个对象</h4><p>（1）find方法<br>find方法用于查询指定主键的对象；<code>Author.find(1)</code></p>
+<p>（2） find_by方法<br>find_by 方法会查询到符合条件的第一条记录<br><code>Author.find_by(:name =&gt; &quot;鲁迅&quot;)</code> 也可以写成<br><code>Author.find_by name: &quot;鲁迅&quot;</code></p>
+<p>（3）take方法<br>take方法会查询到一条记录，往往是数据表中的第一条记录。<br><code>Author.take</code></p>
+<p>####2– 查询多个对象<br>我们常常使用each方法，用来检索数据表中的记录。它的原理是会让Active Record 捞出整个数据表的数据，然后对每条记录创建模型对象，并把整个模型对象以数组形式保存在内存中。如果数据量很多的话，这样明显是行不通的。Rails有两种方法可以解决这个问题：<br>（1）find_each<br>工作原理：find_each方法每次检索一批记录，然后把每条记录实例化成模型对象传入块。默认每次检索1000条记录。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Player.find_each do |player|</div><div class="line">  player.name</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>a. 使用batch_size 来指定每次检索的记录总数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Player.find_each(batch_size: 5000) do |player|</div><div class="line">  player.name</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>b. 使用<code>start</code> 实现从起始点进行ID检索 ，比这个ID小的都不会取回。并且这个ID必须是主键。平常情况下较少用这个方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 检索id从10开始的作者姓名</div><div class="line">Player.find_each(start: 10) do |player|</div><div class="line">  player.name</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>c.使用<code>finish</code> 实现从起始点进行ID检索，比这个ID大的都不取回。与<code>start</code>类似。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 检索id为10000到20000的作者姓名</div><div class="line">Player.find_each(start: 10000, finish: 20000) do |player|</div><div class="line">  player.name</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>（2）find_in_batches<br>工作原理：find_in_batches 方法每次检索一批记录，然后把每批记录实例化成模型数组传入块。用法和<code>find_each</code> 类似。</p>
+<h4 id="3-条件查询"><a href="#3-条件查询" class="headerlink" title="3.条件查询"></a>3.条件查询</h4><p>（1）数组条件中的<strong>占位符</strong><br>a.  ?<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ Player.where(&quot;age &gt;= ?&quot;, params[:age])</div><div class="line">或者</div><div class="line">$ Player.where(&quot;player.age &gt;= ?&quot;, params[:age])</div></pre></td></tr></table></figure></p>
+<p>b. 字符<br>如果条件中有很多变量，那么以下做法会更易于代码的阅读。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ Player.where(&quot;age &gt;= :age AND saler &gt;= :wage_level_&quot;, &#123; age: params[:age], wage_level: params[:wage_level]&#125;)</div></pre></td></tr></table></figure></p>
+<p>（2）使用<code>not</code> 反向查询<br>查询年龄在30岁以上的玩家<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ Player.where(&quot;diamond &gt; ?&quot;, 30)</div><div class="line">也可以写成</div><div class="line">$ Player.where.not(&quot; diamond &lt;= ?&quot;, 30)</div></pre></td></tr></table></figure></p>
+<h4 id="4-查询特定字段"><a href="#4-查询特定字段" class="headerlink" title="4. 查询特定字段"></a>4. 查询特定字段</h4><p>使用find、find_by、where方法时会返回table的全部字段，若想返回指定的字段可以使用<code>select</code> ，比如查询年龄大于20 的玩家名字。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Player.select(:name).where(&quot;age &gt;= ?&quot;, 30)</div><div class="line">查询名字和id</div><div class="line">Player.select(:userid, :name).where(&quot;age &gt;= ?&quot;, 30)</div><div class="line">&amp;</div><div class="line">Player.select(&quot;userid, name&quot;).where(&quot;age &gt;= ?&quot;, 30)</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -345,6 +377,18 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Rails/" rel="tag"># Rails</a>
+          
+            <a href="/tags/find-find-by/" rel="tag"># find find_by</a>
+          
+            <a href="/tags/where/" rel="tag"># where</a>
+          
+            <a href="/tags/select/" rel="tag"># select</a>
+          
+        </div>
+      
 
       
       
@@ -354,15 +398,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/02/02/Ruby-基础-学习笔记/" rel="next" title="Ruby 基础--学习笔记">
+                <i class="fa fa-chevron-left"></i> Ruby 基础--学习笔记
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/09/07/利用ransack做搜索功能/" rel="prev" title="利用ransack做搜索功能">
-                利用ransack做搜索功能 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -523,7 +567,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1–-查询单个对象"><span class="nav-number">1.</span> <span class="nav-text">1– 查询单个对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-条件查询"><span class="nav-number">2.</span> <span class="nav-text">3.条件查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-查询特定字段"><span class="nav-number">3.</span> <span class="nav-text">4. 查询特定字段</span></a></li></ol></div>
             
 
           </div>

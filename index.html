@@ -254,6 +254,165 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/06/Rails-中的数据查询方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jonathan-fei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jonathan-fei.pro">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/06/Rails-中的数据查询方法/" itemprop="url">Rails 中的数据查询方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-06T17:30:51+08:00">
+                2018-02-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Rails/" itemprop="url" rel="index">
+                    <span itemprop="name">Rails</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Rails中的Acvtice Record使得我们不用写SQL语句就可以查询数据库中的数据。<br>当使用Rails中的方法查询数据时，过程大体是这样的：</p>
+<ul>
+<li>将查询选项转为sql语句</li>
+<li>触发sql语句在数据库中查询</li>
+<li>将查询结果实例化（变成对应的模型对象）</li>
+</ul>
+<h4 id="1–-查询单个对象"><a href="#1–-查询单个对象" class="headerlink" title="1– 查询单个对象"></a>1– 查询单个对象</h4><p>（1）find方法<br>find方法用于查询指定主键的对象；<code>Author.find(1)</code></p>
+<p>（2） find_by方法<br>find_by 方法会查询到符合条件的第一条记录<br><code>Author.find_by(:name =&gt; &quot;鲁迅&quot;)</code> 也可以写成<br><code>Author.find_by name: &quot;鲁迅&quot;</code></p>
+<p>（3）take方法<br>take方法会查询到一条记录，往往是数据表中的第一条记录。<br><code>Author.take</code></p>
+<p>####2– 查询多个对象<br>我们常常使用each方法，用来检索数据表中的记录。它的原理是会让Active Record 捞出整个数据表的数据，然后对每条记录创建模型对象，并把整个模型对象以数组形式保存在内存中。如果数据量很多的话，这样明显是行不通的。Rails有两种方法可以解决这个问题：<br>（1）find_each<br>工作原理：find_each方法每次检索一批记录，然后把每条记录实例化成模型对象传入块。默认每次检索1000条记录。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Player.find_each do |player|</div><div class="line">  player.name</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>a. 使用batch_size 来指定每次检索的记录总数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Player.find_each(batch_size: 5000) do |player|</div><div class="line">  player.name</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>b. 使用<code>start</code> 实现从起始点进行ID检索 ，比这个ID小的都不会取回。并且这个ID必须是主键。平常情况下较少用这个方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 检索id从10开始的作者姓名</div><div class="line">Player.find_each(start: 10) do |player|</div><div class="line">  player.name</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>c.使用<code>finish</code> 实现从起始点进行ID检索，比这个ID大的都不取回。与<code>start</code>类似。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 检索id为10000到20000的作者姓名</div><div class="line">Player.find_each(start: 10000, finish: 20000) do |player|</div><div class="line">  player.name</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>（2）find_in_batches<br>工作原理：find_in_batches 方法每次检索一批记录，然后把每批记录实例化成模型数组传入块。用法和<code>find_each</code> 类似。</p>
+<h4 id="3-条件查询"><a href="#3-条件查询" class="headerlink" title="3.条件查询"></a>3.条件查询</h4><p>（1）数组条件中的<strong>占位符</strong><br>a.  ?<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ Player.where(&quot;age &gt;= ?&quot;, params[:age])</div><div class="line">或者</div><div class="line">$ Player.where(&quot;player.age &gt;= ?&quot;, params[:age])</div></pre></td></tr></table></figure></p>
+<p>b. 字符<br>如果条件中有很多变量，那么以下做法会更易于代码的阅读。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ Player.where(&quot;age &gt;= :age AND saler &gt;= :wage_level_&quot;, &#123; age: params[:age], wage_level: params[:wage_level]&#125;)</div></pre></td></tr></table></figure></p>
+<p>（2）使用<code>not</code> 反向查询<br>查询年龄在30岁以上的玩家<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ Player.where(&quot;diamond &gt; ?&quot;, 30)</div><div class="line">也可以写成</div><div class="line">$ Player.where.not(&quot; diamond &lt;= ?&quot;, 30)</div></pre></td></tr></table></figure></p>
+<h4 id="4-查询特定字段"><a href="#4-查询特定字段" class="headerlink" title="4. 查询特定字段"></a>4. 查询特定字段</h4><p>使用find、find_by、where方法时会返回table的全部字段，若想返回指定的字段可以使用<code>select</code> ，比如查询年龄大于20 的玩家名字。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Player.select(:name).where(&quot;age &gt;= ?&quot;, 30)</div><div class="line">查询名字和id</div><div class="line">Player.select(:userid, :name).where(&quot;age &gt;= ?&quot;, 30)</div><div class="line">&amp;</div><div class="line">Player.select(&quot;userid, name&quot;).where(&quot;age &gt;= ?&quot;, 30)</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/02/Ruby-基础-学习笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1763,175 +1922,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/07/部分gem总结/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="jonathan-fei">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jonathan-fei.pro">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/07/部分gem总结/" itemprop="url">部分gem总结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-07T01:54:55+08:00">
-                2017-09-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Ruby/" itemprop="url" rel="index">
-                    <span itemprop="name">Ruby</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="1-gem-‘devise’-————————————-登录系统"><a href="#1-gem-‘devise’-————————————-登录系统" class="headerlink" title="1.gem ‘devise’             ————————————  登录系统"></a>1.gem ‘devise’             ————————————  登录系统</h3><blockquote>
-<p><strong>安装须知：</strong> 依次执行<code>bundle install</code> <code>rails g devise:install</code> <code>rails g devise user</code> <code>rake db:migrate</code>，最后重新<code>rails s</code>。</p>
-</blockquote>
-<h3 id="2-gem-‘bootstrap-sass’-————————————-前端开发套件"><a href="#2-gem-‘bootstrap-sass’-————————————-前端开发套件" class="headerlink" title="2.gem ‘bootstrap-sass’          ————————————  前端开发套件"></a>2.gem ‘bootstrap-sass’          ————————————  前端开发套件</h3><blockquote>
-<p><strong>安装须知：</strong><br>(1) 依次执行<code>bundle install</code> <code>mv app/assets/stylesheets/application.css app/assets/stylesheets/application.scss</code>;<br>(2)</p>
-</blockquote>
-<figure class="highlight ruby"><figcaption><span>app/assets/stylesheets/application.scss</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">+@import <span class="string">"bootstrap-sprockets"</span>;</div><div class="line">+@import <span class="string">"bootstrap"</span>;</div></pre></td></tr></table></figure>
-<p>最后重新<code>rails s</code></p>
-<h3 id="3-gem-‘simple-form’-————————————-简化表单"><a href="#3-gem-‘simple-form’-————————————-简化表单" class="headerlink" title="3.gem ‘simple_form’        ————————————  简化表单"></a>3.gem ‘simple_form’        ————————————  简化表单</h3><blockquote>
-<p><strong>安装须知：</strong> 依次执行<code>bundle install</code> <code>rails g simple_form:install --bootstrap</code>,最后重新<code>rails s</code></p>
-</blockquote>
-<h3 id="4-gem-‘font-awesome-rails’-————————————-图标套件"><a href="#4-gem-‘font-awesome-rails’-————————————-图标套件" class="headerlink" title="4.gem ‘font-awesome-rails’ ————————————  图标套件"></a>4.gem ‘font-awesome-rails’ ————————————  图标套件</h3><blockquote>
-<p><strong>安装须知</strong></p>
-</blockquote>
-<p>（1）<code>bundle install</code> ,重新<code>rails s</code><br>（2）</p>
-<figure class="highlight ruby"><figcaption><span>app/assets/stylesheets/application.scss</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@import <span class="string">"font-awesome"</span>;</div></pre></td></tr></table></figure>
-<h3 id="5-gem-‘better-errors’-————————————-更好的显示错误讯息"><a href="#5-gem-‘better-errors’-————————————-更好的显示错误讯息" class="headerlink" title="5.gem ‘better_errors’      ————————————  更好的显示错误讯息"></a>5.gem ‘better_errors’      ————————————  更好的显示错误讯息</h3><blockquote>
-<p><strong>安装须知</strong> <code>bundle install</code> 重启<code>rails s</code></p>
-</blockquote>
-<h3 id="6-gem-‘annotate’-————————————-在主要用于model中显示栏位"><a href="#6-gem-‘annotate’-————————————-在主要用于model中显示栏位" class="headerlink" title="6.gem ‘annotate’           ————————————  在主要用于model中显示栏位"></a>6.gem ‘annotate’           ————————————  在主要用于model中显示栏位</h3><blockquote>
-<p><strong>安装须知</strong> <code>bundle install</code> 重启<code>rails s</code><br>执行<code>annotate --exclude tests,fixtures,factories,serializers</code>,<br>ps：每次新增栏位后，都要执行这个命令，才会在具体model里显示出所有建立的栏位提示。</p>
-</blockquote>
-<h3 id="7-gem-‘awesome-rails-console’-—————————-让“金手指”变好看的套件"><a href="#7-gem-‘awesome-rails-console’-—————————-让“金手指”变好看的套件" class="headerlink" title="7.gem ‘awesome_rails_console’      —————————-  让“金手指”变好看的套件"></a>7.gem ‘awesome_rails_console’      —————————-  让“金手指”变好看的套件</h3><blockquote>
-<p><strong>安装须知</strong> <code>bundle install</code> 重启<code>rails s</code></p>
-</blockquote>
-<h3 id="8-gem-‘carrier-wave’-gem-‘mini-magick’-————————————-用于上传图片（可能还有其他的功能）"><a href="#8-gem-‘carrier-wave’-gem-‘mini-magick’-————————————-用于上传图片（可能还有其他的功能）" class="headerlink" title="8.gem ‘carrier_wave’  gem ‘mini_magick’      ————————————  用于上传图片（可能还有其他的功能）"></a>8.gem ‘carrier_wave’  gem ‘mini_magick’      ————————————  用于上传图片（可能还有其他的功能）</h3><blockquote>
-<p><strong>安装须知</strong> 依次执行：<code>bundle install</code> <code>rails g uploader image</code> 重启<code>rails s</code></p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1986,7 +1976,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2008,7 +1998,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
