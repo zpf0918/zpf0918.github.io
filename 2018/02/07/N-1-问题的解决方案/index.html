@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="数据库,时间复杂度,数据结构与算法," />
+  <meta name="keywords" content="N+1 SQL查询,rails,慢查询," />
 
 
 
@@ -81,20 +81,18 @@
 
 
 
-<meta name="description" content="开始之前的说明：最近在学习数据库的相关知识，找到了一篇很好的学习文章，写的蛮深入，同样内容也很长，所以理解起来有些难度。为了让自己更好的理解数据库的工作原理，我把自己对这篇文章的理解，写成了这篇博客（共计三篇），旨在提高自己的学习效果。原文地址：http://blog.jobbole.com/100349/。  前言：在了解数据库是如何工作的内容之前，需要知道一些基本概念。在很久以前，开发人员需">
-<meta name="keywords" content="数据库,时间复杂度,数据结构与算法">
+<meta name="description" content="Rails中的Active Record的关联功能很强大，但是有时会产生N+1 SQL 查询问题。比如查看一篇文章下的很多评论就会产生N+1 问题。PS: 问题往往出现在一对多和多对多的关系中。 解决思路如下： 1. 安装检测工具（1）gem &amp;#39;rack-mini-profiler&amp;#39; ，效能检测工具。安装后，网页上左上角会出现网页加载时间的提示。（2）gem &amp;#39;bullet">
+<meta name="keywords" content="N+1 SQL查询,rails,慢查询">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据库的工作原理（一）">
-<meta property="og:url" content="http://yoursite.com/2018/01/08/数据库的工作原理（一）/index.html">
+<meta property="og:title" content="N + 1 问题的解决方案">
+<meta property="og:url" content="http://yoursite.com/2018/02/07/N-1-问题的解决方案/index.html">
 <meta property="og:site_name" content="jonathan-fei.pro">
-<meta property="og:description" content="开始之前的说明：最近在学习数据库的相关知识，找到了一篇很好的学习文章，写的蛮深入，同样内容也很长，所以理解起来有些难度。为了让自己更好的理解数据库的工作原理，我把自己对这篇文章的理解，写成了这篇博客（共计三篇），旨在提高自己的学习效果。原文地址：http://blog.jobbole.com/100349/。  前言：在了解数据库是如何工作的内容之前，需要知道一些基本概念。在很久以前，开发人员需">
+<meta property="og:description" content="Rails中的Active Record的关联功能很强大，但是有时会产生N+1 SQL 查询问题。比如查看一篇文章下的很多评论就会产生N+1 问题。PS: 问题往往出现在一对多和多对多的关系中。 解决思路如下： 1. 安装检测工具（1）gem &amp;#39;rack-mini-profiler&amp;#39; ，效能检测工具。安装后，网页上左上角会出现网页加载时间的提示。（2）gem &amp;#39;bullet">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fn96rvwmmoj30dq0fijtz.jpg">
-<meta property="og:updated_time" content="2018-01-08T06:38:09.407Z">
+<meta property="og:updated_time" content="2018-02-07T02:39:12.724Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据库的工作原理（一）">
-<meta name="twitter:description" content="开始之前的说明：最近在学习数据库的相关知识，找到了一篇很好的学习文章，写的蛮深入，同样内容也很长，所以理解起来有些难度。为了让自己更好的理解数据库的工作原理，我把自己对这篇文章的理解，写成了这篇博客（共计三篇），旨在提高自己的学习效果。原文地址：http://blog.jobbole.com/100349/。  前言：在了解数据库是如何工作的内容之前，需要知道一些基本概念。在很久以前，开发人员需">
-<meta name="twitter:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fn96rvwmmoj30dq0fijtz.jpg">
+<meta name="twitter:title" content="N + 1 问题的解决方案">
+<meta name="twitter:description" content="Rails中的Active Record的关联功能很强大，但是有时会产生N+1 SQL 查询问题。比如查看一篇文章下的很多评论就会产生N+1 问题。PS: 问题往往出现在一对多和多对多的关系中。 解决思路如下： 1. 安装检测工具（1）gem &amp;#39;rack-mini-profiler&amp;#39; ，效能检测工具。安装后，网页上左上角会出现网页加载时间的提示。（2）gem &amp;#39;bullet">
 
 
 
@@ -124,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/01/08/数据库的工作原理（一）/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/02/07/N-1-问题的解决方案/"/>
 
 
 
 
 
-  <title>数据库的工作原理（一） | jonathan-fei.pro</title>
+  <title>N + 1 问题的解决方案 | jonathan-fei.pro</title>
   
 
 
@@ -257,7 +255,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/08/数据库的工作原理（一）/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/07/N-1-问题的解决方案/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="jonathan-fei">
@@ -274,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">数据库的工作原理（一）</h1>
+          <h1 class="post-title" itemprop="name headline">N + 1 问题的解决方案</h1>
         
 
         <div class="post-meta">
@@ -286,8 +284,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-08T14:36:24+08:00">
-                2018-01-08
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-07T10:38:06+08:00">
+                2018-02-07
               </time>
             
 
@@ -309,8 +307,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
+                  <a href="/categories/Rails/" itemprop="url" rel="index">
+                    <span itemprop="name">Rails</span>
                   </a>
                 </span>
 
@@ -346,40 +344,19 @@
       
 
       
-        <blockquote>
-<p>开始之前的<strong>说明：</strong>最近在学习数据库的相关知识，找到了一篇很好的学习文章，写的蛮深入，同样内容也很长，所以理解起来有些难度。为了让自己更好的理解数据库的工作原理，我把自己对这篇文章的理解，写成了这篇博客（共计三篇），旨在提高自己的学习效果。<br>原文地址：<a href="http://blog.jobbole.com/100349/。" target="_blank" rel="external">http://blog.jobbole.com/100349/。</a></p>
-</blockquote>
-<p><strong>前言</strong>：在了解数据库是如何工作的内容之前，需要知道一些基本概念。在很久以前，开发人员需要把常用的算法和数据结构牢记于心，因为当时计算机的处理能力较差，无法承受对cpu的浪费。研究数据结构和算法的目的，或者说选择哪个数据结构和算法，是<strong>为了以更快的速度得到数据处理的结果</strong>。判断一个算法优劣的因素大体上有三个：<br>（1）时间复杂度<br>（2）算法的内存消耗<br>（3）算法磁盘I/O消耗<br>这里主要介绍时间复杂度的概念。<br>PS：《数据库工作原理（一）》主要梳理相关的基础概念。</p>
-<h4 id="一、-时间复杂度"><a href="#一、-时间复杂度" class="headerlink" title="一、 时间复杂度"></a>一、 时间复杂度</h4><p>时间复杂度指的是某个算法处理一定量数据所要消耗的时间。这个时间我们无法进行准确的计算，但是可以通过“某个算法处理一定量的数据需要多少次运算”来间接的判断算法的优劣。这里我们使用O(某函数)这样的方式来表示某个算法处理一定量的数据进行的运算次数，所需的运算次数即函数计算出的值，比如像下面这样。<br>假设有1000000笔数据，各个算法的运算次数如下：</p>
+        <p>Rails中的Active Record的关联功能很强大，但是有时会产生N+1 SQL 查询问题。比如查看一篇文章下的很多评论就会产生N+1 问题。<br>PS: 问题往往出现在一对多和多对多的关系中。</p>
+<p>解决思路如下：</p>
+<h5 id="1-安装检测工具"><a href="#1-安装检测工具" class="headerlink" title="1. 安装检测工具"></a>1. 安装检测工具</h5><p>（1）<code>gem &#39;rack-mini-profiler&#39;</code> ，效能检测工具。安装后，网页上左上角会出现网页加载时间的提示。<br>（2）<code>gem &#39;bullet&#39;, group: &#39;development&#39;</code>, N+1 query检测工具。使用流程可参考：<a href="https://github.com/flyerhzm/bullet" target="_blank" rel="external">bulldet</a>，当你的代码存在N+1问题时，会出现例如下面的提示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">USE eager loading detected</div><div class="line">  Post =&gt; [:user]</div><div class="line">  Add to your finder: :includes =&gt; [:user]</div><div class="line">Call stack</div></pre></td></tr></table></figure></p>
+<h4 id="2-使用-inclueds-关联"><a href="#2-使用-inclueds-关联" class="headerlink" title="2. 使用 inclueds 关联"></a>2. 使用 inclueds 关联</h4><p>（1）model 之间的关系<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">class User &lt; ApplicationRecord</div><div class="line">  has_many :posts</div><div class="line">end</div><div class="line"></div><div class="line">class Post &lt; ApplicationRecord</div><div class="line">  belongs_to :user</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>（2）修改控制器中代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">class PostsController &lt; ApplicationController</div><div class="line">  def index</div><div class="line">    posts = Post.includes(:user).page(params[:page])</div><div class="line">  end</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>此时，就会观察到rails log中只会出现两条SQL查询语句,。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Comment Load (0.5ms)  SELECT &quot;comments&quot;.* FROM &quot;comments&quot; WHERE &quot;comments&quot;.&quot;post_id&quot; = ?  [[&quot;post_id&quot;, 1]]</div><div class="line">  User Load (0.4ms)  SELECT &quot;users&quot;.* FROM &quot;users&quot; WHERE &quot;users&quot;.&quot;id&quot; IN (4, 18, 2, 14, 13, 3, 12)</div></pre></td></tr></table></figure></p>
+<p>N + 1 其实属于是慢查询的问题，下面就大体总结下解决慢查询问题及解决方法：</p>
 <ul>
-<li>O(1) 算法会消耗 1 次运算</li>
-<li>O(log(n)) 算法会消耗 14 次运算</li>
-<li>O(n) 算法会消耗 1,000,000 次运算</li>
-<li>O(n*log(n)) 算法会消耗 14,000,000 次运算</li>
-<li>O(n^2) 算法会消耗 1,000,000,000,000 次运算</li>
+<li>N + 1 ——– ——–includes</li>
+<li>大量数据 ———– find_each（或者 find_in_batches）</li>
+<li>查询慢 ————– 加 索引</li>
+<li>捞出所需字段 —— select 方法</li>
 </ul>
-<p>这样我们就很容易得知，O（1）算法是我们首要选择的，O(n^2)是我们绝不会选择的算法。</p>
-<p>了解了时间复杂度的概念以及如何表示时间复杂度后，接下来的内容会容易理解很多，比如：</p>
-<ul>
-<li>一个好的哈希表会得到O(1)复杂度，这是最理想的状态</li>
-<li>一个均衡的树会得到O(log(n))复杂度，其中n代表数据量，即要处理数据的数量大小</li>
-<li>一个阵列会得到O(n)复杂度</li>
-<li>最好的排序算法具有O(n*log(n))复杂度</li>
-<li>糟糕的排序算法具有O(n^2)复杂度。</li>
-</ul>
-<p>这里的哈希表、B树、阵列，它们是不同的数据结构。根据他们能够得到的时间复杂的不同，我们当然会尽可能选择时间复杂度低的那一个。</p>
-<h4 id="二、数据结构"><a href="#二、数据结构" class="headerlink" title="二、数据结构"></a>二、数据结构</h4><p>   数据结构可以类比为房屋结构，就像不同屋子有不同的结构一样，每种不同的房屋结构会有不同的用途。比如工业厂房会很大，而且比较空旷，用于进行工业生产；写字楼的结构比较复杂，用于人们上班办公；居民房的结构相比会小一些，用于居住等。数据结构也一样，不同的数据结构有不同的适用场景，我们不能直接评论数据结构的好坏之分，但是会有一个评判标准，就是处理数据的速度。</p>
-<p>如上所说的一样，不同的房屋结构适用于不同场景。数据结构也一样，有的数据结构善于处理这种情况，有的数据结构善于处理那种情况。例如：</p>
-<ul>
-<li>阵列，用于数据量比较小的情况，它的时间复杂度为 O(n)</li>
-<li>树，善于处理“查找一个确定值”的情况，它的时间复杂度为O(log(n))，树是阵列的优化。</li>
-<li>B树，善于处理“查找范围值”的情况，它需要消耗 M+log(N)次运算</li>
-<li>哈希表，用于快速查找某个值。</li>
-</ul>
-<p>数据结构是数据库内部的基本组件。</p>
-<h4 id="三、数据库概览"><a href="#三、数据库概览" class="headerlink" title="三、数据库概览"></a>三、数据库概览</h4><p>数据库说白了，其实是一堆文件的集合，一个信息集合，对这一堆文件进行精心的设计就是数据库干的工作。比如可以快速处理数据（如查询），使用事务来保证数据的安全和唯一性等。</p>
-<p>数据库是信息的集合，那么可以把它想象成数据的仓库。既然是仓库，那么就需要管理，管理就需要工具，数据库的各种组件就属于是工具，他们用来管理这个大仓库中的不同事务。<br><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fn96rvwmmoj30dq0fijtz.jpg" alt=""><br>这张图上列出了数据库内的各组件。包括客户端管理器、查询管理器、数据管理器等。</p>
-<p>下一篇将会着重介绍数据库的一个很重要的管理器–查询管理器。</p>
 
       
     </div>
@@ -397,11 +374,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/数据库/" rel="tag"># 数据库</a>
+            <a href="/tags/N-1-SQL查询/" rel="tag"># N+1 SQL查询</a>
           
-            <a href="/tags/时间复杂度/" rel="tag"># 时间复杂度</a>
+            <a href="/tags/rails/" rel="tag"># rails</a>
           
-            <a href="/tags/数据结构与算法/" rel="tag"># 数据结构与算法</a>
+            <a href="/tags/慢查询/" rel="tag"># 慢查询</a>
           
         </div>
       
@@ -414,8 +391,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/06/Rails项目部署/" rel="next" title="Rails项目部署">
-                <i class="fa fa-chevron-left"></i> Rails项目部署
+              <a href="/2018/02/06/使用-carrierwave-实现图片上传/" rel="next" title="使用 carrierwave 实现图片上传">
+                <i class="fa fa-chevron-left"></i> 使用 carrierwave 实现图片上传
               </a>
             
           </div>
@@ -423,10 +400,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/01/08/Rails生成乱数ID的实现方法/" rel="prev" title="Rails生成乱数ID的实现方法">
-                Rails生成乱数ID的实现方法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -587,7 +560,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、-时间复杂度"><span class="nav-number">1.</span> <span class="nav-text">一、 时间复杂度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、数据结构"><span class="nav-number">2.</span> <span class="nav-text">二、数据结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、数据库概览"><span class="nav-number">3.</span> <span class="nav-text">三、数据库概览</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-安装检测工具"><span class="nav-number">1.</span> <span class="nav-text">1. 安装检测工具</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-使用-inclueds-关联"><span class="nav-number"></span> <span class="nav-text">2. 使用 inclueds 关联</span></a></div>
             
 
           </div>

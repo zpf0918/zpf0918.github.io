@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-02-06T15:40:37.340Z</updated>
+  <updated>2018-02-07T02:39:12.724Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>N + 1 问题的解决方案</title>
+    <link href="http://yoursite.com/2018/02/07/N-1-%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    <id>http://yoursite.com/2018/02/07/N-1-问题的解决方案/</id>
+    <published>2018-02-07T02:38:06.000Z</published>
+    <updated>2018-02-07T02:39:12.724Z</updated>
+    
+    <content type="html"><![CDATA[<p>Rails中的Active Record的关联功能很强大，但是有时会产生N+1 SQL 查询问题。比如查看一篇文章下的很多评论就会产生N+1 问题。<br>PS: 问题往往出现在一对多和多对多的关系中。</p><p>解决思路如下：</p><h5 id="1-安装检测工具"><a href="#1-安装检测工具" class="headerlink" title="1. 安装检测工具"></a>1. 安装检测工具</h5><p>（1）<code>gem &#39;rack-mini-profiler&#39;</code> ，效能检测工具。安装后，网页上左上角会出现网页加载时间的提示。<br>（2）<code>gem &#39;bullet&#39;, group: &#39;development&#39;</code>, N+1 query检测工具。使用流程可参考：<a href="https://github.com/flyerhzm/bullet" target="_blank" rel="external">bulldet</a>，当你的代码存在N+1问题时，会出现例如下面的提示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">USE eager loading detected</div><div class="line">  Post =&gt; [:user]</div><div class="line">  Add to your finder: :includes =&gt; [:user]</div><div class="line">Call stack</div></pre></td></tr></table></figure></p><h4 id="2-使用-inclueds-关联"><a href="#2-使用-inclueds-关联" class="headerlink" title="2. 使用 inclueds 关联"></a>2. 使用 inclueds 关联</h4><p>（1）model 之间的关系<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">class User &lt; ApplicationRecord</div><div class="line">  has_many :posts</div><div class="line">end</div><div class="line"></div><div class="line">class Post &lt; ApplicationRecord</div><div class="line">  belongs_to :user</div><div class="line">end</div></pre></td></tr></table></figure></p><p>（2）修改控制器中代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">class PostsController &lt; ApplicationController</div><div class="line">  def index</div><div class="line">    posts = Post.includes(:user).page(params[:page])</div><div class="line">  end</div><div class="line">end</div></pre></td></tr></table></figure></p><p>此时，就会观察到rails log中只会出现两条SQL查询语句,。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Comment Load (0.5ms)  SELECT &quot;comments&quot;.* FROM &quot;comments&quot; WHERE &quot;comments&quot;.&quot;post_id&quot; = ?  [[&quot;post_id&quot;, 1]]</div><div class="line">  User Load (0.4ms)  SELECT &quot;users&quot;.* FROM &quot;users&quot; WHERE &quot;users&quot;.&quot;id&quot; IN (4, 18, 2, 14, 13, 3, 12)</div></pre></td></tr></table></figure></p><p>N + 1 其实属于是慢查询的问题，下面就大体总结下解决慢查询问题及解决方法：</p><ul><li>N + 1 ——– ——–includes</li><li>大量数据 ———– find_each（或者 find_in_batches）</li><li>查询慢 ————– 加 索引</li><li>捞出所需字段 —— select 方法</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Rails中的Active Record的关联功能很强大，但是有时会产生N+1 SQL 查询问题。比如查看一篇文章下的很多评论就会产生N+1 问题。&lt;br&gt;PS: 问题往往出现在一对多和多对多的关系中。&lt;/p&gt;
+&lt;p&gt;解决思路如下：&lt;/p&gt;
+&lt;h5 id=&quot;1-安装检测工具
+      
+    
+    </summary>
+    
+      <category term="Rails" scheme="http://yoursite.com/categories/Rails/"/>
+    
+    
+      <category term="N+1 SQL查询" scheme="http://yoursite.com/tags/N-1-SQL%E6%9F%A5%E8%AF%A2/"/>
+    
+      <category term="rails" scheme="http://yoursite.com/tags/rails/"/>
+    
+      <category term="慢查询" scheme="http://yoursite.com/tags/%E6%85%A2%E6%9F%A5%E8%AF%A2/"/>
+    
+  </entry>
   
   <entry>
     <title>使用 carrierwave 实现图片上传</title>
