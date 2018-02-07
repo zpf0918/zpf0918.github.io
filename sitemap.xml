@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/02/06/Rails-%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%B3%95/</loc>
+    
+    <lastmod>2018-02-07T05:01:13.833Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/02/06/%E4%BD%BF%E7%94%A8-carrierwave-%E5%AE%9E%E7%8E%B0%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0/</loc>
     
     <lastmod>2018-02-07T04:26:02.196Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>http://yoursite.com/2018/02/02/Ruby-%E5%9F%BA%E7%A1%80-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
     
     <lastmod>2018-02-07T01:20:05.151Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/02/06/Rails-%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%B3%95/</loc>
-    
-    <lastmod>2018-02-06T09:35:25.015Z</lastmod>
     
   </url>
   
