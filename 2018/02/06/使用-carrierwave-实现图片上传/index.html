@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="最近项目中需要实现头像上传功能的API接口，并且可以设置默认头像，这篇文章来大概总结一下具体的实现过程。 Rails中 实现图片上传最常用的是使用“gem carrierwave”。carrierwave  Step1 安装gem &amp;quot;carrierwave&amp;quot; gem mini_magick Step21rails g image uploader 这个命令会生成image_u">
+<meta name="description" content="最近项目中需要实现头像上传功能的API接口，并且可以设置默认头像，这篇文章来大概总结一下具体的实现过程。 Rails中 实现图片上传最常用的是使用“gem carrierwave”。github 地址： carrierwave  Step1 安装gem &amp;quot;carrierwave&amp;quot; gem &amp;quot;mini_magick&amp;quot; Step21rails g image">
 <meta name="keywords" content="carrierwave,图片上传">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用 carrierwave 实现图片上传">
 <meta property="og:url" content="http://yoursite.com/2018/02/06/使用-carrierwave-实现图片上传/index.html">
 <meta property="og:site_name" content="jonathan-fei.pro">
-<meta property="og:description" content="最近项目中需要实现头像上传功能的API接口，并且可以设置默认头像，这篇文章来大概总结一下具体的实现过程。 Rails中 实现图片上传最常用的是使用“gem carrierwave”。carrierwave  Step1 安装gem &amp;quot;carrierwave&amp;quot; gem mini_magick Step21rails g image uploader 这个命令会生成image_u">
+<meta property="og:description" content="最近项目中需要实现头像上传功能的API接口，并且可以设置默认头像，这篇文章来大概总结一下具体的实现过程。 Rails中 实现图片上传最常用的是使用“gem carrierwave”。github 地址： carrierwave  Step1 安装gem &amp;quot;carrierwave&amp;quot; gem &amp;quot;mini_magick&amp;quot; Step21rails g image">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-02-06T15:37:17.685Z">
+<meta property="og:updated_time" content="2018-02-06T15:40:37.340Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用 carrierwave 实现图片上传">
-<meta name="twitter:description" content="最近项目中需要实现头像上传功能的API接口，并且可以设置默认头像，这篇文章来大概总结一下具体的实现过程。 Rails中 实现图片上传最常用的是使用“gem carrierwave”。carrierwave  Step1 安装gem &amp;quot;carrierwave&amp;quot; gem mini_magick Step21rails g image uploader 这个命令会生成image_u">
+<meta name="twitter:description" content="最近项目中需要实现头像上传功能的API接口，并且可以设置默认头像，这篇文章来大概总结一下具体的实现过程。 Rails中 实现图片上传最常用的是使用“gem carrierwave”。github 地址： carrierwave  Step1 安装gem &amp;quot;carrierwave&amp;quot; gem &amp;quot;mini_magick&amp;quot; Step21rails g image">
 
 
 
@@ -346,9 +346,9 @@
       
         <blockquote>
 <p>最近项目中需要实现头像上传功能的API接口，并且可以设置默认头像，这篇文章来大概总结一下具体的实现过程。</p>
-<p>Rails中 实现图片上传最常用的是使用“gem carrierwave”。<br><a href="https://github.com/carrierwaveuploader/carrierwave" target="_blank" rel="external">carrierwave</a></p>
+<p>Rails中 实现图片上传最常用的是使用“gem carrierwave”。<br>github 地址： <a href="https://github.com/carrierwaveuploader/carrierwave" target="_blank" rel="external">carrierwave</a></p>
 </blockquote>
-<h4 id="Step1"><a href="#Step1" class="headerlink" title="Step1"></a>Step1</h4><p> 安装<code>gem &quot;carrierwave&quot;</code> <code>gem mini_magick</code></p>
+<h4 id="Step1"><a href="#Step1" class="headerlink" title="Step1"></a>Step1</h4><p> 安装<code>gem &quot;carrierwave&quot;</code> <code>gem &quot;mini_magick&quot;</code></p>
 <h4 id="Step2"><a href="#Step2" class="headerlink" title="Step2"></a>Step2</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rails g image uploader</div></pre></td></tr></table></figure>
 <p>这个命令会生成<code>image_uploader.rb</code>这个文件。之后关于图片的设置都需要在这个文件里设置。下面是我设置的配置文件。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"> class ImageUploader &lt; CarrierWave::Uploader::Base</div><div class="line">  include CarrierWave::MiniMagick</div><div class="line"></div><div class="line"></div><div class="line">  storage :file</div><div class="line"></div><div class="line">  def store_dir</div><div class="line">    &quot;uploads/#&#123;model.class.to_s.underscore&#125;/#&#123;mounted_as&#125;/#&#123;model.id&#125;&quot;</div><div class="line">  end</div><div class="line"></div><div class="line"># 设置图片大小，分为三个尺寸</div><div class="line">   process resize_to_fit: [800,800]</div><div class="line"></div><div class="line">   version :thumb do</div><div class="line">     process resize_to_fill: [200,200]</div><div class="line">   end</div><div class="line"></div><div class="line">   version :medium do</div><div class="line">     process resize_to_fill: [400,400]</div><div class="line">   end</div><div class="line"></div><div class="line">#设置图片的默认url地址，比如我要实现默认头像的设置，就会用到这个方法</div><div class="line">  def default_url(*args)</div><div class="line">    &quot;/uploads/tbl_playerinfo/headimg/1/&quot; + [version_name, &quot;14563MHK40-13251.jpg&quot;].compact.join(&apos;_&apos;)</div><div class="line">  end</div><div class="line"></div><div class="line"># 图片格式的设置</div><div class="line">  def extension_whitelist</div><div class="line">    %w(jpg jpeg gif png)</div><div class="line">  end</div><div class="line">end</div></pre></td></tr></table></figure>
