@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/02/02/Ruby-%E5%9F%BA%E7%A1%80-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    
+    <lastmod>2018-02-08T14:47:33.445Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/01/04/SQL%E5%9F%BA%E7%A1%80/</loc>
     
     <lastmod>2018-02-08T14:45:13.977Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://yoursite.com/2018/02/02/Ruby-%E4%B8%AD%E7%9A%84-self/</loc>
     
     <lastmod>2018-02-08T14:44:35.298Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/02/02/Ruby-%E5%9F%BA%E7%A1%80-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
-    
-    <lastmod>2018-02-08T14:44:12.299Z</lastmod>
     
   </url>
   
