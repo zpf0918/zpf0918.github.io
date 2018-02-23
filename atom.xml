@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-02-22T14:43:42.143Z</updated>
+  <updated>2018-02-23T10:18:02.551Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>简述Ransack</title>
+    <link href="http://yoursite.com/2018/02/23/%E7%AE%80%E8%BF%B0Ransack/"/>
+    <id>http://yoursite.com/2018/02/23/简述Ransack/</id>
+    <published>2018-02-23T10:16:56.000Z</published>
+    <updated>2018-02-23T10:18:02.551Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="一-Ransack-是什么？"><a href="#一-Ransack-是什么？" class="headerlink" title="一. Ransack 是什么？"></a>一. Ransack 是什么？</h4><p>Ransack是rails中用来做搜索的一个gem。</p><h4 id="二-Ransack-怎么用？"><a href="#二-Ransack-怎么用？" class="headerlink" title="二. Ransack 怎么用？"></a>二. Ransack 怎么用？</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#controller document</span></div><div class="line">  <span class="class"><span class="keyword">class</span> <span class="title">TblAccountsController</span> &lt; ApplicationController</span></div><div class="line">    @q = TblAccount.ransack([<span class="symbol">:q</span>])</div><div class="line">    @player = TblAccount.result(<span class="symbol">distinct:</span> <span class="literal">true</span>)</div><div class="line">  <span class="keyword">end</span></div></pre></td></tr></table></figure><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># views document</span></div><div class="line">&lt;% search_form_for @q <span class="keyword">do</span> <span class="params">|f|</span> %&gt;</div><div class="line">   &lt;%= f.search_field <span class="symbol">:account_cont</span> %&gt;</div><div class="line">   &lt;%= submit_tag <span class="string">"搜索"</span>, <span class="class"><span class="keyword">class</span>: "<span class="title">btn</span>" %&gt;</span></div><div class="line">&lt;% <span class="keyword">end</span> %&gt;</div></pre></td></tr></table></figure><p>这里只是简单的用法介绍，另外还有高级用法，这里不再赘述，具体用法可以参见<a href="https://github.com/activerecord-hackery/ransack/blob/master/README.md" target="_blank" rel="external">https://github.com/activerecord-hackery/ransack/blob/master/README.md</a></p><h4 id="三-Ransack-原理"><a href="#三-Ransack-原理" class="headerlink" title="三. Ransack 原理"></a>三. Ransack 原理</h4><p>Ransack用来做模糊(LIKE)查询。当我们使用Ransack进行查询时，它会通过Active Record 执行sql语句，去搜索并且返回与输入字符相匹配的结果，查询日志代码如下：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT  <span class="string">`tbl_account`</span>.* FROM <span class="string">`tbl_account`</span> WHERE (<span class="string">`tbl_account`</span>.<span class="string">`account`</span> LIKE <span class="string">'%玩家%'</span> LIKE <span class="string">'%joe%'</span>)</div></pre></td></tr></table></figure></p><p>这样会查询中带有“joe”关键字的所有用户，我们可以直接将rails查询语句转化为sql语句，来弄清ransack查询的真相。<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"> <span class="meta">&gt;&gt; </span>TblAccount.ransack(<span class="symbol">account_cont:</span> <span class="string">"jonathan"</span>).result.to_sql <span class="comment"># account为tbl_account这张表中的一个字段。</span></div><div class="line"> =&gt; SELECT <span class="string">`tbl_account`</span>.* FROM <span class="string">`tbl_account`</span> WHERE (<span class="string">`tbl_account`</span>.<span class="string">`account`</span> LIKE <span class="string">'jonathan'</span>)</div><div class="line"></div><div class="line">相当于</div><div class="line"><span class="meta">&gt;&gt;</span> TblAccount.where(<span class="string">"account like ?"</span>, <span class="string">"%jonathan%"</span>)</div><div class="line">=&gt; SELECT <span class="string">`tbl_account`</span>.* FROM <span class="string">`tbl_account`</span> WHERE (account like <span class="string">'jonathan'</span>)</div></pre></td></tr></table></figure></p><p>PS： 关于ransack中的cont以及其他搜索条件介绍，请参考<a href="https://github.com/activerecord-hackery/ransack/wiki/Basic-Searching" target="_blank" rel="external">这篇文章</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;一-Ransack-是什么？&quot;&gt;&lt;a href=&quot;#一-Ransack-是什么？&quot; class=&quot;headerlink&quot; title=&quot;一. Ransack 是什么？&quot;&gt;&lt;/a&gt;一. Ransack 是什么？&lt;/h4&gt;&lt;p&gt;Ransack是rails中用来做搜索的
+      
+    
+    </summary>
+    
+      <category term="Rails" scheme="http://yoursite.com/categories/Rails/"/>
+    
+    
+      <category term="Rails" scheme="http://yoursite.com/tags/Rails/"/>
+    
+      <category term="Ransack" scheme="http://yoursite.com/tags/Ransack/"/>
+    
+      <category term="模糊查询" scheme="http://yoursite.com/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/"/>
+    
+      <category term="LIKE" scheme="http://yoursite.com/tags/LIKE/"/>
+    
+  </entry>
   
   <entry>
     <title>精英的学习之法</title>
