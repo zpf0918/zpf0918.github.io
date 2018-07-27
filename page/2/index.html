@@ -254,6 +254,177 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/06/Rails-中的数据查询方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jonathan-fei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jonathan-fei.pro">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/06/Rails-中的数据查询方法/" itemprop="url">Rails 中的数据查询方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-06T17:30:51+08:00">
+                2018-02-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Rails/" itemprop="url" rel="index">
+                    <span itemprop="name">Rails</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Rails中的Acvtice Record使得我们不用写SQL语句就可以查询数据库中的数据。<br>当使用Rails中的方法查询数据时，过程大体是这样的：</p>
+<ul>
+<li>将查询选项转为sql语句</li>
+<li>触发sql语句在数据库中查询</li>
+<li>将查询结果实例化（变成对应的模型对象）</li>
+</ul>
+<h4 id="1–-查询单个对象"><a href="#1–-查询单个对象" class="headerlink" title="1– 查询单个对象"></a>1– 查询单个对象</h4><p>（1）find方法<br>find方法用于查询指定主键的对象；<code>Author.find(1)</code></p>
+<p>（2） find_by方法<br>find_by 方法会查询到符合条件的第一条记录<br><code>Author.find_by(:name =&gt; &quot;鲁迅&quot;)</code> 也可以写成<br><code>Author.find_by name: &quot;鲁迅&quot;</code></p>
+<p>（3）take方法<br>take方法会查询到一条记录，往往是数据表中的第一条记录。<br><code>Author.take</code></p>
+<h4 id="2–-查询多个对象"><a href="#2–-查询多个对象" class="headerlink" title="2– 查询多个对象"></a>2– 查询多个对象</h4><p>我们常常使用each方法，用来检索数据表中的记录。它的原理是会让Active Record 捞出整个数据表的数据，然后对每条记录创建模型对象，并把整个模型对象以数组形式保存在内存中。如果数据量很多的话，这样明显是行不通的。Rails有两种方法可以解决这个问题：<br>（1）find_each<br>工作原理：find_each方法每次检索一批记录，然后把每条记录实例化成模型对象传入块。默认每次检索1000条记录。<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Player.find_each <span class="keyword">do</span> <span class="params">|player|</span></div><div class="line">  player.name</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure></p>
+<p>a. 使用batch_size 来指定每次检索的记录总数<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Player.find_each(<span class="symbol">batch_size:</span> <span class="number">5000</span>) <span class="keyword">do</span> <span class="params">|player|</span></div><div class="line">  player.name</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure></p>
+<p>b. 使用<code>start</code> 实现从起始点进行ID检索 ，比这个ID小的都不会取回。并且这个ID必须是主键。平常情况下较少用这个方法。<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 检索id从10开始的作者姓名</span></div><div class="line">Player.find_each(<span class="symbol">start:</span> <span class="number">10</span>) <span class="keyword">do</span> <span class="params">|player|</span></div><div class="line">  player.name</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure></p>
+<p>c.使用<code>finish</code> 实现从起始点进行ID检索，比这个ID大的都不取回。与<code>start</code>类似。<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 检索id为10000到20000的作者姓名</span></div><div class="line">Player.find_each(<span class="symbol">start:</span> <span class="number">10000</span>, <span class="symbol">finish:</span> <span class="number">20000</span>) <span class="keyword">do</span> <span class="params">|player|</span></div><div class="line">  player.name</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure></p>
+<p>（2）find_in_batches<br>工作原理：find_in_batches 方法每次检索一批记录，然后把每批记录实例化成模型数组传入块。用法和<code>find_each</code> 类似。</p>
+<h4 id="3-条件查询"><a href="#3-条件查询" class="headerlink" title="3.条件查询"></a>3.条件查询</h4><p>（1）数组条件中的<strong>占位符</strong><br>a.  ?<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ Player.where(<span class="string">"age &gt;= ?"</span>, params[<span class="symbol">:age</span>])</div><div class="line">或者</div><div class="line">$ Player.where(<span class="string">"player.age &gt;= ?"</span>, params[<span class="symbol">:age</span>])</div></pre></td></tr></table></figure></p>
+<p>b. 字符<br>如果条件中有很多变量，那么以下做法会更易于代码的阅读。<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ Player.where(<span class="string">"age &gt;= :age AND saler &gt;= :wage_level_"</span>, &#123; <span class="symbol">age:</span> params[<span class="symbol">:age</span>], <span class="symbol">wage_level:</span> params[<span class="symbol">:wage_level</span>]&#125;)</div></pre></td></tr></table></figure></p>
+<p>（2）使用<code>not</code> 反向查询<br>查询年龄在30岁以上的玩家<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ Player.where(<span class="string">"diamond &gt; ?"</span>, <span class="number">30</span>)</div><div class="line">也可以写成</div><div class="line">$ Player.where.<span class="keyword">not</span>(<span class="string">" diamond &lt;= ?"</span>, <span class="number">30</span>)</div></pre></td></tr></table></figure></p>
+<h4 id="4-查询特定字段"><a href="#4-查询特定字段" class="headerlink" title="4. 查询特定字段"></a>4. 查询特定字段</h4><p>使用find、find_by、where方法时会返回table的全部字段，若想返回指定的字段可以使用<code>select</code> ，比如查询年龄大于20 的玩家名字。<br>（1） select方法<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Player.select(<span class="symbol">:name</span>).where(<span class="string">"age &gt;= ?"</span>, <span class="number">30</span>)</div><div class="line">查询名字和id</div><div class="line">Player.select(<span class="symbol">:userid</span>, <span class="symbol">:name</span>).where(<span class="string">"age &gt;= ?"</span>, <span class="number">30</span>)</div><div class="line">&amp;</div><div class="line">Player.select(<span class="string">"userid, name"</span>).where(<span class="string">"age &gt;= ?"</span>, <span class="number">30</span>)</div></pre></td></tr></table></figure></p>
+<p>（2）pluck方法<br>pluck 方法与select方法不同，select返回是一组对象模型，pluck方法是返回字段数组，因此在数据量很大的情况下使用pluck会好很多。<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Player.select(<span class="symbol">:nickname</span>, <span class="symbol">:userid</span>).map&#123; <span class="params">|u|</span> [u.userid, u.nickname]&#125;</div><div class="line">相当于</div><div class="line">Player.pluck(<span class="symbol">:nickname</span>, <span class="symbol">:userid</span>)</div><div class="line"></div><div class="line"><span class="symbol">PS:</span>map 的另一种写法</div><div class="line">Player.select(<span class="symbol">:userid</span>).map(&amp;<span class="symbol">:userid</span>)</div></pre></td></tr></table></figure></p>
+<p>pluck方法会触发即时查询，个人理解为立即查询，所以当其他查询在pluck之前时，会执行成功；在pluck之后时，会查询失败。例如:<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Player.pluck(<span class="symbol">:userid</span>).limit(<span class="number">5</span>) <span class="comment">#=&gt; undefined method `limit</span></div><div class="line"></div><div class="line">Player.limit(<span class="number">5</span>).pluck(<span class="symbol">:userid</span>) <span class="comment">#=&gt; [1], [2], [3], [4], [5]</span></div></pre></td></tr></table></figure></p>
+<p>（3）ids方法<br>ids方法会获得模型的主键，rails中模型主键默认为id，返回的是数组。<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Player</span> &lt; ApplicationRecord</span></div><div class="line">  <span class="keyword">self</span>.primary_key = <span class="string">"userid"</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">Player.ids</div><div class="line">相当于</div><div class="line">Player.pluck(<span class="symbol">:userid</span>)</div><div class="line">或</div><div class="line">Player.select(<span class="symbol">:id</span>).map(&amp;<span class="symbol">:userid</span>)</div><div class="line">或</div><div class="line">Player.select(<span class="symbol">:id</span>).map&#123; <span class="params">|u|</span> u.userid&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="5-关联查询"><a href="#5-关联查询" class="headerlink" title="5.关联查询"></a>5.关联查询</h4><p>（1） joins 方法<br>示例代码：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Player</span> &lt; ApplicationRecord</span></div><div class="line"> has_many <span class="symbol">:groups</span>, <span class="symbol">class_name:</span> <span class="string">"GroupMsg"</span>, <span class="symbol">foreign_key:</span> <span class="string">"userid"</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">GroupMsg</span> &lt; ApplicationRecord</span></div><div class="line">  belongs_to <span class="symbol">:owner</span>, <span class="symbol">class_name:</span> <span class="string">"Player"</span>, <span class="symbol">foreign_key:</span> <span class="string">"userid"</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ GroupMsg.joins(<span class="symbol">:owner</span>)</div></pre></td></tr></table></figure>
+<p>这条语句的意思为所有属于某个用户的圈子作为一个GroupMsg对象返回。<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ GroupMsg.joins(<span class="symbol">:owner</span>).where(<span class="symbol">:userid</span> =&gt; <span class="number">2</span>)</div><div class="line">查询结果相当于</div><div class="line">$ Player.find_by(<span class="symbol">userid:</span> <span class="number">2</span>).groups</div></pre></td></tr></table></figure></p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ Player.joins(<span class="symbol">:groups</span>)</div></pre></td></tr></table></figure>
+<p>这条语句的意思为查询所有创建了圈子的用户作为Player对象返回（可以简单理解为查询创建过圈子的用户）。如果一个用户创建了很多圈子，那么也会被重复列出。</p>
+<p>（2）includes方法<br>includes可以解决N+1queries问题，因为它可以及早加载关联。<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Player.includes(<span class="symbol">:groups</span>)</div></pre></td></tr></table></figure></p>
+<p>这条命令会取出所有的用户和所有的关联圈子。<br>对应的SQL语句为<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#=&gt; 假设只有五个用户</span></div><div class="line">select * from players</div><div class="line">select * from group_msgs where group_msgs.userid <span class="keyword">in</span> (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>)</div></pre></td></tr></table></figure></p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">GroupMsg.includes(<span class="symbol">:owner</span>)</div></pre></td></tr></table></figure>
+<p>这个命令会捞出所有的圈子和相关联的用户。<br>对应的SQL语句为<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">select * from group_msg</div><div class="line">select * from players where player.userid = [<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/02/Ruby-基础-学习笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -663,7 +834,7 @@
 <p>这样做的缺陷很明显，就是用户可以通过网址猜到我们数据库中user的数据量。为了解决这个问题，我们可以通过把ID改成乱数ID的形式解决，就像下面这样：<br><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fn9g0fgepjj31aq05cdgx.jpg" alt="enter image description here"></p>
 <p>实现过程如下：</p>
 <h4 id="step1：model层的实现"><a href="#step1：model层的实现" class="headerlink" title="step1：model层的实现"></a>step1：model层的实现</h4><p>1-   为 user添加<code>friendly_id</code> 字段<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> rails g migration add_friendly_id_to_users</span></div></pre></td></tr></table></figure></p>
-<p>2- 在新生成的migration文件中，为<code>friendly_id</code> 添加唯一索引<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">add_column <span class="symbol">:users</span>, <span class="symbol">:friendly_id</span>, <span class="symbol">:string</span></div><div class="line">add_index <span class="symbol">:users</span>, <span class="symbol">:friendly_id</span>, <span class="symbol">:unique</span> =&gt; <span class="keyword">true</span></div></pre></td></tr></table></figure></p>
+<p>2- 在新生成的migration文件中，为<code>friendly_id</code> 添加唯一索引<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">add_column <span class="symbol">:users</span>, <span class="symbol">:friendly_id</span>, <span class="symbol">:string</span></div><div class="line">add_index <span class="symbol">:users</span>, <span class="symbol">:friendly_id</span>, <span class="symbol">:unique</span> =&gt; <span class="literal">true</span></div></pre></td></tr></table></figure></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> rake db:migrate</span></div></pre></td></tr></table></figure>
 <p>3- 修改user.model<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">before_validation <span class="symbol">:generate_friendly_id</span>, <span class="symbol">on:</span> <span class="symbol">:create</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">to_param</span></span></div><div class="line">   <span class="keyword">self</span>.friendly_id</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">generate_friendly_id</span></span></div><div class="line">   <span class="keyword">self</span>.friendly_id <span class="params">||</span>= SecureRandom.uuid</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure></p>
 <p>其中<code>to_param</code> Rails中自带的方法，我们在这里对它进行重新定义。之前的定义为，<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">to_param</span></span></div><div class="line"> <span class="keyword">self</span>.id</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure></p>
@@ -997,9 +1168,9 @@
 <li><p>vi 、nano、vim是三种文档编辑器，nano与vim是操作系统内建的。</p>
 </li>
 <li><p>传档案：SSH 通信协议除了可以让我们登入远端的服务器，也可以作为档案传输使用，又叫做 SFTP。例如：</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp test.txt root<span class="variable">@106</span>.<span class="number">14.190</span>.<span class="number">181</span><span class="symbol">:~/</span></div></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp test.txt root@106.<span class="number">14.190</span>.<span class="number">181</span><span class="symbol">:~/</span></div></pre></td></tr></table></figure>
 <p>这个命令的意思是将本机的test.txt文件传到服务器上root账号的 ~/ 文件夹下；</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp root<span class="variable">@106</span>.<span class="number">14.190</span>.<span class="number">181</span><span class="symbol">:~/test</span>.txt ./</div></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp root@106.<span class="number">14.190</span>.<span class="number">181</span><span class="symbol">:~/test</span>.txt ./</div></pre></td></tr></table></figure>
 <p>这个命令的意思是将服务器上的text.txt 文件传到本机</p>
 </li>
 <li><p>压缩与打包：如果要向服务器传很多档案，那么使用压缩打包的方式会很快；压缩和打包是可以分开的：gzip 只能压缩一个档案、tar 可以打包整个目录顺便压缩。</p>
@@ -1774,175 +1945,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/07/部分gem总结/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="jonathan-fei">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jonathan-fei.pro">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/07/部分gem总结/" itemprop="url">部分gem总结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-07T01:54:55+08:00">
-                2017-09-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Ruby/" itemprop="url" rel="index">
-                    <span itemprop="name">Ruby</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="1-gem-‘devise’-————————————-登录系统"><a href="#1-gem-‘devise’-————————————-登录系统" class="headerlink" title="1.gem ‘devise’             ————————————  登录系统"></a>1.gem ‘devise’             ————————————  登录系统</h3><blockquote>
-<p><strong>安装须知：</strong> 依次执行<code>bundle install</code> <code>rails g devise:install</code> <code>rails g devise user</code> <code>rake db:migrate</code>，最后重新<code>rails s</code>。</p>
-</blockquote>
-<h3 id="2-gem-‘bootstrap-sass’-————————————-前端开发套件"><a href="#2-gem-‘bootstrap-sass’-————————————-前端开发套件" class="headerlink" title="2.gem ‘bootstrap-sass’          ————————————  前端开发套件"></a>2.gem ‘bootstrap-sass’          ————————————  前端开发套件</h3><blockquote>
-<p><strong>安装须知：</strong><br>(1) 依次执行<code>bundle install</code> <code>mv app/assets/stylesheets/application.css app/assets/stylesheets/application.scss</code>;<br>(2)</p>
-</blockquote>
-<figure class="highlight ruby"><figcaption><span>app/assets/stylesheets/application.scss</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">+@import <span class="string">"bootstrap-sprockets"</span>;</div><div class="line">+@import <span class="string">"bootstrap"</span>;</div></pre></td></tr></table></figure>
-<p>最后重新<code>rails s</code></p>
-<h3 id="3-gem-‘simple-form’-————————————-简化表单"><a href="#3-gem-‘simple-form’-————————————-简化表单" class="headerlink" title="3.gem ‘simple_form’        ————————————  简化表单"></a>3.gem ‘simple_form’        ————————————  简化表单</h3><blockquote>
-<p><strong>安装须知：</strong> 依次执行<code>bundle install</code> <code>rails g simple_form:install --bootstrap</code>,最后重新<code>rails s</code></p>
-</blockquote>
-<h3 id="4-gem-‘font-awesome-rails’-————————————-图标套件"><a href="#4-gem-‘font-awesome-rails’-————————————-图标套件" class="headerlink" title="4.gem ‘font-awesome-rails’ ————————————  图标套件"></a>4.gem ‘font-awesome-rails’ ————————————  图标套件</h3><blockquote>
-<p><strong>安装须知</strong></p>
-</blockquote>
-<p>（1）<code>bundle install</code> ,重新<code>rails s</code><br>（2）</p>
-<figure class="highlight ruby"><figcaption><span>app/assets/stylesheets/application.scss</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@import <span class="string">"font-awesome"</span>;</div></pre></td></tr></table></figure>
-<h3 id="5-gem-‘better-errors’-————————————-更好的显示错误讯息"><a href="#5-gem-‘better-errors’-————————————-更好的显示错误讯息" class="headerlink" title="5.gem ‘better_errors’      ————————————  更好的显示错误讯息"></a>5.gem ‘better_errors’      ————————————  更好的显示错误讯息</h3><blockquote>
-<p><strong>安装须知</strong> <code>bundle install</code> 重启<code>rails s</code></p>
-</blockquote>
-<h3 id="6-gem-‘annotate’-————————————-在主要用于model中显示栏位"><a href="#6-gem-‘annotate’-————————————-在主要用于model中显示栏位" class="headerlink" title="6.gem ‘annotate’           ————————————  在主要用于model中显示栏位"></a>6.gem ‘annotate’           ————————————  在主要用于model中显示栏位</h3><blockquote>
-<p><strong>安装须知</strong> <code>bundle install</code> 重启<code>rails s</code><br>执行<code>annotate --exclude tests,fixtures,factories,serializers</code>,<br>ps：每次新增栏位后，都要执行这个命令，才会在具体model里显示出所有建立的栏位提示。</p>
-</blockquote>
-<h3 id="7-gem-‘awesome-rails-console’-—————————-让“金手指”变好看的套件"><a href="#7-gem-‘awesome-rails-console’-—————————-让“金手指”变好看的套件" class="headerlink" title="7.gem ‘awesome_rails_console’      —————————-  让“金手指”变好看的套件"></a>7.gem ‘awesome_rails_console’      —————————-  让“金手指”变好看的套件</h3><blockquote>
-<p><strong>安装须知</strong> <code>bundle install</code> 重启<code>rails s</code></p>
-</blockquote>
-<h3 id="8-gem-‘carrier-wave’-gem-‘mini-magick’-————————————-用于上传图片（可能还有其他的功能）"><a href="#8-gem-‘carrier-wave’-gem-‘mini-magick’-————————————-用于上传图片（可能还有其他的功能）" class="headerlink" title="8.gem ‘carrier_wave’  gem ‘mini_magick’      ————————————  用于上传图片（可能还有其他的功能）"></a>8.gem ‘carrier_wave’  gem ‘mini_magick’      ————————————  用于上传图片（可能还有其他的功能）</h3><blockquote>
-<p><strong>安装须知</strong> 依次执行：<code>bundle install</code> <code>rails g uploader image</code> 重启<code>rails s</code></p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1997,7 +1999,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
