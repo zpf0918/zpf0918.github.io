@@ -350,7 +350,7 @@
 <h3 id="2-gem-‘bootstrap-sass’-————————————-前端开发套件"><a href="#2-gem-‘bootstrap-sass’-————————————-前端开发套件" class="headerlink" title="2.gem ‘bootstrap-sass’          ————————————  前端开发套件"></a>2.gem ‘bootstrap-sass’          ————————————  前端开发套件</h3><blockquote>
 <p><strong>安装须知：</strong><br>(1) 依次执行<code>bundle install</code> <code>mv app/assets/stylesheets/application.css app/assets/stylesheets/application.scss</code>;<br>(2)</p>
 </blockquote>
-<figure class="highlight ruby"><figcaption><span>app/assets/stylesheets/application.scss</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">+@import <span class="string">"bootstrap-sprockets"</span>;</div><div class="line">+@import <span class="string">"bootstrap"</span>;</div></pre></td></tr></table></figure>
+<figure class="highlight ruby"><figcaption><span>app/assets/stylesheets/application.scss</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">+@import <span class="string">"bootstrap-sprockets"</span>;</span><br><span class="line">+@import <span class="string">"bootstrap"</span>;</span><br></pre></td></tr></table></figure>
 <p>最后重新<code>rails s</code></p>
 <h3 id="3-gem-‘simple-form’-————————————-简化表单"><a href="#3-gem-‘simple-form’-————————————-简化表单" class="headerlink" title="3.gem ‘simple_form’        ————————————  简化表单"></a>3.gem ‘simple_form’        ————————————  简化表单</h3><blockquote>
 <p><strong>安装须知：</strong> 依次执行<code>bundle install</code> <code>rails g simple_form:install --bootstrap</code>,最后重新<code>rails s</code></p>
@@ -359,7 +359,7 @@
 <p><strong>安装须知</strong></p>
 </blockquote>
 <p>（1）<code>bundle install</code> ,重新<code>rails s</code><br>（2）</p>
-<figure class="highlight ruby"><figcaption><span>app/assets/stylesheets/application.scss</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@import <span class="string">"font-awesome"</span>;</div></pre></td></tr></table></figure>
+<figure class="highlight ruby"><figcaption><span>app/assets/stylesheets/application.scss</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@import <span class="string">"font-awesome"</span>;</span><br></pre></td></tr></table></figure>
 <h3 id="5-gem-‘better-errors’-————————————-更好的显示错误讯息"><a href="#5-gem-‘better-errors’-————————————-更好的显示错误讯息" class="headerlink" title="5.gem ‘better_errors’      ————————————  更好的显示错误讯息"></a>5.gem ‘better_errors’      ————————————  更好的显示错误讯息</h3><blockquote>
 <p><strong>安装须知</strong> <code>bundle install</code> 重启<code>rails s</code></p>
 </blockquote>
