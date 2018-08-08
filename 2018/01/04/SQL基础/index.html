@@ -388,7 +388,7 @@
 <h3 id="三、DML-语句"><a href="#三、DML-语句" class="headerlink" title="三、DML 语句"></a>三、DML 语句</h3><p>DML语句是指对数据库中表记录的操作，主要包括表记录的插入（insert）、更新（update）、删除（delete）和查询（select），是开发人员日常使用最频繁的操作。</p>
 <h4 id="1-插入记录"><a href="#1-插入记录" class="headerlink" title="1- 插入记录"></a>1- 插入记录</h4><p>插入单条记录：<br>INSERT INTO  table_name(field1, field2, … fieldn) VALUES(value1, value2, …valuen);例如，insert into emp(ename, hire,sal,deptno) values(‘zzx1’, ‘2000-1-1’, ‘2000’,1); 也可以不用指定字段名称，但是需要values后面的循序与字段的顺序一致。</p>
 <p>插入多条记录：<br>INSERT INTO tablename (field1, field2, … fieldn)<br>VALUES<br>(record1_value1, record2_value2, … record1_valuen),<br>(record2_value1, record2_value2, … record2_valuen),<br>…<br>(recordn_value1, recordn_value2, … recordn_valuen);<br>例如<code>insert into dept VALUES(5, “35”),(3,”232”);</code></p>
-<h4 id="2-更新记录"><a href="#2-更新记录" class="headerlink" title="2- 更新记录"></a>2- 更新记录</h4><p>更新记录：<br>UPDATE tablename SET filed1= value1,field2= value2, … filedn=valuen [WHERE CONDITION],例如，`update emp set sal=4000 where ename=‘lisa’;``</p>
+<h4 id="2-更新记录"><a href="#2-更新记录" class="headerlink" title="2- 更新记录"></a>2- 更新记录</h4><p>更新记录：<br>UPDATE tablename SET filed1= value1,field2= value2, … filedn=valuen [WHERE CONDITION],例如，<code>update emp set sal=4000 where ename=‘lisa’;`</code></p>
 <p>更新多个表中的记录：<br>UPDATE t1,t2,…tn set t1.field=value1,tn.field=valuen [WHERE CONDITION]</p>
 <h4 id="3-删除记录"><a href="#3-删除记录" class="headerlink" title="3- 删除记录"></a>3- 删除记录</h4><p>DELETE FROM tablename [WHERE CONDITION]<br>例如，<code>delete from emp where ename=‘lisa’;</code></p>
 <p>删除多个表中的记录：<br>DELETE t1,t2,..tn FROM t1,t2,…tn [WHERE CONDITION]<br>PS: 不论是单表还是多表，不加where条件都会把表的所有记录删除；</p>
