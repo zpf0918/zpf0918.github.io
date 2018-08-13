@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="JS数组,数组复制," />
+  <meta name="keywords" content="typeof,instanceof,Object.prototype.toString.call()," />
 
 
 
@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="JavaScript中的值类型分为基础类型和引用类型，基础类型包括Number、String、Boolean等， 引用类型包括数组和对象。基础类型的值是不可改变的，比较的是真正的值，引用类型的值是可以改变的，比较的是各自的引用。下面的几种方法适用于数组元素中不包括引用类型的值。 方法一： for 循环12345678function copy(arr) &amp;#123;  var newArr = [">
-<meta name="keywords" content="JS数组,数组复制">
+<meta name="description" content="JavaScript的数据类型有 null、undefined、Number、String、Object、Boolean、Symbol,其中Symbol类型是在ES6新增的类型。其中Object类型又包括三个子类型，Function、 Array、Object（狭义）。 判断数据类型有三个方法。 typeof12345678910111213var list = [1,2,3];var obj =">
+<meta name="keywords" content="typeof,instanceof,Object.prototype.toString.call()">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS 数组复制的实现方法">
-<meta property="og:url" content="http://yoursite.com/2018/08/10/JS-数组复制的实现方法/index.html">
+<meta property="og:title" content="JS 判断数据类型的三个方法">
+<meta property="og:url" content="http://yoursite.com/2018/08/13/JS-判断数据类型的三个方法/index.html">
 <meta property="og:site_name" content="jonathan-fei.pro">
-<meta property="og:description" content="JavaScript中的值类型分为基础类型和引用类型，基础类型包括Number、String、Boolean等， 引用类型包括数组和对象。基础类型的值是不可改变的，比较的是真正的值，引用类型的值是可以改变的，比较的是各自的引用。下面的几种方法适用于数组元素中不包括引用类型的值。 方法一： for 循环12345678function copy(arr) &amp;#123;  var newArr = [">
+<meta property="og:description" content="JavaScript的数据类型有 null、undefined、Number、String、Object、Boolean、Symbol,其中Symbol类型是在ES6新增的类型。其中Object类型又包括三个子类型，Function、 Array、Object（狭义）。 判断数据类型有三个方法。 typeof12345678910111213var list = [1,2,3];var obj =">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-08-10T08:55:20.650Z">
+<meta property="og:updated_time" content="2018-08-13T05:13:17.179Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JS 数组复制的实现方法">
-<meta name="twitter:description" content="JavaScript中的值类型分为基础类型和引用类型，基础类型包括Number、String、Boolean等， 引用类型包括数组和对象。基础类型的值是不可改变的，比较的是真正的值，引用类型的值是可以改变的，比较的是各自的引用。下面的几种方法适用于数组元素中不包括引用类型的值。 方法一： for 循环12345678function copy(arr) &amp;#123;  var newArr = [">
+<meta name="twitter:title" content="JS 判断数据类型的三个方法">
+<meta name="twitter:description" content="JavaScript的数据类型有 null、undefined、Number、String、Object、Boolean、Symbol,其中Symbol类型是在ES6新增的类型。其中Object类型又包括三个子类型，Function、 Array、Object（狭义）。 判断数据类型有三个方法。 typeof12345678910111213var list = [1,2,3];var obj =">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/08/10/JS-数组复制的实现方法/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/13/JS-判断数据类型的三个方法/"/>
 
 
 
 
 
-  <title>JS 数组复制的实现方法 | jonathan-fei.pro</title>
+  <title>JS 判断数据类型的三个方法 | jonathan-fei.pro</title>
   
 
 
@@ -255,7 +255,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/10/JS-数组复制的实现方法/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/13/JS-判断数据类型的三个方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="jonathan-fei">
@@ -272,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JS 数组复制的实现方法</h1>
+          <h1 class="post-title" itemprop="name headline">JS 判断数据类型的三个方法</h1>
         
 
         <div class="post-meta">
@@ -284,8 +284,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-10T16:35:34+08:00">
-                2018-08-10
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-13T12:42:44+08:00">
+                2018-08-13
               </time>
             
 
@@ -344,10 +344,18 @@
       
 
       
-        <p>JavaScript中的值类型分为基础类型和引用类型，基础类型包括Number、String、Boolean等， 引用类型包括数组和对象。基础类型的值是不可改变的，比较的是真正的值，引用类型的值是可以改变的，比较的是各自的引用。下面的几种方法适用于数组元素中不包括引用类型的值。</p>
-<h3 id="方法一：-for-循环"><a href="#方法一：-for-循环" class="headerlink" title="方法一： for 循环"></a>方法一： for 循环</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">copy</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> newArr = [];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    newArr.push(arr[i]);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> newArr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="方法二：-slice-方法或-concat方法"><a href="#方法二：-slice-方法或-concat方法" class="headerlink" title="方法二： slice 方法或 concat方法"></a>方法二： slice 方法或 concat方法</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> copy = <span class="function">(<span class="params">arr</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> arr.slice(); <span class="comment">// return arr.concat();</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="方法三：-Array-from-方法"><a href="#方法三：-Array-from-方法" class="headerlink" title="方法三： Array.from 方法"></a>方法三： Array.from 方法</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> copy = <span class="function">(<span class="params">arr</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Array</span>.from(arr);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>JavaScript的数据类型有 null、undefined、Number、String、Object、Boolean、Symbol,其中Symbol类型是在ES6新增的类型。其中Object类型又包括三个子类型，Function、 Array、Object（狭义）。</p>
+<p>判断数据类型有三个方法。</p>
+<h3 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a>typeof</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> list = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">name</span>: <span class="string">'Han'</span>&#125;</span><br><span class="line"><span class="keyword">var</span> fun = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> <span class="number">1</span>         <span class="comment">// 'number'</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="string">'Han'</span>     <span class="comment">// 'string'</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">true</span>      <span class="comment">// 'boolean'</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">undefined</span> <span class="comment">// 'undefined'</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">null</span>      <span class="comment">// 'object'</span></span><br><span class="line"><span class="keyword">typeof</span> list      <span class="comment">// 'object'</span></span><br><span class="line"><span class="keyword">typeof</span> obj       <span class="comment">// 'object'</span></span><br><span class="line"><span class="keyword">typeof</span> fun       <span class="comment">// 'function'</span></span><br><span class="line"><span class="keyword">typeof</span> a         <span class="comment">// 'undefined'</span></span><br></pre></td></tr></table></figure>
+<p>通过以上例子可以看出 typeof判断数据类型的特点</p>
+<ol>
+<li>无法准备判断数组和对象</li>
+<li>typeof null 的返回值为 “object”, 这是因为早期null就是属于”object”</li>
+<li>typeof 一个未定义的变量不会报错，而是返回 “undefined”<br>typeof在大多数情况是适用的，如果想准备判断数组，可使用<code>Array.isArray()</code>进行判断。</li>
+</ol>
+<h3 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h3><p><code>instanceof</code> 方法只适用于判断Object类型的对象，基本类型的数据不适用。它的原理是检查右边的构造函数的prototype属性是否在左边实例的原型链上。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> list = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">name</span>: <span class="string">'Han'</span>&#125;</span><br><span class="line"><span class="keyword">var</span> fun = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">list <span class="keyword">instanceof</span> <span class="built_in">Array</span> <span class="comment">// true</span></span><br><span class="line">obj <span class="keyword">instanceof</span> <span class="built_in">Object</span> <span class="comment">// true</span></span><br><span class="line">fun <span class="keyword">instanceof</span> <span class="built_in">Function</span> <span class="comment">// true</span></span><br><span class="line"><span class="number">1</span> <span class="keyword">instanceof</span> <span class="built_in">Number</span> <span class="comment">// false</span></span><br><span class="line"><span class="string">'Han'</span> <span class="keyword">instanceof</span> <span class="built_in">String</span> <span class="comment">// false</span></span><br><span class="line"><span class="literal">true</span> <span class="keyword">instanceof</span> <span class="built_in">Boolean</span> <span class="comment">//false</span></span><br><span class="line"></span><br><span class="line">list <span class="keyword">instanceof</span> <span class="built_in">Object</span> <span class="comment">// true</span></span><br><span class="line">fun <span class="keyword">instanceof</span> <span class="built_in">Object</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Object-prototype-toString-call"><a href="#Object-prototype-toString-call" class="headerlink" title="Object.prototype.toString.call()"></a>Object.prototype.toString.call()</h3><p>这个方法可以准确返回判断对象的数据类型。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> list = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">name</span>: <span class="string">'Han'</span>&#125;</span><br><span class="line"><span class="keyword">var</span> fun = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="literal">null</span>)      <span class="comment">// "[object Null]"</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="literal">undefined</span>) <span class="comment">// "[object Undefined]"</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="number">1</span>)         <span class="comment">// "[object Number]"</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="string">'1'</span>)       <span class="comment">// "[object String]"</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="literal">true</span>)      <span class="comment">// "[object Boolean]"</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(list)      <span class="comment">// "[object Array]"</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="string">'Han'</span>)     <span class="comment">// "[object String]"</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(fun)       <span class="comment">// "[object Function]"</span></span><br></pre></td></tr></table></figure></p>
+<p>参考链接： <a href="https://wangdoc.com/javascript/types/index.html" target="_blank" rel="noopener">https://wangdoc.com/javascript/types/index.html</a></p>
 
       
     </div>
@@ -365,9 +373,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JS数组/" rel="tag"># JS数组</a>
+            <a href="/tags/typeof/" rel="tag"># typeof</a>
           
-            <a href="/tags/数组复制/" rel="tag"># 数组复制</a>
+            <a href="/tags/instanceof/" rel="tag"># instanceof</a>
+          
+            <a href="/tags/Object-prototype-toString-call/" rel="tag"># Object.prototype.toString.call()</a>
           
         </div>
       
@@ -380,8 +390,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/27/JS-数组去重/" rel="next" title="JS 数组去重">
-                <i class="fa fa-chevron-left"></i> JS 数组去重
+              <a href="/2018/08/10/JS-数组复制的实现方法/" rel="next" title="JS 数组复制的实现方法">
+                <i class="fa fa-chevron-left"></i> JS 数组复制的实现方法
               </a>
             
           </div>
@@ -389,10 +399,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/13/JS-判断数据类型的三个方法/" rel="prev" title="JS 判断数据类型的三个方法">
-                JS 判断数据类型的三个方法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -553,7 +559,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法一：-for-循环"><span class="nav-number">1.</span> <span class="nav-text">方法一： for 循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法二：-slice-方法或-concat方法"><span class="nav-number">2.</span> <span class="nav-text">方法二： slice 方法或 concat方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法三：-Array-from-方法"><span class="nav-number">3.</span> <span class="nav-text">方法三： Array.from 方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#typeof"><span class="nav-number">1.</span> <span class="nav-text">typeof</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#instanceof"><span class="nav-number">2.</span> <span class="nav-text">instanceof</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-prototype-toString-call"><span class="nav-number">3.</span> <span class="nav-text">Object.prototype.toString.call()</span></a></li></ol></div>
             
 
           </div>
